@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
     <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
     <link rel="stylesheet" type="text/css" href="static/css/project.css">
+    <link rel="stylesheet" type="text/css" href="static/css/erp.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -156,7 +157,8 @@
         <div class="orderby-notifs">
           <span>Sort by :</span>
           <ul>
-            <li class="active-orderby">Date</li>
+            <li class="active-orderby">Priority</li>
+            <li>Date</li>
             <li>Collaborators</li>
             <li>Project</li>
           </ul>
@@ -164,39 +166,57 @@
         <table class="page-notifs">
           <tr class="new">
             <td class="red-notif"></td>
-            <td class="proj-notif"><a href="">Project 1</a></td>
+            <td class="proj-notif"><a href="">Projet 1</a></td>
             <td class="img">
               <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
             </td>
             <td class="desc-notif">Jacques gave a 2-stars rating to Emma</td>
-            <td class="date-notif"><span class="day-notif">May 27</span> 8:08pm</td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 8:08pm</td>
           </tr>
           <tr>
-            <td></td>
-            <td class="proj-notif"><a href="">Project 3</a></td>
+            <td class="red-notif"></td>
+            <td class="proj-notif"><a href="">Projet 1</a></td>
             <td class="img">
-              <div class="worker-img default"></div>
+              <div class="worker-img default"><img src="https://secure.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
             </td>
-            <td class="desc-notif">Henri's work is overdue</td>
-            <td class="date-notif"><span class="day-notif">May 26</span> 10:08pm</td>
+            <td class="desc-notif">Emma gave a 1-star rating to Jacques</td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 10:08pm</td>
           </tr>
           <tr>
             <td class="orange-notif"></td>
-            <td class="proj-notif"><a href="">Project 4</a></td>
+            <td class="proj-notif"><a href="">Projet 1</a></td>
             <td class="img">
-              <div class="worker-img default"></div>
+              <div class="worker-img default no-img"></div>
             </td>
-            <td class="desc-notif">Payment by the client</td>
-            <td class="date-notif"><span class="day-notif">May 26</span> 10:08pm</td>
+            <td class="desc-notif">Jacques’ payment is overdue</td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 10:08pm</td>
+          </tr>
+          <tr>
+            <td class="orange-notif"></td>
+            <td class="proj-notif"><a href="">Projet 4</a></td>
+            <td class="img">
+              <div class="worker-img default no-img"></div>
+            </td>
+            <td class="desc-notif">Payment by the client </td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 10:08pm</td>
+          </tr>
+          <tr>
+            <td class="orange-notif"></td>
+            <td class="proj-notif"><a href="">Projet 1</a></td>
+            <td class="img">
+              <div class="worker-img default user"><img src="https://secure.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+            </td>
+            <td class="desc-notif">Emma has finished his translation for <a href="">File one</a></td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 10:08pm</td>
           </tr>
           <tr>
             <td></td>
             <td class="general">General</td>
             <td class="img">
-              <div class="worker-img default user"></div>
+              <div class="worker-img default no-img"></div>
             </td>
             <td class="desc-notif">Emma update <a href="">File one</a></td>
-            <td class="date-notif"><span class="day-notif">May 22</span> 11:08pm</td>
+            <td class="date-notif"><span class="day-notif">06/27</span> 11:08pm</td>
           </tr>
         </table>
       </div>

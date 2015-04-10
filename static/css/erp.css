@@ -1,0 +1,24 @@
+/* @group import */
+/* @end */
+table .img,
+.project-entity .img {
+  text-align: center;
+}
+table .img .worker-img,
+.project-entity .img .worker-img {
+  display: inline-block;
+}
+table .img .default,
+.project-entity .img .default {
+  width: 30px;
+  height: 30px;
+}
+table .img .default.no-img,
+.project-entity .img .default.no-img {
+  width: 20px;
+  height: 20px;
+}
+table .img .default.user,
+.project-entity .img .default.user {
+  border: 2px solid #9CCED8;
+}
