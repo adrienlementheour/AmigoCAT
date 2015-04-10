@@ -4,6 +4,78 @@
 
 /* @end */
 
+// Triangles
+.triangle(@_, @width, @height, @color){
+	content: "";
+	width: 0px;
+	height: 0px;
+	border-color: transparent;
+	border-style: solid; 
+}
+.triangle(top, @width, @height, @color){
+	content: "";
+	border-width: 0 @width/2 @height @width/2;
+	border-bottom-color: @color;
+	border-left-color: fade(@color, 0);
+	border-right-color: fade(@color, 0);
+}
+.triangle(bottom, @width, @height, @color){
+	content: "";
+	border-width: @height @width/2 0 @width/2;
+	border-top-color: @color;
+	border-left-color: fade(@color, 0);
+	border-right-color: fade(@color, 0);
+}
+.triangle(right, @width, @height, @color){
+	content: "";
+	border-width: @height/2 0 @height/2 @width;
+	border-left-color: @color;
+	border-top-color: fade(@color, 0);
+	border-bottom-color: fade(@color, 0);
+}
+.triangle(left, @width, @height, @color){
+	content: "";
+	border-width: @height/2 @width @height/2 0;
+	border-right-color: @color;
+	border-top-color: fade(@color, 0);
+	border-bottom-color: fade(@color, 0);
+}
+.triangle(top-right, @width, @height, @color){
+	content: "";
+	border-width: 0 @width @height 0;
+	border-right-color: @color;
+	border-bottom-color: fade(@color, 0);
+}
+.triangle(top-left, @width, @height, @color){
+	content: "";
+	border-width: @height @width 0 0;
+	border-top-color: @color;
+	border-right-color: fade(@color, 0);
+}
+.triangle(bottom-right, @width, @height, @color){
+	content: "";
+	border-width: 0 0 @height @width;
+	border-bottom-color: @color;
+	border-left-color: fade(@color, 0);
+}
+.triangle(bottom-left, @width, @height, @color){
+	content: "";
+	border-width: @height 0 0 @width;
+	border-left-color: @color;
+	border-top-color: fade(@color, 0);
+}
+.customTriangle(right, @width, @height, @color){
+	content: "";
+	border-width: @height/2 0 @height/3 @width;
+	border-left-color: @color;
+	border-top-color: fade(@color, 0);
+	border-bottom-color: fade(@color, 0);
+}
+
+#content-erp{
+	padding: 23px 50px 50px 50px;
+}
+
 table, .project-entity{
 	.img{
 		text-align: center;
@@ -20,4 +92,95 @@ table, .project-entity{
 			}
 		}
 	}
+}
+
+table.po-table{
+	font-size: 12px;
+	color: #707070;
+	a{
+		color: #707070;
+	}
+	tr{
+		border-bottom: 1px solid #DCDCDC;
+		th{
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: 800;
+			color: #707070;
+			padding: 10px 0;
+			&.active{
+				a{
+					&:after{
+						content: "";
+						.triangle(bottom, 9px, 5px, #4A4A4A);
+						display: inline-block;
+						.size(0px);
+						margin: 0 0 0 6px;
+						padding: 0 0 1px 0;
+					}
+				}
+			}
+		}
+		td{
+			padding: 5px 0;
+			&.active{
+				font-weight: 800;
+			}
+			&.id{
+				font-weight: 800;
+			}
+			&.btn-search-results{
+				text-align: right;
+				a{
+					color: #9D9D9D;
+					border: 1px solid #9D9D9D;
+					padding: 0;
+					line-height: 14px;
+					.size(16px);
+					.border-radius(50%);
+					text-align: center;
+					display: inline-block;
+					margin: 0 2px 0 0;
+					&:before{
+						content: "";
+						.triangle(right, 4px, 6px, #9D9D9D);
+						display: inline-block;
+						.size(0px);
+						margin: 0 0 0 2px;
+						padding: 0;
+					}
+					&:hover{
+						background: #9D9D9D;
+						color: #fff;
+						padding: 0;
+						&:before{
+							border-left-color: #fff;
+						}
+					}
+				}
+			}
+		}
+
+	}
+	.container-img{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 12px 0 0;
+		img{
+			vertical-align: middle;
+		}
+	}
+	
+}
+
+.status-rejected{
+	color: #D1202B;
+}
+
+.status-new{
+	color: #04788F;
+}
+
+.status-accepted{
+	color: #148900;
 }

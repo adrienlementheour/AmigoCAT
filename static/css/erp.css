@@ -1,5 +1,8 @@
 /* @group import */
 /* @end */
+#content-erp {
+  padding: 23px 50px 50px 50px;
+}
 table .img,
 .project-entity .img {
   text-align: center;
@@ -21,4 +24,103 @@ table .img .default.no-img,
 table .img .default.user,
 .project-entity .img .default.user {
   border: 2px solid #9CCED8;
+}
+table.po-table {
+  font-size: 12px;
+  color: #707070;
+}
+table.po-table a {
+  color: #707070;
+}
+table.po-table tr {
+  border-bottom: 1px solid #DCDCDC;
+}
+table.po-table tr th {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 800;
+  color: #707070;
+  padding: 10px 0;
+}
+table.po-table tr th.active a:after {
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  border-width: 5px 4.5px 0 4.5px;
+  border-top-color: #4a4a4a;
+  border-left-color: rgba(74, 74, 74, 0);
+  border-right-color: rgba(74, 74, 74, 0);
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  margin: 0 0 0 6px;
+  padding: 0 0 1px 0;
+}
+table.po-table tr td {
+  padding: 5px 0;
+}
+table.po-table tr td.active {
+  font-weight: 800;
+}
+table.po-table tr td.id {
+  font-weight: 800;
+}
+table.po-table tr td.btn-search-results {
+  text-align: right;
+}
+table.po-table tr td.btn-search-results a {
+  color: #9D9D9D;
+  border: 1px solid #9D9D9D;
+  padding: 0;
+  line-height: 14px;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+  text-align: center;
+  display: inline-block;
+  margin: 0 2px 0 0;
+}
+table.po-table tr td.btn-search-results a:before {
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  border-width: 3px 0 3px 4px;
+  border-left-color: #9d9d9d;
+  border-top-color: rgba(157, 157, 157, 0);
+  border-bottom-color: rgba(157, 157, 157, 0);
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  margin: 0 0 0 2px;
+  padding: 0;
+}
+table.po-table tr td.btn-search-results a:hover {
+  background: #9D9D9D;
+  color: #fff;
+  padding: 0;
+}
+table.po-table tr td.btn-search-results a:hover:before {
+  border-left-color: #fff;
+}
+table.po-table .container-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px 0 0;
+}
+table.po-table .container-img img {
+  vertical-align: middle;
+}
+.status-rejected {
+  color: #D1202B;
+}
+.status-new {
+  color: #04788F;
+}
+.status-accepted {
+  color: #148900;
 }
