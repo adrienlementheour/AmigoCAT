@@ -1,0 +1,724 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+
+<head>
+
+<title>Translate - Projet 3 | AmigoCAT</title>
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="This is a demo installation of amigoCAT beta." />
+
+<link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+<link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+<link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
+<link rel="stylesheet" type="text/css" href="static/css/markup.css" />
+<link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
+<link rel="stylesheet" type="text/css" href="static/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
+<link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
+<link rel="stylesheet" href="static/css/project.css">
+<link rel="stylesheet" type="text/css" href="static/css/editor.css">
+<link rel="stylesheet" type="text/css" href="static/css/vendor/bootstrap-tooltip.css">
+<link rel="stylesheet" href="static/css/vendor/redmond/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" href="static/favicon.png" />
+<link rel="alternate" type="application/rss+xml" href="/notices/rss.xml" />
+
+<!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/events.js"></script>
+<script type="text/javascript" src="static/js/jquery.caret.js"></script>
+<script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+<script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+<script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+<script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+<script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+<script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="static/js/search.js"></script>
+<script type="text/javascript" src="static/js/utils.js"></script>
+<script type="text/javascript" src="static/js/zoom.js"></script>
+<script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+<script type="text/javascript" src="static/js/vendor/spin.js"></script>
+<script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+<script type="text/javascript">
+  function l(path) {
+    var basepath = "";
+    if (path[0] == '/') {
+      return basepath + path;
+    }
+    return path;
+  }
+  function s(path) {
+    return "static/" + path;
+  }
+  $(function() {
+    $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+      gravity: $.fn.tipsy.autoBounds(150, 'n'),
+      html: true, fade: true, delayIn: 750, live: true
+    });
+    $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+      gravity: $.fn.tipsy.autoBounds(150, 's'),
+      html: true, fade: true, delayIn: 750, live: true
+    });
+    $.ajaxSetup({ traditional: true });
+    $.ajaxPrefilter(function (options, originalOptions) {
+      if (options.type === 'post' || options.type === 'POST') {
+        options.data = $.param(
+          $.extend(originalOptions.data,
+         { csrfmiddlewaretoken: '33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' }) );
+      }
+    });
+  });
+</script>
+<script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+<script src="static/js/popup.js"></script>
+<script type="text/javascript" src="static/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+
+</head>
+
+
+<body id="tptranslate" class="sidebar-disable">
+  
+  <header id="header" class="header">
+    <h1 class="h-logo h-item">
+      <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+    </h1>
+
+    <form action="" method="post" class="cssc-form h-item h-form">
+      <input type="text" name="search" placeholder="Search">
+      <button type="submit">&#xe005;</button>
+    </form>
+            
+    <div class="h-avatar" id="open-usermenu">
+      <span class="ha-name ha-name-iconed">Boris</span>
+      <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+      <ul class="usermenu">
+        <li><a class="s-item" href=''>CAT</a></li>
+        <li><a class="s-item" href=''>TMS</a></li>
+        <li><a class="s-item" href=''>Jobcenter</a></li>
+        <li><a class="s-item" href=''>Community</a></li>
+        <li><a class="s-item" href=''>workIQ</a></li>
+        <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+      </ul>
+    </div>
+            
+  </header>  
+
+  <div class="warning-notif">
+    <div class="hs-inner">
+      <strong>New job offer</strong>
+      <span>Translate 3 files, total 2650 words, of a technical document (Physics). Due date : 31/05/14</span>
+      <div class="warning-actions">
+        <strong>00:15</strong>
+        <a href="">+ Learn more</a>
+        <a href="">× Decline</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-sub cf">
+    <div class="hs-inner">
+      <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item cat-burger" title="Open the menu">&nbsp;</a>
+      <div class="block-rounded hsi-navpage h-item">
+        <a href="#" id="js-nav-prev" class="hsin-item item is-left" accesskey="b" title="Go to the previous file">&nbsp;</a>
+        <a href="#" id="js-nav-next" class="hsin-item item is-right" accesskey="k" title="Go to the next file ">&nbsp;</a>
+      </div>&nbsp;
+      <span class="hsi-text">
+        <strong><span>File name</span> &rarr; en</strong>
+      </span>
+      <span class="hsi-text">
+        <strong id='percent'>2%</strong> (<span id='words'>133</span>/137)
+      </span>
+      <span class="hsi-progressbar">
+        <span id='progressbar' class="bar" style="width:2%"></span>
+      </span>&nbsp;&nbsp;&nbsp;
+      <span class="hsi-text">
+        <strong>23 days</strong> remaining
+      </span>
+      <span class="project-users-block">
+        <img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=20&amp;d=mm" alt=""/>
+      </span><span class="project-users-block more-users">
+        <span>+3</span><img src="static/images/user.png" alt="3 more"/>
+      </span><span class="project-users-block">
+        <img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=20&amp;d=mm" alt=""/>
+      </span><span class="project-users-block">
+        <img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=20&amp;d=mm" alt=""/>
+      </span>
+      <div class="hsi-config">
+        <a href="#" id="open-stats" class="block-rounded hsi-openstats cat-stats" title="Open the statistics">&nbsp;</a>
+        <div class="block-rounded hsic-sortby">
+          <div id="order-items" class="item">
+              Sort by:
+              <div class="order-items-select">
+                <select name="order-items">
+                  <option selected="selected" value="original_order" class="sorting-option">Original Order</option>
+                  <option value="reverse_original_order" class="sorting-option">Reverse Original Order</option>
+                  <option value="alphabetical" class="sorting-option">Alphabetical</option>
+                  <option value="reverse_alphabetical" class="sorting-option">Reverse Alphabetical</option>
+                  <option value="status" class="sorting-option">Status</option>
+                  <option value="chronological" class="sorting-option">Modification Time</option>
+                  <option value="reverse_chronological" class="sorting-option">Reverse Modification Time</option>
+                </select>
+              </div>
+          </div>
+        </div><div class="block-rounded menu-config">
+          <i id="open-config" class="item icon-cog">&nbsp;</i>
+          <ul class="config-dropdown">
+            <li class="cat-g"><a href="">Translate all with Google</a></li>
+            <li class="cat-bing"><a href="">Translate all with Bing</a></li>
+            <li class="cat-TM"><a href="">Search TM</a></li>
+            <li class="icon-search"><a href="">Find in document <span>(CTRL+F)</span></a></li>
+            <li class="filter">
+              Filter :
+              <div id="filter-status" class="item">
+                  <select name="filter-status" class="order-items-select">
+                    <option selected="selected" value="all">Show all</option>
+                    <option value="translated">Translated</option>
+                    <option value="incomplete">Incomplete</option>
+                    <option value="untranslated">Untranslated</option>
+                    <option value="fuzzy">Needs work</option>
+                    <option value="suggestions">Suggestions</option>
+                    <option value="mysuggestions">My suggestions</option>
+                    <option value="mysubmissions">My submissions</option>
+                    <option value="submissionsafterme">My overwritten submissions</option>
+                    <option value="checks">Checks</option>
+                  </select>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="block-rounded hsi-view">
+          <a href="#" id="view-edit" class="cat-pen actif" title="Edit translation">&nbsp;</a>
+          <a href="#" id="view-read" class="cat-eye" title="Read translation">&nbsp;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-both-sidebars">
+    <ul class="sidebar">
+      <li class="s-title">Myspace</li>
+      <li><a class="s-item " href="/">Home</a></li>
+      <li><a class="s-item has-notif" href="#">Notifications <span>19</span></a></li>
+      <li><a class="s-item " href="/projects/Code/">Project 1</a></li>
+      <li><a class="s-item " href="#">Archives</a></li>
+      <li class="s-menu">
+        <ul>
+          <li class="cat-gear "><a class="s-item" href="">Settings</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    <ul class="sidebar is-submenu">
+      <li>
+        <a href="#" class="s-item-disabled">Projet 3</a>
+      </li>
+      <li>
+        <a href="#"  class="s-item is-open">Translate</a>
+        <ul class="ss-sub">
+          <li class="sss-item active"><a href="/fr/Code3/translate/docADS.po">docADS.po</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="s-item">Configuration</a>
+          <ul class="ss-sub">
+            <li class="sss-item"><a href="#">All notifications</a></li>
+            <li class="sss-item"><a href="/projects/Code3/add_file">Files</a></li>
+            <li class="sss-item"><a href="#">Team</a></li>
+            <li class="sss-item"><a href="/projects/Code3/tm_upload">Translation memory</a></li>
+            <li class="sss-item"><a href="/projects/Code3/metadata">Metadata</a></li>
+          </ul>
+      </li>
+      <li class="s-menu">
+        <ul>
+          <li class="cat-bubble"><a class="s-item" href="">Feedback</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div id="main-container" >
+    <div id="stats">
+      <h3>Statistics</h3>
+      <ul id="stats-details">
+        <li id="stats-remaining"><div class="stats-content">12h30</div><div class="stats-title">Remaining</div></li><li>
+          <ul id="stats-details-small">
+            <li id="stats-finished" class="big"><div class="stats-content">46%</div><div class="stats-title">Finished</div></li><li id="stats-finished"><div class="stats-content">25</div><div class="stats-title">Pending</div></li><li id="stats-finished"><div class="stats-content">12760</div><div class="stats-title">Words total</div></li><li id="stats-finished"><div class="stats-content">3517</div><div class="stats-title">New words</div></li><li id="stats-finished"><div class="stats-content">11H00</div><div class="stats-title">Spent</div></li><li id="stats-finished"><div class="stats-content">75</div><div class="stats-title">Errors</div></li>
+          </ul>
+        </li>
+      </ul>
+      <div id="repetitions">
+        <h3>Analysis</h3>
+        <ul id="repetitions-details">
+          <li><div class="stats-content">253</div><div class="stats-title">100%</div></li><li><div class="stats-content">240</div><div class="stats-title">90%</div></li><li><div class="stats-content">535</div><div class="stats-title">80%</div></li><li><div class="stats-content">25</div><div class="stats-title">70%</div></li><li><div class="stats-content">158</div><div class="stats-title">60%</div></li><li><div class="stats-content">252</div><div class="stats-title">50%</div></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="editor" data-pootle-path="/fr/Code3/docADS.po" data-directory="/fr/Code3/" data-target-language="fr" class="layout-table">
+          <noscript>
+            <h1>Pootle's editor requires JavaScript</h1>
+            <p>Please enable JavaScript in your browser preferences and reload the page.</p>
+          </noscript>
+
+          <div class="table-trad has-lineactive">
+            <span class="first-step">Press &#8677; TAB to validate segment</span>
+
+                    <div class="tt-row-block" id="row4705">
+                      <div class="ttr-cel is-notif">
+                        <span class="notifs is-two">2</span>
+                      </div>
+                      <div class="ttr-cel is-id"><span>2</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4705">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">Le menu</span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4705">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area">menu</b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status is-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4706">
+                      <div class="ttr-cel is-notif">
+                        <span class="notifs is-one">1</span>
+                      </div>
+                      <div class="ttr-cel is-id"><span>3</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <span lang="bg" dir="ltr" class="translation-text" original-title="undefined">
+                          Pour que le menu s’affiche correctement, vous devez ranger les catégories par ordre d’apparition.
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area">Du texte traduit, plein de texte traduit...</b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4707">
+                      <div class="ttr-cel is-notif">
+                        <span class="notifs is-two is-none">N</span>
+                      </div>
+                      <div class="ttr-cel is-id"><span>4</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4707">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">
+                          En vous rendant dans «&nbsp;Catalogue&nbsp;», vous pouvez vérifier l’odre des catégories à droite&nbsp;:
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4708">
+                      <div class="ttr-cel is-notif">
+                        <span class="notifs is-two is-none">N</span>
+                      </div>
+                      <div class="ttr-cel is-id"><span>5</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4708">
+                        <span lang="bg" dir="ltr" class="translation-text" original-title="undefined">
+                          Pour modifier l’ordre des catégories, cliquez sur une catégorie. Vous disposez d’un onglet «&nbsp;Déplacer la catégorie&nbsp;» dans laquelle vous pouvez choisir après quel onglet afficher l’onglet en question.
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4709">
+                      <div class="ttr-cel is-notif"><span class="notifs is-two is-none">N</span></div>
+                      <div class="ttr-cel is-id"><span>6</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4709">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">
+                          Les titres de catégorie
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block active fuzzy-unit" id="row4704">
+                      <div class="ttr-cel is-notif"><span class="notifs is-two is-none">N</span></div><div class="ttr-cel is-id"><span>7</span></div>
+                      <!-- Ogirinal -->
+                      <div class="ttr-cel is-original too-many-words" data-target="">
+                        <span class="translation-text" title="Docads.Docx" data-langto="en-us" data-langfrom="bg">Il est dans les affaires des hommes une marée qui, prise à son heure, les conduit à la fortune ; s'ils manquent le moment, tout le voyage de leur vie tourne misérablement dans les écueils de la détresse. Et encore tout un tas de bbla bla qui fait qu'il y a beacoup trop de mots et que c'est tout coupé. Et bim.</span>
+                      </div>
+
+                        <div class="js-relative-id" style="display:none">1</div>
+                        <!-- Main workspace -->
+                        <div class="ttr-cel is-workspace">
+                          <div class="fix-wrapper">
+                            <!-- Translation services -->
+                            <div class="trad-list is-search">
+                              <div class="tl-item is-bing">
+                                <span class="icon-logo js-translate" data-mt="bing" original-title="Use Bing translate"><i class="cat-bing"></i>
+                                </span><span class="translate-overflow bing-high">
+                                  <span class="translation-result bing-translation-result">
+                                    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Sed posuere consectetur est at lobortis Cum sociis natoque penatibus et magnis dis parturient montes et nascetur ridiculus mus curabitur blandit tempus ut lorem ipsum</string>
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+
+                            <!-- Translation form -->
+                            <div class="ttr-cel ttr-cel-trad-block translate-translation" data-target="">
+                              <div class="tag-error"></div>
+                                <div class="locked-unit"></div>
+                                  <div class="tr-form-table">
+                                    <div class="tr-form-cell">
+                                      <form action="" method="post" name="translate" id="translate">
+                                        <input type="hidden" name="id" value="4704" id="id_id">
+                                        <input type="hidden" name="index" value="0" id="id_index">
+                                        <input type="hidden" name="source_f_0" value="docADS.docx" id="id_source_f_0">
+                                        <input type="hidden" name="store" value="/fr/Code3/docADS.po">
+                                        <input type="hidden" name="path" value="/fr/Code3/docADS.po">
+                                        <input type="hidden" name="pootle_path" value="/fr/Code3/docADS.po">
+                                        <span>
+                                          <i class="cat-close erase-btn" title="Erase translation" data-uid="4704"></i>
+                                          <!--<input type="submit" name="submit" class="submit" tabindex="11" accesskey="s" value="Submit" data-uid="4704">-->
+                                        </span>
+                                        <textarea name="target_f_0" title="Docads.Docx" class="translation-area" data-uid="" style="display: none;">There is a tide in the affairs of men, Which taken at the flood, leads on to fortune ; omitted, all the voyage of their life is bound in shallows and in miseries</textarea>
+                                        <div class="spellchecker-wrapper">
+                                          <div contenteditable="true" class="spellchecker">There is a tide in the affairs of men, Which taken at the flood, leads on to fortune ; omitted, all the voyage of their life is bound in shallows and in miseries</div>
+                                        </div>
+                                        <div class="spellchecker-copy" style="display: none;"></div>
+                                      </form>
+                                    </div>
+                                    <span class="error-alert">Sentence is missing a period Sentence is missing a period</span>
+                                    <div class="is-status">
+                                      <span class="error-line"></span>
+                                      <span class="status is-error"></span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="block-tradmore is-amagama">
+                                  <div class="amagama-results">
+                                    <div class="bt-row js-editor-copytext amagama-unit">
+                                      <div></div>
+                                      <div class="btr-cell amagama-score" style="max-width: 554px;">80%</div>
+                                      <div class="btr-cell btr-cell-unit" title="Insert the translated term into the editor" style="max-width: 554px;">There is a tide in the affairs of men, Which taken at the flood, leads on to fortune ; omitted, all the voyage of their life is bound in shallows and in miseries</div>
+                                    </div>
+                                    <div class="bt-row js-editor-copytext amagama-unit">
+                                      <div></div>
+                                      <div class="btr-cell amagama-score" style="max-width: 554px;">20%</div>
+                                      <div class="btr-cell btr-cell-unit" title="Insert the translated term into the editor" style="max-width: 554px;">There is a tide in the affairs of men, Which taken at the flood, leads on to fortune ; omitted, all the voyage of their life is bound in shallows and in miseries</div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Suggestions -->
+                                <!-- Terminology suggestions -->
+                                  <div class="block-tradmore is-terminology" style="display: none">
+                                    <a href="#" class="bt-close" id="bt-close">Close</a>
+                                    <div class="bt-row is-head">
+                                      <div class="btr-cell" style="max-width: 554px;"></div>
+                                      <div class="btr-cell sidetitle" lang="en-us" style="max-width: 554px;">Terminology:</div>
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+
+                    <div class="tt-row-block" id="row4710">
+                      <div class="ttr-cel is-notif"><span class="notifs is-two">4</span></div>
+                      <div class="ttr-cel is-id"><span>8</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4710">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">
+                          Le titre qui apparaît dans une page de liste des produits d’une catégorie est le même que le titre de l’onglet de la page.
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4711">
+                      <div class="ttr-cel is-notif"><span class="notifs is-two is-none">N</span></div>
+                      <div class="ttr-cel is-id"><span>9</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4711">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">
+                          Rendez-vous dans «&nbsp;Catalogue&nbsp;», cliquez sur votre catégorie. En bas de page vous trouverez le champ «&nbsp;Titre de la page&nbsp;»&nbsp;; c’est ce champ qu’il vous faudra modifier.
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="tt-row-block" id="row4712">
+                      <div class="ttr-cel is-notif"><span class="notifs is-two is-none">N</span></div>
+                      <div class="ttr-cel is-id"><span>10</span></div>
+                      <div dir="ltr" class="ttr-cel is-original" data-target="/fr/Code3/translate/docADS.po#unit=4712">
+                        <span lang="bg" dir="ltr" class="translation-text" title="undefined">
+                          Le texte du footer
+                        </span>
+                      </div>
+                      <div class="ttr-cel trad-table-cel">
+                      <div class="tr-form-table ttr-cel-trad-block" dir="ltr" data-target="/fr/Code3/translate/docADS.po#unit=4706">
+                        <div class="ttr-cel tr-form-cell">
+                          <span><i class="icon-pencil"></i></span>
+                          <b lang="fr" dir="ltr" class="translation-area"></b>
+                        </div>
+                        <div class="is-status">
+                          <span class="status not-ok"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <span class="last-step">That's all folks !<br/>Scroll up or return Home</span>
+
+                  <!-- Loader, messages, errors -->
+                  <div id="js-editor-act" class="hide editor-overlay loader" style="display: none;"></div>
+                  <div id="js-editor-msg" class="hide editor-overlay">
+                    <div class="alert alert-block alert-info fade in" lang="en-us">
+                      <button type="button" class="close js-editor-msg-hide">×</button>
+                      <span> </span>
+                    </div>
+                  </div>
+                  <div id="js-editor-error" class="hide toolbar-message" style="display: none;">
+                    <div><i class="icon-error pull-left"></i>&nbsp;<span>No TAUS suggestions found</span></div>
+                  </div>
+                </div>
+    </div>
+  </div>
+
+  <div id="postcontent"></div>
+        
+  <div class="trad-list translate-popup">
+    <div class="row translate-popup-header">
+      <div class="row0"></div>
+      <div class="row1 translate-popup-text">translation word</div>
+      <div class="row2 translate-popup-results-count">4</div>
+    </div>
+    <div class="row tl-item is-taas">
+      <div class="row0 js-translate-taas" title="Use TaaS translate"><i class="icon-taas">.</i></div>
+      <div class="row1 translation-result taas-translation-result"></div>
+      <div class="row2 translate-popup-results-count"></div>
+    </div>
+    <div class="row tl-item is-bing">
+      <div class="row0 js-translate" data-mt="bing" title="Use Bing translate"><i class="cat-bing"></i></div>
+      <div class="row1 translation-result bing-translation-result"></div>
+      <div class="row2 bing-translation-result"></div>
+    </div>
+    <div class="row tl-item is-google">
+      <div class="row0 js-translate" data-mt="bing" title="Use Google translate"><i class="icon-google"></i></div>
+      <div class="row1 translation-result google-translation-result"></div>
+      <div class="row2 bing-translation-result"></div>
+    </div>
+  </div>
+
+  <div class="pre-translate-popup">
+    <div class="translate-word">
+      <input type="text" id="pre_translate_search" placeholder="Type first letters of the word">
+    </div>
+  </div>
+
+  <div class="results-popup">
+    <div class="results-popup-title">
+      <div class="results-popup-term">"Home"</div>
+      <div class="results-popup-resum"></div>
+      <button type="button" class="results-popup-close">&times;</button>
+    </div>
+    <ul>
+      <!--
+      <li class="">
+        <i class="icon-taas">.</i>
+        <div class="search-term">maison</div>
+        <div class="result-variations">house, home, blah, blah, blah</div>
+      </li>
+      <li class="active">
+        <i class="cat-bing"></i>
+        <div class="search-term">maison</div>
+        <div class="result-variations">house, home, blah, blah, blah</div>
+      </li>
+      <li>
+        <i class="icon-google"></i>
+        <div class="search-term">maison</div>
+        <div class="result-variations">house, home, blah, blah, blah</div>
+      </li>
+      -->
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="static/js/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="static/js/vendor/bootstrap-tooltip.js"></script>
+  <script type="text/javascript" src="static/js/spellcheck/spellchecker.js"></script>
+  <script id="view_unit" type="text/template">
+    <div dir="<%= unit.store.source_dir %>" class="ttr-cel is-original" data-target="<%= unit.url %>">
+      <% _.each(unit.source, function (source, i) { %>
+        <span lang="<%= unit.store.source_lang %>"
+              dir="<%= unit.store.source_dir %>"
+              class="translation-text"
+              <% if (source.title) { %> title="<%= source.title %>"<% } %>>
+          <%= PTL.utils.fancyHl(source) %>
+        </span>
+      <% }); %>
+    </div>
+    <div class="ttr-cel ttr-cel-trad-block translate-translation"
+         dir="<%= unit.store.target_dir %>"
+         data-target="<%= unit.url %>">
+      <span><i class="icon-pencil"></i></span>
+      <% _.each(unit.target, function (target, i) { %>
+        <b lang="<%= unit.store.target_lang %>"
+           dir="<%= unit.store.target_dir %>"
+           <% if (target.title) { %> title="<%= target.title %>"<% } %>
+           class="translation-area">
+          <%= PTL.editor.hlTags(target, PTL.editor.getTagsIndexes(unit.source[0])) %>
+        </b>
+      <% }); %>
+    </div>
+  </script>
+  <script id="tm_suggestions" type="text/template">
+    <!-- xhr-tm.html -->
+    <!--
+    <div id="tm-results" class="tm-server">
+      <div class="extra-item-title"><%= name %></div>
+      <% _.each(suggs, function (sugg, i) { %>
+      <div id="tm<%= i %>" class="extra-item-block" title="<%= sugg.qTitle %>">
+        <div class="extra-item-content">
+          <div class="extra-item js-editor-copytext" data-action="overwrite">
+            <div class="suggestion-original" lang="<%= store.source_lang %>"
+              dir="<%= store.source_dir %>"><%= sugg.source %></div>
+            <div class="suggestion-translation" lang="<%= store.target_lang %>"
+              dir="<%= store.target_dir %>"><%= sugg.target %></div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    -->
+  </script>
+  <script id="editCtx" type="text/template">
+    <tr class="edit-ctx <%= extraCls %>">
+      <td colspan="2">
+        <% if (hasData) { %><a class="js-more-ctx"><%= gettext("More") %></a> |
+        <a class="js-hide-ctx"><%= gettext("Hide") %></a> | <a
+          class="js-less-ctx"><%= gettext("Less") %></a><% } else { %><a
+          class="js-show-ctx"><%= gettext("Show") %></a><% } %>
+      </td>
+    </tr>
+  </script>
+
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.history.js"></script>
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.textarea-expander.js"></script>
+  <script type="text/javascript" src="static/js/vendor/diff_match_patch.js"></script>
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.fieldselection.js"></script>
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.caret.js"></script>
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.highlightRegex.js"></script>
+  <script type="text/javascript" src="static/js/vendor/jquery/jquery.jsonp.js"></script>
+  <script type="text/javascript" src="static/js/vendor/iso8601.js"></script>
+  <script type="text/javascript" src="static/js/vendor/json2.js"></script>
+  <script type="text/javascript" src="static/js/vendor/underscore.js"></script>
+  <script type="text/javascript" src="static/js/vendor/backbone.js"></script>
+  <script type="text/javascript" src="static/js/vendor/backbone-relational.js"></script>
+  <script type="text/javascript" src="static/js/models.js"></script>
+  <script type="text/javascript" src="static/js/collections.js"></script>
+  <script type="text/javascript" src="static/js/editor.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var options = {
+        tmUrl: 'http://amagama.amigocat.staging.khavr.com/tmserver/',
+        pootlePath: '/fr/Code3/docADS.po',
+        ctxPath: '/fr/Code3/',
+        resourcePath: 'docADS.po'
+      };
+      
+      options.mt = [];
+      options.mt.push({name: "bing", key: "(&#39;amigocat&#39;, &#39;WpzvVQrs1wtyqHRyk0cvnGHEWMMkRLQxSYvBe8GxI6A=&#39;)"});
+      options.mt.push({name: "google", key: "AIzaSyDSn8YruGG3x5biq3JxDesXowcNTb5ZqqI"});
+        
+      options.lookup = [];
+      options.lookup.push("wikipedia");
+      
+      options.tmUrl = 'http://amigocat.staging.khavr.com/tmserver/Code3/';
+
+      PTL.editor.init(options);
+    });
+  </script>
+  <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+  <!--<script type="text/javascript" src="static/js/editor.js"></script>-->
+  <script type="text/javascript" src="static/js/jsi18n.js"></script>
+  
+  <div id="translate-footer"></div>
+
+
+  </body>
+</html>

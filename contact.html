@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+  <head>
+
+    <title>Contact Us | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+
+    <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/markup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
+    <link rel="stylesheet" href="static/css/project.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+    
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: '33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+
+  </head>
+
+
+  <body id="" class="">
+
+    <header id="header" class="header">
+      <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+      </h1>
+              
+      <div class="h-avatar">
+        Don't have an account yet ?&nbsp;&nbsp;&nbsp;&nbsp;<a href='/accounts/register' class="ha-name">Sign up</a>
+      </div>
+              
+    </header>
+
+    <div id="main-container" >
+      <div class="custom-form" id="contact" dir="ltr">
+        <h2>Contact us</h2>
+        <form method="post" action="" name="contactform" id="contactform">
+          <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' /></div>
+
+          <div class="row">
+            <div class="control-group">
+              <label for="id_name" class="control-label">Your name</label>
+              <div class="controls">
+                <input id="id_name" type="text" class="required" name="name" maxlength="100" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="control-group">
+              <label for="id_email" class="control-label">Your email address</label>
+              <div class="controls">
+                <input id="id_email" type="text" class="required" name="email" maxlength="200" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="control-group">
+              <label for="id_body" class="control-label">Your message</label>
+              <div class="controls textarea">
+                <textarea id="id_body" name="body" class="required"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-actions">
+            <input type="submit" class="send" name="send" value="Send" />
+          </div>
+        </form>
+    </div>
+  </div>
+
+    <div id="postcontent"></div>
+            
+    <script type="text/javascript">
+      $(function(){
+        $("#id_name").focus();
+      });
+    </script>
+
+    <script type="text/javascript" src="static/js/custom-form.js"></script>
+    <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+          
+    <div id="footer">
+      <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>

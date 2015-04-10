@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+  <head>
+
+    <title>Dashboard - Project 1 | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+
+    <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/markup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/project.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+
+  </head>
+
+
+  <body id="" class="sidebar-open">
+
+    <header id="header" class="header">
+      <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+      </h1>
+
+      <form action="" method="post" class="cssc-form h-item h-form">
+        <input type="text" name="search" placeholder="Search">
+        <button type="submit">&#xe005;</button>
+      </form>
+              
+      <div class="h-avatar" id="open-usermenu">
+        <span class="ha-name ha-name-iconed">Boris</span>
+        <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+        <ul class="usermenu">
+          <li><a class="s-item" href=''>CAT</a></li>
+          <li><a class="s-item" href=''>TMS</a></li>
+          <li><a class="s-item" href=''>Jobcenter</a></li>
+          <li><a class="s-item" href=''>Community</a></li>
+          <li><a class="s-item" href=''>workIQ</a></li>
+          <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+        </ul>
+      </div>
+              
+    </header>
+
+    <div class="header-sub-disable cf">
+      <div class="hs-inner">
+        <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item">&nbsp;</a>
+      </div>
+    </div>
+
+    <div class="js-both-sidebars">
+      <ul class="sidebar">
+        <li class="s-title">Myspace</li>
+        <li><a class="s-item " href="/">Home</a></li>
+        <li><a class="s-item has-notif" href="#">Notifications <span>19</span></a></li>
+        <li><a class="s-item sub-active-dash" href="/projects/Code/">Project 1</a></li>
+        <li class="s-menu">
+          <ul>
+            <li class="cat-gear "><a class="s-item" href="">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <ul class="sidebar is-submenu">
+        <li>
+          <a href="#" class="s-item-disabled">Project 1</a>
+        </li>
+        <li>
+          <a href="#"  class="s-item">Translate</a>
+          <ul class="ss-sub">
+            <li class="sss-item"><a href="/fr/Code3/translate/docADS.po">docADS.po</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="s-item is-open">Configuration</a>
+            <ul class="ss-sub">
+              <li class="sss-item active"><a href="">Dashboard</a></li>
+              <li class="sss-item"><a href="#">All notifications</a></li>
+              <li class="sss-item"><a href="/projects/Code3/add_file">Files</a></li>
+              <li class="sss-item"><a href="#">Team</a></li>
+              <li class="sss-item"><a href="/projects/Code3/tm_upload">Translation memory</a></li>
+              <li class="sss-item"><a href="/projects/Code3/metadata">Metadata</a></li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="main-container">
+      <div class="module project-index  top-dash ">
+
+        <h3>Project 1</h3>
+        
+        <div style="height:3px;" class="progresivline-dash" >
+          <div style="height:3px; width:10%; background: #CE5464; float:left; position: relative"></div>
+          <div style="height:1px; width:99.5%; background: #EEEEEE; float:left; margin-top: -2px"></div>
+        </div>
+
+      <div class="item-stats">
+        <div class="hd grid-third user_dash">
+          <h2 class="progres-h2-color">Work in progress&nbsp;<b>10%</b></h2>
+          <span>41/411 words</span><br>
+        </div>
+          
+        <div class="hd grid-third user_dash">
+          <h2>Deadline</h2>
+          <span>Feb. 19, 2015&nbsp;(29d)</span><br>
+          <span>Estimated: May 26, 2015</span><br>
+          <span>Project Start: May 26, 2015</span>
+        </div>
+          
+        <div class="hd grid-third user_dash">
+          <h2>Contact</h2>
+          <span>Stereosuper</span><br>
+        </div>
+          
+      </div>
+      
+      <div class="container-dashboard">
+      <div class="project-entity">
+        <div class="tr bordered">
+          <div class="td"><h2 class="h2-black">Files (5 of 56)</h2></div>
+          <div class="orderby-notifs">
+            <span>Order by :</span>
+            <ul>
+              <li class="active-orderby">Last edited</li>
+              <li>Date</li>
+            </ul>
+          </div>
+        </div>
+          
+        <div class="tr">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline"><a href="">File 1</a></div>
+            <a href="/projects/Code/" class="ha-name border">Translate</a>
+            <a href="/projects/Code/" class="ha-name"><i class="cat-download"></i>Download</a>
+            <span class="smallPad"><span class="aired">8%</span>12/137</span>
+          </div>
+        </div>
+        
+        <div class="tr">
+          <div class="td">
+            <div style="height:2px;" class="progresivline-dash" >
+              <div style="height:2px; width:8%; background: #CE5464; float:left; position: relative;"></div>
+              <div style="height:1px; width:100%; background: #EEEEEE; float:left; margin-top: -2px;"></div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="tr">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline"><a href="">File 3</a></div>
+            <a href="/projects/Code/" class="ha-name border">Translate</a>
+            <a href="/projects/Code/" class="ha-name"><i class="cat-download"></i>Download</a>
+            <span class="smallPad"><span class="aired">52%</span>70/137</span>
+          </div>
+        </div>
+            
+        <div class="tr">
+          <div class="td">
+            <div style="height:2px;" class="progresivline-dash" >
+              <div style="height:2px; width:52%; background: #FF9800; float:left; position: relative;"></div>
+              <div style="height:1px; width:100%; background: #EEEEEE; float:left; margin-top: -2px;"></div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="tr">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline"><a href="">Tralala</a></div>
+            <a href="/projects/Code/" class="ha-name border">Translate</a>
+            <a href="/projects/Code/" class="ha-name"><i class="cat-download"></i>Download</a>
+            <span class="smallPad"><span class="aired">89%</span>120/137</span>
+          </div>
+        </div>
+        
+        <div class="tr">
+          <div class="td">
+            <div style="height:2px;" class="progresivline-dash" >
+              <div style="height:2px; width:89%; background: #409032; float:left; position: relative;"></div>
+              <div style="height:1px; width:100%; background: #EEEEEE; float:left; margin-top: -2px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tr">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline"><a href="">File 2</a></div>
+            <a href="/projects/Code/" class="ha-name border notVisible">Translate</a>
+            <a href="/projects/Code/" class="ha-name notVisible"><i class="cat-download"></i>Download</a>
+            <span class="smallPad"><em>[Upload in progress]</em></span>
+          </div>
+        </div>
+
+        <div class="tr">
+          <div class="td">
+            <div style="height:2px;" class="progresivline-dash" >
+              <div style="height:2px; width:0%; background: #CE5464; float:left; position: relative;"></div>
+              <div style="height:1px; width:100%; background: #EEEEEE; float:left; margin-top: -2px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tr">
+          <div class="td  project-stats-in">
+            <div class="some-button">
+              <a href="/project/create/">View all</a>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="project-entity notif-dashboard">
+        <div class="tr bordered">
+          <div class="td"><h2 class="h2-black">Workers</h2></div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="img">
+              <div class="worker-img">
+                <img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30">
+              </div>
+            </div>
+            <div class="stat project-stats-name inline">P.Vega</div>
+            <span class="files">Reviewer</span>
+            <a href="" class="ha-name border">View</a>
+          </div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="img">
+              <div class="worker-img default"></div>
+            </div>
+            <div class="stat project-stats-name inline">A.Marianno</div>
+            <span class="files">Translator</span>
+            <a href="" class="ha-name border">View</a>
+          </div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="img">
+              <div class="worker-img">
+                <img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30">
+              </div>
+            </div>
+            <div class="stat project-stats-name inline">M.Monterey</div>
+            <span class="files">Reviewer</span>
+            <a href="" class="ha-name border">View</a>
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="project-entity notif-dashboard">
+        <div class="tr bordered">
+          <div class="td"><h2 class="h2-black">Latest notifications</h2></div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline">Me</div>
+            <span class="files">make something</span>
+            <span><span class="aired"><a href="">Project 1</a></span>Yesterday 8pm</span>
+          </div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline">A.Marianno</div>
+            <span class="files">make something too</span>
+            <span><span class="aired"><a href="">Project 1</a></span>Yesterday 11am</span>
+          </div>
+        </div>
+          
+        <div class="tr bordered">
+          <div class="td entity-in">
+            <div class="stat project-stats-name inline">M.Monterey</div>
+            <span class="files">make executed a very long...</span>
+            <span><span class="aired"><a href="">Project 1</a></span>May 20, 2013 6:51pm</span>
+          </div>
+        </div>
+      
+      </div>
+      </div>
+
+      <div class="dashboard-stats">
+        <div class="tr"><h2 class="h2-black">Statistics</h2></div>
+        <div class="bordered bigPad">
+          <span class="stats-title">Remaining</span><span class="stats-nb big">12h30</span>
+        </div>
+        <div class="bordered">
+          <span class="stats-title">Finished</span><span class="stats-nb medium">46%</span>
+        </div>
+        <div class="bordered">
+          <span class="stats-title">New words</span><span class="stats-nb">12760</span>
+        </div>
+        <div class="bordered">
+          <span class="stats-title">Errors</span><span class="stats-nb">84</span>
+        </div>
+        <div class="project-stats-in">
+          <div class="some-button">
+            <a href="/project/create/">View all</a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+    <div id="postcontent"></div>
+            
+    <script type="text/javascript" src="static/js/resize.js"></script>
+    <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+          
+    <div id="footer">
+      <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>

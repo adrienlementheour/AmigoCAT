@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+  <head>
+
+    <title>Create a Project - Invite workers | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+
+    <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/markup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/project.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+
+  </head>
+
+
+  <body id="" class="sidebar-open">
+
+    <header id="header" class="header">
+      <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+      </h1>
+
+      <form action="" method="post" class="cssc-form h-item h-form">
+        <input type="text" name="search" placeholder="Search">
+        <button type="submit">&#xe005;</button>
+      </form>
+              
+      <div class="h-avatar" id="open-usermenu">
+        <span class="ha-name ha-name-iconed">Boris</span>
+        <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+        <ul class="usermenu">
+          <li><a class="s-item" href=''>CAT</a></li>
+          <li><a class="s-item" href=''>TMS</a></li>
+          <li><a class="s-item" href=''>Jobcenter</a></li>
+          <li><a class="s-item" href=''>Community</a></li>
+          <li><a class="s-item" href=''>workIQ</a></li>
+          <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+        </ul>
+      </div>
+              
+    </header>
+
+    <div class="header-sub-disable cf">
+      <div class="hs-inner">
+        <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item">&nbsp;</a>
+      </div>
+    </div>
+
+    <div class="js-both-sidebars">
+      <ul class="sidebar">
+        <li class="s-title">Myspace</li>
+        <li><a class="s-item " href="/">Home</a></li>
+        <li><a class="s-item has-notif" href="#">Notifications <span>19</span></a></li>
+        <li><a class="s-item " href="/projects/Code/">Project 1</a></li>
+        <li class="s-menu">
+          <ul>
+            <li class="cat-gear"><a class="s-item" href="">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="sidebar is-submenu">
+        <li class="s-item-disabled">Create a project</li>
+        <li class="sss-item passed"><a href="">01. General information</a></li>
+        <li class="sss-item passed"><a href="">02. Choose file(s)</a></li>
+        <li class="sss-item active">03. Invite team</li>
+        <li class="sss-item disabled">04. Translation memory</li>
+      </ul>
+    </div>
+
+    <div id="main-container">
+      <div id="create-project">
+        <h3>03. Invite team</h3>
+        <form enctype="multipart/form-data" method="POST" id="file-list-form">
+          <table id="file-list">
+            <tbody>
+              <tr class="headers">
+                <th></th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Availability</th>
+                <th>Words</th>
+                <th></th>
+                <th>Rate (New)</th>
+                <th></th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+              <tr class="file-meta newfile"> 
+                <td class="img">
+                  <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                </td>   
+                <td>Giacomo Gullizzoni</td>    
+                <td class="custom-select"> 
+                  <div class="custom-select-wrapper">
+                    <select class="" name="role_0">
+                      <option value="1">Translator</option>
+                      <option value="2">Reviewer</option>
+                    </select>
+                  </div>
+                </td>    
+                <td class="availability">
+                  <p>Available (60%)</p>
+                </td>    
+                <td class="words">
+                  <div class="controls small">
+                    <input type="text" value="351" name="words_0"/>
+                  </div>
+                </td>    
+                <td class="operateur">x</td>   
+                <td class="price">0.45</td>  
+                <td class="operateur">=</td>
+                <td class="rate">157,95</td>
+                <td class="actions">       
+                  <input type="button" name="remove_language" value="× Remove" class="btn"> 
+                  <input type="file" name="add_file_0" class="hidden-element">
+                </td>
+              </tr>
+              <tr class="file-meta newfile"> 
+                <td class="img">
+                  <div class="worker-img default"></div>
+                </td>
+                <td>Marco Botton</td>    
+                <td class="custom-select"> 
+                  <div class="custom-select-wrapper">
+                    <select class="" name="role_0">
+                      <option value="1">Translator</option>
+                      <option value="2">Reviewer</option>
+                    </select>
+                  </div>
+                </td>    
+                <td class="availability less-available">
+                  <p>Available (30%)</p>
+                </td>    
+                <td class="words">
+                  <div class="controls small">
+                    <input type="text" value="351" name="words_0"/>
+                  </div>
+                </td>    
+                <td class="operateur">x</td>   
+                <td class="price">0.45</td>  
+                <td class="operateur">=</td>
+                <td class="rate">157,95</td>
+                <td class="actions">       
+                  <input type="button" name="remove_language" value="× Remove" class="btn">
+                  <input type="file" name="add_file_0" class="hidden-element">
+                </td>
+              </tr>
+              <tr class="file-meta newfile"> 
+                <td class="img">
+                  <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                </td>   
+                <td>Mariah Maclachlan</td>    
+                <td class="custom-select"> 
+                  <div class="custom-select-wrapper">
+                    <select class="" name="role_0">
+                      <option value="2">Reviewer</option>
+                      <option value="1">Translator</option>
+                    </select>
+                  </div>
+                </td>    
+                <td class="availability non-available">
+                  <p>Not available</p>
+                </td>    
+                <td class="words">
+                  <div class="controls small">
+                    <input type="text" value="351" name="words_0"/>
+                  </div>
+                </td>    
+                <td class="operateur">x</td>   
+                <td class="price">0.45</td>  
+                <td class="operateur">=</td>
+                <td class="rate">157,95</td>
+                <td class="actions">       
+                  <input type="button" name="remove_language" value="× Remove" class="btn">
+                  <input type="file" name="add_file_0" class="hidden-element">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+          
+        <input type="file" name="upload-file" id="upload-file" class="hidden-element">
+        <div class="controls search-worker">
+          <input type="text" name="worker"/>
+          <button class="loupeBtn">&#xe005;</button>
+        </div>
+        <div class="action-button">
+          <a href="#addWorker" id="add-worker" class="popup">+ Add team</a>
+        </div>
+        <div class='button-zone'>
+          <input type="submit" name="validate" value="Validate&nbsp;&nbsp;&rarr;" />
+        </div>
+      </div>
+    </div>
+
+    <div id="addWorker" class="mfp-hide">
+      <h2>Invite team</h2>
+        <div class="search-block">
+          <form action="" method="post" class="cssc-form h-item h-form">
+            <label for="id_translate">From</label>
+            <div class="custom-select-wrapper">
+              <select class="source-language" name="translate" id="id_translate">
+                <option value="100">French</option>
+              </select>
+            </div>
+            <label for="id_translateTo">to</label>
+            <div class="custom-select-wrapper">
+              <select class="source-language" name="translateTo" id="id_translateTo">
+                <option value="100">English</option>
+              </select>
+            </div>
+            <div class="custom-select-wrapper">
+              <select class="domain" name="domain" id="id_domain">
+                <option value="100">Choose a domain</option>
+              </select>
+            </div>
+            <input type="text" name="searchClient" placeholder="Search for a specific user">
+            <button type="submit">&#xe005;</button>
+          </form>
+        </div>
+          <div class="inside-content list-workers">
+            <div class="box-list">
+              <ul>
+                <li>
+                  <a href="">
+                    <span class="nom">Bertrand Verylongname</span>
+                    <span>5 projects</span>
+                    <span class="note note4">4/5</span>
+                    <span class="country">Germany</span>
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                  </a>
+                  <div class="progresivline-dash">
+                    <div style="height:2px; width:89%; background: #409032;"></div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="top"><i class="icon-star"></i></i>
+                    <span class="nom">Bertrand Verylongname</span>
+                    <span>5 projects</span>
+                    <span class="note note4">4/5</span>
+                    <span class="country">Germany</span>
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                  </a>
+                  <div class="progresivline-dash">
+                    <div style="height:2px; width:52%; background: #FBA617;"></div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="top"><i class="icon-star"></i></i>
+                    <span class="nom">Bertrand Verylongname</span>
+                    <span>5 projects</span>
+                    <span class="note note4">4/5</span>
+                    <span class="country">Germany</span>
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                  </a>
+                  <div class="progresivline-dash">
+                    <div style="height:2px; width:20%; background: #C40821;"></div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="top"><i class="icon-star"></i></i>
+                    <span class="nom">Bertrand Verylongname</span>
+                    <span>5 projects</span>
+                    <span class="note note4">4/5</span>
+                    <span class="country">Germany</span>
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                  </a>
+                  <div class="progresivline-dash">
+                    <div style="height:2px; width:52%; background: #FBA617;"></div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="top"><i class="icon-star"></i></i>
+                    <span class="nom">Bertrand Verylongname</span>
+                    <span>5 projects</span>
+                    <span class="note note4">4/5</span>
+                    <span class="country">Germany</span>
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                  </a>
+                  <div class="progresivline-dash">
+                    <div style="height:2px; width:20%; background: #C40821;"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+
+    <div id="postcontent"></div>
+            
+    <script type="text/javascript" src="static/js/project_add-files.js"></script>
+    <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+          
+    <div id="footer">
+      <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>
