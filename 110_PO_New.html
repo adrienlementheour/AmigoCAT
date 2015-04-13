@@ -153,65 +153,81 @@
 
     <div id="main-container">
       <div id="content-erp">
-       <table class="po-table">
-         <tbody>
-           <tr>
-             <th><a href="">ID</a></th>
-             <th><a href="">Client</a></th>
-             <th class="active"><a href="">Project</a></th>
-             <th><a href="">Budget</a></th>
-             <th><a href="">Date</a></th>
-             <th><a href="">Status</a></th>
-             <th></th>
-           </tr>
-           <tr>    
-              <td class="id">#102</td>
-              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
-              <td class="active">Project 1</td>
-              <td>$12000</td>
-              <td>March 3, 2014</td>
-              <td><span class="status-rejected">Rejected</span></td>
-              <td class="btn-search-results"><a href=""></a></td>
-           </tr>
-           <tr>    
-              <td class="id">#103</td>
-              <td><span class="container-img"><img src="static/images/erp/spotify.png"></span>Spotify</td>
-              <td class="active">Project 2</td>
-              <td>$2000</td>
-              <td>April 2, 2014</td>
-              <td><span class="status-new">New</span></td>
-              <td class="btn-search-results"><a href=""></a></td>
-           </tr>
-           <tr>    
-              <td class="id">#104</td>
-              <td><span class="container-img"><img src="static/images/erp/clever-cloud.png"></span>CleverCloud</td>
-              <td class="active">Project 1</td>
-              <td>$32000</td>
-              <td>May 2, 2013</td>
-              <td><span class="status-accepted">Accepted</span></td>
-              <td class="btn-search-results"><a href=""></a></td>
-           </tr>
-           <tr>    
-              <td class="id">#100</td>
-              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
-              <td class="active">Project 1</td>
-              <td>$1000</td>
-              <td>August 5, 2015</td>
-              <td><span class="status-accepted">Accepted</span></td>
-              <td class="btn-search-results"><a href=""></a></td>
-           </tr>
-           <tr>    
-              <td class="id">#105</td>
-              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
-              <td class="active">Project 1</td>
-              <td>$500</td>
-              <td>March 4, 2013</td>
-              <td><span class="status-new">New</span></td>
-              <td class="btn-search-results"><a href=""></a></td>
-           </tr>
-         </tbody>
-       </table>
-       <a href="" class="white-btn big-padding">Export all</a>
+        <div class="zone-table">
+          <h3 class="border-bottom">PURCHASE ORDER 102 - PROJECT COBRA</h3>
+          <ul class="list-tiers list-tiers-left">
+            <li>
+              <span class="list-title">NEW WORDS</span><span class="list-content">1250</span>
+            </li>
+            <li>
+              <span class="list-title">100%</span><span class="list-content">253</span>
+            </li>
+            <li>
+              <span class="list-title">60 to 90%</span><span class="list-content">230</span>
+            </li>
+          </ul><ul class="list-tiers list-tiers-center">
+            <li>
+              <span class="list-title">CLIENT</span><span class="list-content">Facebook</span>
+            </li>
+            <li>
+              <span class="list-title">DEADLINE</span><span class="list-content">Feb 5, 15</span>
+            </li>
+            <li class="small-padding">
+              <span class="list-title">BUDGET</span><span class="list-content big">$3000</span>
+            </li>
+          </ul><ul class="list-tiers list-tiers-right">
+            <li>
+              <span class="list-title">YOUR AVAILABILITY</span><span class="list-content">20h</span>
+            </li>
+            <li>
+              <span class="list-title">IF YOU TAKE THE JOB</span><span class="list-content red">0h</span>
+            </li>
+            <li>
+              
+            </li>
+          </ul>
+        </div>
+        <div class="zone-table">
+          <h3>Files</h3>
+          <div class="orderby-notifs">
+            <span>Order by :</span>
+            <ul>
+              <li class="active-orderby">Last edited</li>
+              <li>Date</li>
+            </ul>
+          </div>
+          <form enctype="multipart/form-data" method="POST" id="file-list-form">
+            <input type="hidden" name="is_finish" class="hidden-element">
+            <table id="file-list">
+              <tbody>
+                <tr class="headers">
+                  <th>Name</th>
+                  <th>Format</th>
+                  <th>Source</th>
+                  <th></th>
+                  <th>Target</th>
+                  <th></th>
+                </tr>
+                <tr class="file-meta newfile">    
+                  <td>File 1</td>    
+                  <td>.pdf</td>    
+                  <td>
+                    French
+                  </td>    
+                  <td class="arrow">→</td>    
+                  <td>
+                    English
+                  </td>     
+                  <td class="actions">  
+                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
+                    <input type="file" name="add_file_0" class="hidden-element">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="33nSfPP1V4DDoxFMWld5DP66GFIG5aOO"></div>
+          </form>
+        </div>
       </div>
     </div>
             
