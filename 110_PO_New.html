@@ -12,7 +12,8 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="This is a demo installation of amigoCAT beta." />
-
+    
+    <link rel="stylesheet" type="text/css" href="static/css/fullcalendar.css">
     <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="static/css/style.css" />
     <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
@@ -57,6 +58,8 @@
     <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
     <script type="text/javascript" src="static/js/vendor/spin.js"></script>
     <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript" src="static/js/moment.js"></script>
+    <script type="text/javascript" src="static/js/fullcalendar.js"></script>
     <script type="text/javascript">
       function l(path) {
         var basepath = "";
@@ -163,7 +166,7 @@
               <span class="list-title">100%</span><span class="list-content">253</span>
             </li>
             <li>
-              <span class="list-title">60 to 90%</span><span class="list-content">230</span>
+              <span class="list-title">60 to 90% <a href="#" class="cat-question-mark"></a></span><span class="list-content">230</span>
             </li>
           </ul><ul class="list-tiers list-tiers-center">
             <li>
@@ -183,39 +186,48 @@
               <span class="list-title">IF YOU TAKE THE JOB</span><span class="list-content red">0h</span>
             </li>
             <li>
-              
+              <span class="zone-btn-left"><a id="btn-accept" class="btn blue-btn" href="">Accept</a></span><span class="zone-btn-right"><a id="btn-decline" class="btn grey-btn" href="">Decline</a></span>
             </li>
           </ul>
         </div>
         <div class="zone-table">
-          <h3>Files</h3>
-          <div class="orderby-notifs">
-            <span>Order by :</span>
-            <ul>
-              <li class="active-orderby">Last edited</li>
-              <li>Date</li>
-            </ul>
-          </div>
+          <h3 class="inline">File(s)</h3>
+          <a href="#" class="btn btn-right"><i class="cat-download"></i>All</a>
           <form enctype="multipart/form-data" method="POST" id="file-list-form">
             <input type="hidden" name="is_finish" class="hidden-element">
             <table id="file-list">
               <tbody>
                 <tr class="headers">
-                  <th>Name</th>
-                  <th>Format</th>
-                  <th>Source</th>
-                  <th></th>
-                  <th>Target</th>
-                  <th></th>
+                  <th class="col-name">Name</th>
+                  <th class="col-format">Format</th>
+                  <th class="col-source">Source</th>
+                  <th class="col-arrow"></th>
+                  <th class="col-target">Target</th>
+                  <th class="col-download"></th>
                 </tr>
                 <tr class="file-meta newfile">    
                   <td>File 1</td>    
                   <td>.pdf</td>    
-                  <td>
+                  <td class="col-source">
                     French
                   </td>    
                   <td class="arrow">→</td>    
-                  <td>
+                  <td class="col-target">
+                    English
+                  </td>     
+                  <td class="actions">  
+                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
+                    <input type="file" name="add_file_0" class="hidden-element">
+                  </td>
+                </tr>
+                <tr class="file-meta newfile">    
+                  <td>File 2</td>    
+                  <td>.pdf</td>    
+                  <td class="col-source">
+                    French
+                  </td>    
+                  <td class="arrow">→</td>    
+                  <td class="col-target">
                     English
                   </td>     
                   <td class="actions">  
@@ -228,7 +240,9 @@
             <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="33nSfPP1V4DDoxFMWld5DP66GFIG5aOO"></div>
           </form>
         </div>
-      </div>
+        <h3 class="border-bottom">Calendar preview</h3>
+          <div id='calendar-erp'></div>
+     </div>
     </div>
             
     <script type="text/javascript" src="static/js/project_add-files.js"></script>

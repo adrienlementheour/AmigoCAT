@@ -176,6 +176,45 @@ $j(function() {
             }
         });
     }
+
+    if($('#calendar-erp').length){
+        $('#calendar-erp').fullCalendar({
+            header: {
+                left: '',
+                right: 'prev,next',
+                center: 'title'
+            },
+            buttonIcons: false,
+            buttonText: {
+                prev: '← Previous',
+                next: 'Next →'
+            },
+            titleFormat: 'MMMM',
+            height: 700,
+            allDaySlot: false,
+            columnFormat: {
+                month: 'dddd'
+            },
+            firstDay: 1,
+            editable: true,
+            events: [
+                {
+                    title: 'PROJECT COBRA (PREVIEW)',
+                    start: '2015-04-08',
+                    end: '2015-04-14',
+                    backgroundColor: '#9cced8',
+                    textColor: '#ffffff'
+                },
+                {
+                    title: 'Projet 3',
+                    start: '2015-04-09',
+                    end: '2015-04-21',
+                    backgroundColor: '#e7e7e7',
+                    textColor: '#4a4a4a'
+                }
+            ]
+        });
+    }
     
     // Pop up //
     if($('.popup').length){
