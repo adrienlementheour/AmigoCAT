@@ -1182,6 +1182,7 @@ table .img .default, .project-entity .img .default{
     text-transform: uppercase;
     color: #4A4A4A;
     font-size: 11px;
+    padding-right: 15px;
 }
 .search-block .custom-select-wrapper .domain{
     color: #9B9B9B;
@@ -1614,6 +1615,30 @@ table .img .default, .project-entity .img .default{
     overflow: hidden;
 }
 
+.popAddContact .mfp-content{
+    width: 27%;
+    min-width: 515px;
+    min-height: 410px;
+}
+.popAddContact input[type="submit"]{
+    margin-left: 115px;
+}
+.popAddContact input[type="submit"] + span{
+    padding: 0 10px;
+}
+.popAddContact a{
+    text-decoration: underline;
+}
+.popAddContact a:hover, .popAddContact a:focus{
+    color: #9B9B9B;
+}
+.popAddContact .form-project > .control-group {
+  padding: 0 0 12px;
+}
+.control-label{
+  width: 115px;
+}
+
 .popOverflow{
     height: 281px;
     overflow: auto;
@@ -1784,12 +1809,12 @@ table .img .default, .project-entity .img .default{
     line-height: 17px;
 }
 
-.hasPopConnect .mfp-content{
+.popConnect .mfp-content{
     width: 31%;
     min-width: 560px;
     min-height: 310px;
 }
-.hasPopConnect .mfp-content input[type=submit]{
+.popConnect .mfp-content input[type=submit]{
     margin: 10px 0 60px 153px;
 }
 
@@ -2088,6 +2113,7 @@ table .img .default, .project-entity .img .default{
     clear: both;
     overflow: hidden;
     margin: 0 5% 30px 0;
+    min-width: 510px;
 }
 #create-project .contacts form{
     width: 270px;
@@ -2104,6 +2130,24 @@ table .img .default, .project-entity .img .default{
     display: inline-block;
     line-height: 40px;
     margin: 0 10px 0 0;
+}
+
+.noClient h3{
+    border-bottom: 1px solid #CCC;
+}
+.noClient p{
+    margin: 50px 0 15px;
+    color: #707070;
+}
+.noClient span{
+    padding: 0 10px;
+    font-style: italic;
+}
+.noClient span + a{
+    text-decoration: underline;
+}
+.noClient span + a:hover, .noClient span + a:focus{
+    color: #707070;
 }
 
 .strong{

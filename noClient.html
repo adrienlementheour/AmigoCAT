@@ -156,174 +156,100 @@
       </ul>
     </div>
 
-    <div id="main-container">
+    <div id="main-container" class="noClient">
       <div id="create-project">
-        <div class="blocLeftClient">
-          <div class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></div>
-          <strong>Pro</strong>
-          <span class="note note4">4/5</span>
-          <strong>Nice</strong>
-          <span class="note note5">5/5</span>
-          <strong>On time</strong>
-          <span class="note note3">3/5</span>
-          <strong>Pays well</strong>
-          <span class="note note4">4/5</span>
+        <h3>Client</h3>
+        <p>You have not selected a client for this project yet.</p>
+        <div class="some-button">
+          <a href="">Search for an existing client</a>
         </div>
-        <div class="blocRightClient">
-          <div class='blocContact'>
-            <h2>Facebook</h2>
-            <span class="strong">IT, Financial</span>
-            <span><span class="strong">5</span> open projects</span>
-            <span><span class="strong">21</span> closed projects</span>
-            <a href="http://www.facebook.com">http://www.facebook.com</a>
-            <a href="#editFacebook" class="cat-pen popAddContact"></a>
-          </div>
-          <div class='blocContact'>
-            <strong>NOTES</strong>
-            <p>Some stuff here</p>
-            <a href="#" class="cat-pen"></a>
-          </div>
-          <div class='contacts'>
-            <h3>Contacts</h3>
-            <a href="#addClient" title="Add a contact" class="btn popAddContact">+ Add a contact</a>
-            <form action="" method="post" class="cssc-form h-item h-form">
-                <input type="text" name="searchClient" placeholder="Search for a specific client">
-                <button type="submit"></button>
-            </form>
-          </div>
-          <div class='blocContact'>
-            <strong>Mark Zuckergberg</strong>
-            <span>CEO Bitch</span>
-            <a href="mailto:mark@facebook.com">mark@facebook.com</a>
-            <span>+336 45 32 56 15</span>
-            <span class="grey">United States</span>
-            <span><span class="grey">GMT+2</span> (+5 hours than you)</span>
-            <div class="some-button">
-              <a href="">Contact</a>
-            </div>
-            <a href="#" class="cat-close2"></a>
-            <a href="#" class="cat-pen"></a>
-          </div>
-          <div class='blocContact'>
-            <strong>Mark Zuckergberg</strong>
-            <span>CEO Bitch</span>
-            <a href="mailto:mark@facebook.com">mark@facebook.com</a>
-            <span>+336 45 32 56 15</span>
-            <span class="grey">United States</span>
-            <span><span class="grey">GMT+2</span> (+5 hours than you)</span>
-            <div class="some-button">
-              <a href="">Contact</a>
-            </div>
-            <a href="#" class="cat-close2"></a>
-            <a href="#" class="cat-pen"></a>
-          </div>
-          <div class='blocContact'>
-            <strong>Mark Zuckergberg</strong>
-            <span>CEO Bitch</span>
-            <a href="mailto:mark@facebook.com">mark@facebook.com</a>
-            <span>+336 45 32 56 15</span>
-            <span class="grey">United States</span>
-            <span><span class="grey">GMT+2</span> (+5 hours than you)</span>
-            <div class="some-button">
-              <a href="">Contact</a>
-            </div>
-            <a href="#" class="cat-close2"></a>
-            <a href="#" class="cat-pen"></a>
-          </div>
-        </div>
+        <span>or</span>
+        <a href="#addClient" class="popup">create a new client</a>
       </div>
     </div>
 
     <div id="addClient" class="mfp-hide">
-      <h2>Add contact</h2>
+      <h2>Create a client</h2>
         <form method="post" action="">
-          <div class="inside-content form-project">      
+          <div class="inside-content form-project">
+
+              <h3>Company</h3>
+
+              <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' /> </div>
+              <div id="div_id_comp" class="control-group">
+                <label for="id_comp" class="control-label requiredField">Name<span class="asteriskField">*</span></label>
+                <div class="controls">
+                  <input id="id_comp" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="overrided-select">
+                  <div id="div_id_compCountry" class="control-group">
+                    <label for="id_compCountry" class="control-label requiredField">Country<span class="asteriskField">*</span></label>
+                    <div class="controls">
+                      <select id="id_compCountrye" class="select" name="source_language">
+                        <option value="">— Select</option>
+                        <option value="101">England</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>    
+
+              <div id="div_id_compUrl" class="control-group">
+                <label for="id_compUrl" class="control-label">Website</label>
+                <div class="controls">
+                  <input id="id_compUrl" type="text" class="textinput textInput" name="fullname" maxlength="255" value="www."/> 
+                </div>
+              </div>
+
+              <h3>Contact</h3>        
 
               <div id="div_id_contactName" class="control-group">
-                <label for="id_contactName" class="control-label requiredField">Name</label>
+                <label for="id_contactName" class="control-label requiredField">Name<span class="asteriskField">*</span></label>
                 <div class="controls">
                   <input id="id_contactName" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
                 </div>
               </div>
 
               <div id="div_id_contactFunction" class="control-group">
-                <label for="id_contactFunction" class="control-label requiredField">Job title</label>
+                <label for="id_contactFunction" class="control-label">Function</label>
                 <div class="controls">
                   <input id="id_contactFunction" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
                 </div>
               </div>
 
+              <div id="div_id_contactPhone" class="control-group">
+                <label for="id_contactPhone" class="control-label requiredField">Phone<span class="asteriskField">*</span></label>
+                <div class="controls">
+                  <input id="id_contactPhone" type="text" class="textinput textInput" name="fullname" maxlength="20" /> 
+                </div>
+              </div>
+
               <div id="div_id_contactEmail" class="control-group">
-                <label for="id_contactEmail" class="control-label requiredField">Email</label>
+                <label for="id_contactEmail" class="control-label requiredField">Email<span class="asteriskField">*</span></label>
                 <div class="controls">
                   <input id="id_contactEmail" type="email" class="textinput textInput" name="fullname" maxlength="255" /> 
                 </div>
               </div>
 
-              <div id="div_id_contactPhone" class="control-group">
-                <label for="id_contactPhone" class="control-label requiredField">Phone</label>
-                <div class="controls">
-                  <input id="id_contactPhone" type="text" class="textinput textInput" name="fullname" maxlength="20" /> 
-                </div>
-              </div>
-
               <div id="div_id_contactSkype" class="control-group">
-                <label for="id_contactSkype" class="control-label requiredField">Skype</label>
+                <label for="id_contactSkype" class="control-label">Skype</label>
                 <div class="controls">
                   <input id="id_contactSkype" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
                 </div>
               </div>
+              
+              </div>
 
-              <input type="submit" name="send" value="Add" />
-          
+              <div class="bottom-pop">
+                <input type="submit" name="send" value="Create client" />
+              </div>
+
+            </form>
           </div>
-      </form>
-    </div>
-
-    <div id="editFacebook" class="mfp-hide">
-      <h2>Edit contact</h2>
-        <form method="post" action="">
-          <div class="inside-content form-project">      
-
-              <div id="div_id_contactName" class="control-group">
-                <label for="id_contactName" class="control-label requiredField">Name</label>
-                <div class="controls">
-                  <input id="id_contactName" type="text" class="textinput textInput" name="fullname" maxlength="255" value="Dustin Moskovitz"/> 
-                </div>
-              </div>
-
-              <div id="div_id_contactFunction" class="control-group">
-                <label for="id_contactFunction" class="control-label requiredField">Job title</label>
-                <div class="controls">
-                  <input id="id_contactFunction" type="text" class="textinput textInput" name="fullname" maxlength="255" value="Make it raint, baby"/> 
-                </div>
-              </div>
-
-              <div id="div_id_contactEmail" class="control-group">
-                <label for="id_contactEmail" class="control-label requiredField">Email</label>
-                <div class="controls">
-                  <input id="id_contactEmail" type="email" class="textinput textInput" name="fullname" maxlength="255" value="dustin@facebook.fr"/> 
-                </div>
-              </div>
-
-              <div id="div_id_contactPhone" class="control-group">
-                <label for="id_contactPhone" class="control-label requiredField">Phone</label>
-                <div class="controls">
-                  <input id="id_contactPhone" type="text" class="textinput textInput" name="fullname" maxlength="20" /> 
-                </div>
-              </div>
-
-              <div id="div_id_contactSkype" class="control-group">
-                <label for="id_contactSkype" class="control-label requiredField">Skype</label>
-                <div class="controls">
-                  <input id="id_contactSkype" type="text" class="textinput textInput" name="fullname" maxlength="255" value="dmoskovitz"/> 
-                </div>
-              </div>
-
-              <input type="submit" name="send" value="Edit" /> <span>or</span> <a href="">cancel</a>
-          
-          </div>
-      </form>
+        </form>
     </div>
 
     <div id="postcontent"></div>

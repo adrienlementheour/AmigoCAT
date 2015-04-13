@@ -224,6 +224,22 @@ $j(function() {
         });
     }
 
+    if($('.popAddContact').length) {
+        $('.popAddContact').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            mainClass: 'popAddContact'
+        });
+    }
+
+    if($('.popConnect').length) {
+        $('.popConnect').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            mainClass: 'popConnect'
+        });
+    }
+
     // Loader animation //
 
     function animateLoader(loader, y){
