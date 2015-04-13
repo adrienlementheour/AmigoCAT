@@ -105,7 +105,11 @@ h3{
 }
 
 a{
+	&.underline{
+		text-decoration: underline;
+	}
 	&.btn{
+
 		&.btn-right{
 			display: inline-block;
 			vertical-align: top;
@@ -140,6 +144,11 @@ a{
 				background: #fff;
 				color: #707070;
 			}
+		}
+		&.big-btn{
+			height: 36px;
+			line-height: 32px;
+			.border-radius(18px);
 		}
 	}
 	&.white-btn{
@@ -396,4 +405,48 @@ ul.list-tiers{
 }
 .col-download{
 	width: 12%;
+}
+
+/*<div class="po-state-zone">
+          <div class="po-state new">New</div>
+          <div class="po-state-date"><i>on</i> Feb. 6, 2015</div>
+          <div class="po-state-separator"></div>
+          <div class="po-state-action"><a href="#">Decline</a> or <a href="#">Learn more</a></div>
+        </div>*/
+
+.po-state-zone{
+	display: block;
+	margin: 20px 0 0 0;
+	i{
+		font-style: italic;
+	}
+	.po-col{
+		display: inline-block;
+		vertical-align: middle;
+		&.po-state{
+			padding: 10px;
+			border-style: solid;
+			border-width: 2px;
+			font-size: 16px;
+			font-weight: 800;
+			text-transform: uppercase;
+			.box-sizing(border-box);
+			.border-radius(4px);
+		}
+		&.po-state-date{
+			color: #707070;
+			font-size: 12px;
+		}
+		&.po-state-action{
+
+		}
+	}
+	&.new{
+		.po-col{
+			&.po-state{
+				color: #C2C2C2;
+				border-color: #C2C2C2;
+			}
+		}
+	}
 }
