@@ -243,6 +243,10 @@ label.error{
     cursor:pointer;    
 }
 
+.bigSelect{
+    max-width: 260px;
+}
+
 .custom-select-wrapper select, .overrided-select .controls .select {
     width: 100%;
     padding-right: 50px;
@@ -1156,6 +1160,10 @@ table .img .default, .project-entity .img .default{
     color: #fff;
     width: 26%;
     float: right;
+}
+.search-block input[type=text]{
+    width: 19%;
+    min-width: 185px;
 }
 .search-block input[type=text]:focus + button, .contacts input[type=text]:focus + button{
     color: #04788f;
