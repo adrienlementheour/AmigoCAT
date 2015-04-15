@@ -267,6 +267,10 @@ table.po-table tr td.active {
 }
 table.po-table tr td.id {
   font-weight: 800;
+  font-size: 14px;
+}
+table.po-table tr td.project {
+  font-size: 14px;
 }
 table.po-table tr td.btn-search-results {
   text-align: right;
@@ -326,6 +330,9 @@ table.po-table .container-img img {
 }
 .status-accepted {
   color: #148900;
+}
+.status-archived {
+  color: #ACACAC;
 }
 .zone-table {
   margin: 0 0 50px 0;
