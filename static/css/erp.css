@@ -186,6 +186,13 @@ table .img .default.user,
 .po.accepted .po-bill .po-bill-status {
   background-color: #148900;
 }
+.po.declined .po-state-zone .po-col.po-state {
+  color: #C40821;
+  border-color: #C40821;
+}
+.po.declined .po-bill .po-bill-status {
+  background-color: #C40821;
+}
 .zone-title {
   display: block;
   position: relative;
