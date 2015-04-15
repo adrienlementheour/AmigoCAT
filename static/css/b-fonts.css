@@ -114,6 +114,9 @@ Instead you can use the generic selector but it's slower:
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.cat-cat:before {
+	content: "\e61c";
+}
 .cat-question-mark:before {
 	content: "\e61b";
 }

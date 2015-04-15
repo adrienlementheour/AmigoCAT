@@ -407,18 +407,35 @@ ul.list-tiers{
 	width: 12%;
 }
 
-/*<div class="po-state-zone">
-          <div class="po-state new">New</div>
-          <div class="po-state-date"><i>on</i> Feb. 6, 2015</div>
-          <div class="po-state-separator"></div>
-          <div class="po-state-action"><a href="#">Decline</a> or <a href="#">Learn more</a></div>
-        </div>*/
-
 .po-state-zone{
 	display: block;
 	margin: 20px 0 0 0;
+	.box-sizing(border-box);
+	padding: 0 70px;
+	position: relative;
+	height: 40px;
 	i{
 		font-style: italic;
+	}
+	.po-state-zone-left{
+		display: inline-block;
+		vertical-align: top;
+		background-color: #f8f8f8;
+		position: absolute;
+		top: 0;
+		left: 70px;
+		z-index: 2;
+		padding: 0 15px 0 0;
+	}
+	.po-state-zone-right{
+		display: inline-block;
+		vertical-align: top;
+		background-color: #f8f8f8;
+		position: absolute;
+		top: 0;
+		right: 70px;
+		z-index: 2;
+		padding: 0 0 0 15px;
 	}
 	.po-col{
 		display: inline-block;
@@ -436,9 +453,26 @@ ul.list-tiers{
 		&.po-state-date{
 			color: #707070;
 			font-size: 12px;
+			margin: 0 0 0 10px;
+		}
+		&.po-state-separator{
+			display: block;
+			width: auto;
+			height: 1px;
+			background-color: #dcdcdc;
+			position: absolute;
+			bottom: 21px;
+			left: 70px;
+			right: 70px;
+			z-index: 1;
 		}
 		&.po-state-action{
-
+			a#po-decline{
+				margin: 0 15px 0 0;
+			}
+			a#po-learn-more{
+				margin: 0 0 0 15px;
+			}
 		}
 	}
 	&.new{
@@ -449,4 +483,166 @@ ul.list-tiers{
 			}
 		}
 	}
+}
+
+.po-bill{
+	display: block;
+	width: 100%;
+	height: auto;
+	position: relative;
+	.box-sizing(border-box);
+	margin: 20px 0 35px 0;
+	padding: 40px 35px 130px 35px;
+	border: 1px solid #d8d8d8;
+	.box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+	&.new{
+		.po-bill-status{
+			background-color: #c2c2c2;
+		}
+	}
+	.po-bill-status{
+		display: block;
+		width: auto;
+		height: 2px;
+		position: absolute;
+		bottom: 1px;
+		left: 1px;
+		right: 1px;
+	}
+    .po-bill-header{
+    	display: block;
+    	.po-bill-title{
+    		display: inline-block;
+    		vertical-align: bottom;
+    		width: 66.66666%;
+    		.box-sizing(border-box);
+    		padding: 0 50px 0 0;
+    		h2{
+    			font-size: 36px;
+    			color: #707070;
+    			font-weight: 800;
+    			margin: 0;
+    			border-bottom: 1px solid #dcdcdc;
+    			span{
+    				font-size: 12px;
+    				font-weight: normal;
+    			}
+    		}
+    	}
+    	.po-bill-date{
+    		display: inline-block;
+    		vertical-align: bottom;
+    		width: 33.33333%;
+    		font-weight: 800;
+    		font-size: 12px;
+    		color: #707070;
+    		padding: 0 0 10px 0;
+    		border-bottom: 1px solid #dcdcdc;
+    		position: relative;
+			&:before{
+				content: "";
+				position: absolute;
+				bottom: 10px;
+				right: 0;
+				display: block;
+				width: 26px;
+				height: 19px;
+				background: url("../images/cat.png") no-repeat 50% 50%;
+			}
+    	}
+    }
+    .po-bill-from-to{
+    	margin: 50px 0 0 0;
+    	ul{
+    		display: block;
+    		width: 100%;
+    		list-style-type: none;
+    		margin: 0;
+    		padding: 0;
+    		li{
+    			display: inline-block;
+    			vertical-align: top;
+    			width: 33.33333%;
+    			.box-sizing(border-box);
+    			&.from{
+					padding-right: 50px;
+    			}
+    			&.contact-info{
+					padding-right: 50px;
+    			}
+    			h3{
+    				text-transform: uppercase;
+    				font-size: 11px;
+    				color: #4A4A4A;
+    				margin: 0 0 10px 0;
+    				padding: 0 0 10px 0;
+    				border-bottom: 1px solid #dcdcdc;
+    				line-height: 1em;
+    			}
+    			.po-bill-from-to-content{
+    				font-weight: normal;
+    				font-size: 12px;
+    				color: #707070;
+    				line-height: 18px;
+    				strong{
+    					font-weight: 800;
+    					font-size: 14px;
+    					color: #707070;
+    				}
+    				.detail-contact{
+    					.detail-contact-title{
+							font-style: italic;
+    					}
+    					.detail-contact-content{
+
+    					}
+    				}
+    			}
+    		}
+    	}
+    }
+    .po-bill-description{
+    	margin: 50px 0 0 0;
+    	table.table-description{
+    		table-layout: fixed;
+    		tr{
+    			th{
+    				text-transform: uppercase;
+    				font-size: 11px;
+    				color: #4A4A4A;
+    				font-weight: 800;
+    				padding: 10px 0;
+    				/*<th class="col-description">Description</th>
+                <th class="col-qty">QTY</th>
+                <th class="col-rate">Rate</th>
+                <th class="col-amount">Amount</th>*/
+                	&.col-description{
+						width: 66.66666%;
+                	}
+                	&.col-qty{
+						width: 13.33333%;
+                	}
+                	&.col-rate{
+						width: 10%;
+                	}
+                	&.col-amount{
+						width: 10%;
+                	}
+    			}
+    			td{
+    				padding: 10px 0;
+    				font-weight: normal;
+    				font-size: 12px;
+    				color: #707070;
+    				&.strong-title{
+    					font-weight: 800;
+    					text-transform: uppercase;
+    				}
+    			}
+    		}
+    		.border-bottom{
+    			border-bottom: 1px solid #dcdcdc;
+    		}
+    	}
+    }
 }
