@@ -1,5 +1,21 @@
 /* @group import */
 /* @end */
+/* clearfix */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.lt-ie9 .clearfix:before,
+.lt-ie9 .clearfix:after {
+  display: block;
+  content: normal;
+}
+.clearfix:after {
+  clear: both;
+}
 #content-erp {
   padding: 23px 50px 50px 50px;
   /* calendar */
@@ -30,6 +46,9 @@ h3.inline {
 }
 a.underline {
   text-decoration: underline;
+}
+a.underline:hover {
+  color: #9B9B9B;
 }
 a.btn.btn-right {
   display: inline-block;
@@ -152,6 +171,55 @@ table .img .default.no-img,
 table .img .default.user,
 .project-entity .img .default.user {
   border: 2px solid #9CCED8;
+}
+.po.new .po-state-zone .po-col.po-state {
+  color: #C2C2C2;
+  border-color: #C2C2C2;
+}
+.po.new .po-bill .po-bill-status {
+  background-color: #c2c2c2;
+}
+.po.accepted .po-state-zone .po-col.po-state {
+  color: #148900;
+  border-color: #148900;
+}
+.po.accepted .po-bill .po-bill-status {
+  background-color: #148900;
+}
+.zone-title {
+  display: block;
+  position: relative;
+}
+.zone-title.border-bottom {
+  border-bottom: 1px solid #DCDCDC;
+}
+.zone-title h3 {
+  display: inline-block;
+  vertical-align: bottom;
+  float: left;
+}
+.zone-title ul.links-title-list {
+  display: inline-block;
+  vertical-align: bottom;
+  float: right;
+  padding-top: 4px;
+}
+.zone-title ul.links-title-list li {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 0 12px;
+  padding: 0;
+}
+.zone-title ul.links-title-list li a {
+  color: #9B9B9B;
+  font-size: 12px;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.zone-title ul.links-title-list li a:hover {
+  color: #008BA6;
 }
 table.po-table {
   font-size: 12px;
@@ -433,10 +501,6 @@ ul.list-tiers a#btn-decline {
 .po-state-zone .po-col.po-state-action a#po-learn-more {
   margin: 0 0 0 15px;
 }
-.po-state-zone.new .po-col.po-state {
-  color: #C2C2C2;
-  border-color: #C2C2C2;
-}
 .po-bill {
   display: block;
   width: 100%;
@@ -451,9 +515,6 @@ ul.list-tiers a#btn-decline {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.po-bill.new .po-bill-status {
-  background-color: #c2c2c2;
 }
 .po-bill .po-bill-status {
   display: block;

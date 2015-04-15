@@ -114,6 +114,12 @@ Instead you can use the generic selector but it's slower:
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.cat-preferences:before {
+	content: "\e61d";
+}
+.cat-print:before {
+	content: "\e61e";
+}
 .cat-cat:before {
 	content: "\e61c";
 }

@@ -72,6 +72,21 @@
 	border-bottom-color: fade(@color, 0);
 }
 
+/* clearfix */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+    .lt-ie9 &{
+    	display: block;
+    	content: normal;
+    }
+}
+.clearfix:after {
+    clear: both;
+}
+
 #content-erp{
 	padding: 23px 50px 50px 50px;
 	/* calendar */
@@ -107,6 +122,9 @@ h3{
 a{
 	&.underline{
 		text-decoration: underline;
+		&:hover{
+			color: #9B9B9B;
+		}
 	}
 	&.btn{
 
@@ -209,6 +227,72 @@ table, .project-entity{
 			}
 		}
 	}
+}
+
+.po{
+	&.new{
+		.po-state-zone{
+			.po-col{
+				&.po-state{
+					color: #C2C2C2;
+					border-color: #C2C2C2;
+				}
+			}
+		}
+		.po-bill{
+			.po-bill-status{
+				background-color: #c2c2c2;
+			}
+		}
+	}
+	&.accepted{
+		.po-state-zone{
+			.po-col{
+				&.po-state{
+					color: #148900;
+					border-color: #148900;
+				}
+			}
+		}
+		.po-bill{
+			.po-bill-status{
+				background-color: #148900;
+			}
+		}
+	}
+}
+
+.zone-title{
+	display: block;
+	position: relative;
+	&.border-bottom{
+		border-bottom: 1px solid #DCDCDC;
+	}
+    h3{
+    	display: inline-block;
+    	vertical-align: bottom;
+    	float: left;
+    }
+    ul.links-title-list{
+    	display: inline-block;
+    	vertical-align: bottom;
+    	float: right;
+    	padding-top: 4px;
+    	li{
+    		display: inline-block;
+    		vertical-align: top;
+    		margin: 0 0 0 12px;
+    		padding: 0;
+    		a{
+    			color: #9B9B9B;
+    			font-size: 12px;
+    			.transition(.3s ease);
+    			&:hover{
+    				color: #008BA6;
+    			}
+    		}
+    	}
+    }
 }
 
 table.po-table{
@@ -475,14 +559,6 @@ ul.list-tiers{
 			}
 		}
 	}
-	&.new{
-		.po-col{
-			&.po-state{
-				color: #C2C2C2;
-				border-color: #C2C2C2;
-			}
-		}
-	}
 }
 
 .po-bill{
@@ -495,11 +571,6 @@ ul.list-tiers{
 	padding: 40px 35px 130px 35px;
 	border: 1px solid #d8d8d8;
 	.box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
-	&.new{
-		.po-bill-status{
-			background-color: #c2c2c2;
-		}
-	}
 	.po-bill-status{
 		display: block;
 		width: auto;
