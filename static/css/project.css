@@ -77,7 +77,7 @@ label.error{
     padding: 10px 0 0;
 }
 .control-language{
-    margin: 10px 0 0 154px;
+    margin: 10px 0 0 115px;
 }
 
 .switch{
@@ -214,13 +214,6 @@ label.error{
 
 .overrided-select {
     clear: left;
-}
-
-.custom-date {
-    width: 80px;
-    float: left;
-    height: 31px;
-    padding-right: 15px;
 }
 
 .custom-select-wrapper select, .overrided-select .controls .select {
@@ -364,10 +357,6 @@ a.btn{
 }
 
 /* Buttons related */
-.form-buttons {
-    clear: both;
-}
-
 .button-zone{
     margin: 35px 0 0;
 }
@@ -436,7 +425,7 @@ a.btn{
     color: #008BA6!important;
 }
 
-.some-light-button {
+/*.some-light-button {
     border-radius: 15px;
     border: 1px solid #DDD;
     background: #F5F5F5;
@@ -448,7 +437,7 @@ a.btn{
     color: #444;
     padding: 0 15px 0 15px;
     white-space:nowrap;
-}
+}*/
 
 .underspaced {
     margin: 25px 0 0 152px;
@@ -457,11 +446,11 @@ a.btn{
     margin: 30px 0 0;
 }
 
-.inline-elements td {
+/*.inline-elements td {
     display: inline-block;
     padding-right: 10px;
     vertical-align: middle;
-}
+}*/
 
 .dragPic{
     position: absolute;
@@ -506,26 +495,6 @@ a.btn{
     -moz-transition: .3s ease;
     -o-transition: .3s ease;
     transition: .3s ease;
-}
-
-/* Create project Languages */
-#languages {
-    margin: 10px 15px 10px 200px;
-    display: inline-block;
-    color: #444;
-}
-
-#languages .content {
-    width: 300px;
-    padding-right: 10px;
-}
-
-#languages .light {
-    color: #999;
-}
-
-#languages .border {
-    border-bottom: 1px solid #EEE;
 }
 
 /* Add files related styles */
@@ -629,24 +598,12 @@ a.btn{
     font-size: 14px;
 }
 
-#file-list .activated {
-    color: #444;
-}
-
-#file-list .deactivated {
-    color: #CCC;
-}
-
 #file-list .actions{
     padding-right: 5px;
     text-align: right;
 }
 
-.filename {
-    white-space: nowrap;
-}
-
-.custom-input {
+/*.custom-input {
     height: 27px;
     font-size: 14px;
     border-radius: 5px;
@@ -654,7 +611,7 @@ a.btn{
     background-color: #F5F5F5;
     border: 1px solid #DCDCDC;
     padding-left: 4px;
-}
+}*/
 
 .file-meta .custom-select, #file-list .file-meta .custom-select{
     min-width: 130px;
@@ -746,10 +703,6 @@ table .img .default, .project-entity .img .default{
     overflow:hidden;
 }
 
-#upload-file-buttons {
-    display: inline-block;
-}
-
 #upload-file {
     font-size: 18px;
     margin-bottom: 0;
@@ -757,20 +710,12 @@ table .img .default, .project-entity .img .default{
     color: #444;
 }
 
-.field-name {
+/*.field-name {
     font-size: 14px;
     line-height: 27px;
     color: #444;
     vertical-align:middle;    
-}
-
-.is-suggestion {
-    text-align: center;
-}
-
-.empty-list {
-    text-align: center;
-}
+}*/
 
 #file-list-form {
     margin: 0;
