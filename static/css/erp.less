@@ -127,7 +127,6 @@ a{
 		}
 	}
 	&.btn{
-
 		&.btn-right{
 			display: inline-block;
 			vertical-align: top;
@@ -168,6 +167,12 @@ a{
 			line-height: 32px;
 			.border-radius(18px);
 		}
+	}
+	&.margin-right{
+		margin-right: 15px;
+	}
+	&.margin-left{
+		margin-left: 15px;
 	}
 	&.white-btn{
 		border: 1px solid #DCDCDC;
@@ -261,6 +266,21 @@ table, .project-entity{
 		}
 	}
 	&.declined{
+		.po-state-zone{
+			.po-col{
+				&.po-state{
+					color: #C40821;
+					border-color: #C40821;
+				}
+			}
+		}
+		.po-bill{
+			.po-bill-status{
+				background-color: #C40821;
+			}
+		}
+	}
+	&.late{
 		.po-state-zone{
 			.po-col{
 				&.po-state{
@@ -561,6 +581,10 @@ ul.list-tiers{
 			color: #707070;
 			font-size: 12px;
 			margin: 0 0 0 10px;
+			a.cat-question-mark{
+				padding: 0;
+				margin: 0 5px 0 3px;
+			}
 		}
 		&.po-state-separator{
 			display: block;
@@ -574,12 +598,7 @@ ul.list-tiers{
 			z-index: 1;
 		}
 		&.po-state-action{
-			a#po-decline{
-				margin: 0 15px 0 0;
-			}
-			a#po-learn-more{
-				margin: 0 0 0 15px;
-			}
+			
 		}
 	}
 }
@@ -611,6 +630,10 @@ ul.list-tiers{
     		width: 66.66666%;
     		.box-sizing(border-box);
     		padding: 0 50px 0 0;
+    		&.has-ref{
+    			width: 33.33333%;
+    			padding: 0;
+    		}
     		h2{
     			font-size: 36px;
     			color: #707070;
@@ -621,6 +644,22 @@ ul.list-tiers{
     				font-size: 12px;
     				font-weight: normal;
     			}
+    		}
+    	}
+    	.po-bill-ref{
+    		display: inline-block;
+    		vertical-align: bottom;
+    		width: 33.33333%;
+    		font-weight: normal;
+    		font-size: 12px;
+    		color: #707070;
+    		padding: 0 50px 0 0;
+    		position: relative;
+    		.box-sizing(border-box);
+    		.po-ref{
+    			display: block;
+    			padding: 0 0 10px 0;
+    			border-bottom: 1px solid #dcdcdc;
     		}
     	}
     	.po-bill-date{
@@ -642,6 +681,12 @@ ul.list-tiers{
 				width: 26px;
 				height: 19px;
 				background: url("../images/cat.png") no-repeat 50% 50%;
+			}
+			.due-date{
+				font-weight: normal;
+			}
+			.late-date{
+				color: #C40821;
 			}
     	}
     }

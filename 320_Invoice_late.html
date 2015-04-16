@@ -7,7 +7,7 @@
 
   <head>
 
-    <title>Purchased Order | AmigoCAT</title>
+    <title>Invoice Late | AmigoCAT</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -159,9 +159,9 @@
 
     <div id="main-container">
       <div id="content-erp">
-        <div class="po new">
+        <div class="po late">
           <div class="zone-title border-bottom clearfix">
-            <h3>PURCHASE ORDER 102</h3>
+            <h3>Invoice 102</h3>
             <ul class="links-title-list">
               <li><a class="cat-preferences" href="#"></a></li>
               <li><a class="cat-print" href="#"></a></li>
@@ -170,20 +170,22 @@
           </div>
           <div class="po-state-zone">
             <div class="po-state-zone-left">
-              <div class="po-col po-state">New</div>
-              <div class="po-col po-state-date"><i>on</i> Feb. 6, 2015</div>
+              <div class="po-col po-state">Late</div>
+              <div class="po-col po-state-date">reminded 2 times <a href="#" class="cat-question-mark"></a><a class="underline" href="#">Send a reminder</a></div>
             </div>
             <div class="po-col po-state-separator"></div>
             <div class="po-state-zone-right">
-              <div class="po-col po-state-action"><a class="underline margin-right" href="#">Decline</a> <i>or</i> <a class="btn blue-btn big-btn margin-left" href="">Learn more</a></div>
+              <div class="po-col po-state-action"><a class="underline margin-right" href="#">Send to collection</a> <i>or</i> <a class="btn blue-btn big-btn margin-left" href="">Mark as paid</a></div>
             </div>
           </div>
           <div class="po-bill">
             <div class="po-bill-status"></div>
             <div class="po-bill-header">
-              <div class="po-bill-title">
-                <h2>Purchase Order <span>#102</span></h2>
-              </div><div class="po-bill-date">Feb. 5, 2015</div>
+              <div class="po-bill-title has-ref">
+                <h2>Invoice <span>#102</span></h2>
+              </div><div class="po-bill-ref">
+                <span class="po-ref">Project Order #25</span>
+              </div><div class="po-bill-date"><span class="due-date">Due </span>Feb. 5, 2015<span class="late-date"> Late!</span></div>
             </div>
             <div class="po-bill-from-to">
               <ul>

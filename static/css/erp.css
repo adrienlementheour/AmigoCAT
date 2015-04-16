@@ -105,6 +105,12 @@ a.btn.big-btn {
   border-radius: 18px;
   background-clip: padding-box;
 }
+a.margin-right {
+  margin-right: 15px;
+}
+a.margin-left {
+  margin-left: 15px;
+}
 a.white-btn {
   border: 1px solid #DCDCDC;
   padding: 0 14px;
@@ -191,6 +197,13 @@ table .img .default.user,
   border-color: #C40821;
 }
 .po.declined .po-bill .po-bill-status {
+  background-color: #C40821;
+}
+.po.late .po-state-zone .po-col.po-state {
+  color: #C40821;
+  border-color: #C40821;
+}
+.po.late .po-bill .po-bill-status {
   background-color: #C40821;
 }
 .zone-title {
@@ -498,6 +511,10 @@ ul.list-tiers a#btn-decline {
   font-size: 12px;
   margin: 0 0 0 10px;
 }
+.po-state-zone .po-col.po-state-date a.cat-question-mark {
+  padding: 0;
+  margin: 0 5px 0 3px;
+}
 .po-state-zone .po-col.po-state-separator {
   display: block;
   width: auto;
@@ -508,12 +525,6 @@ ul.list-tiers a#btn-decline {
   left: 70px;
   right: 70px;
   z-index: 1;
-}
-.po-state-zone .po-col.po-state-action a#po-decline {
-  margin: 0 15px 0 0;
-}
-.po-state-zone .po-col.po-state-action a#po-learn-more {
-  margin: 0 0 0 15px;
 }
 .po-bill {
   display: block;
@@ -551,6 +562,10 @@ ul.list-tiers a#btn-decline {
   box-sizing: border-box;
   padding: 0 50px 0 0;
 }
+.po-bill .po-bill-header .po-bill-title.has-ref {
+  width: 33.33333%;
+  padding: 0;
+}
 .po-bill .po-bill-header .po-bill-title h2 {
   font-size: 36px;
   color: #707070;
@@ -561,6 +576,24 @@ ul.list-tiers a#btn-decline {
 .po-bill .po-bill-header .po-bill-title h2 span {
   font-size: 12px;
   font-weight: normal;
+}
+.po-bill .po-bill-header .po-bill-ref {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 33.33333%;
+  font-weight: normal;
+  font-size: 12px;
+  color: #707070;
+  padding: 0 50px 0 0;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.po-bill .po-bill-header .po-bill-ref .po-ref {
+  display: block;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #dcdcdc;
 }
 .po-bill .po-bill-header .po-bill-date {
   display: inline-block;
@@ -582,6 +615,12 @@ ul.list-tiers a#btn-decline {
   width: 26px;
   height: 19px;
   background: url("../images/cat.png") no-repeat 50% 50%;
+}
+.po-bill .po-bill-header .po-bill-date .due-date {
+  font-weight: normal;
+}
+.po-bill .po-bill-header .po-bill-date .late-date {
+  color: #C40821;
 }
 .po-bill .po-bill-from-to {
   margin: 50px 0 0 0;
