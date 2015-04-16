@@ -215,6 +215,67 @@ $j(function() {
             ]
         });
     }
+
+    if($('#calendar-erp-2').length){
+        $('#calendar-erp-2').fullCalendar({
+            header: {
+                left: 'title',
+                right: 'prev,next'
+            },
+            buttonIcons: false,
+            buttonText: {
+                prev: '← Previous',
+                next: 'Next →'
+            },
+            //titleFormat: 'MMMM',
+            titleFormat: 'MMMM[\'s overview]',
+            height: 700,
+            allDaySlot: false,
+            columnFormat: {
+                month: 'dddd'
+            },
+            firstDay: 1,
+            editable: true,
+            events: [
+               {
+                   title: 'Projet 1',
+                   start: '2015-04-05',
+                   end: '2015-04-13',
+                   backgroundColor: '#ffd897',
+                   textColor: '#4a4a4a'
+               },
+               {
+                   title: 'Projet 3',
+                   start: '2015-04-09',
+                   end: '2015-04-23',
+                   backgroundColor: '#d0e7cc',
+                   textColor: '#4a4a4a'
+               },
+               {
+                   title: 'Projet 2',
+                   start: '2015-04-15',
+                   end: '2015-04-21',
+                   backgroundColor: '#d7ebef',
+                   textColor: '#4a4a4a'
+               },
+               {
+                   title: 'Payment received',
+                   start: '2015-04-09',
+                   end: '2015-04-10',
+                   backgroundColor: '#d0e7cc',
+                   textColor: '#4a4a4a'
+               },
+            ],
+            dayRender: function( date, cell ){ 
+                if(!cell.hasClass('fc-past')){
+                    var sisterCell = cell.parents('.fc-bg').siblings('.fc-content-skeleton').find('thead tr').find('td').eq(cell.index()),
+                        hours = (cell.hasClass('fc-sat') || cell.hasClass('fc-sun')) ? 0 : 8;
+
+                    sisterCell.append('<div class="availabilityBtn"><button>-</button><span>'+ hours +'h</span><button class="plus">+</button></div>');
+                }
+            }
+        });
+    }
     
     // Pop up //
     if($('.popup').length){

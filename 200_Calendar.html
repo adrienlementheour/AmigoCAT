@@ -7,7 +7,7 @@
 
   <head>
 
-    <title>Purchased Order | AmigoCAT</title>
+    <title>Calendar | AmigoCAT</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -96,7 +96,7 @@
   </head>
 
 
-  <body id="" class="sidebar-open">
+  <body id="" class="sidebar-open calendarPage">
 
     <header id="header" class="header">
       <h1 class="h-logo h-item">
@@ -156,92 +156,46 @@
 
     <div id="main-container">
       <div id="content-erp">
-        <div class="po accepted">
-          <div class="zone-title border-bottom clearfix">
-            <h3>ESTIMATE 102</h3>
-            <ul class="links-title-list">
-              <li><a class="cat-preferences" href="#"></a></li>
-              <li><a class="cat-print" href="#"></a></li>
-              <li><a class="cat-link" href="#"></a></li>
-            </ul>
-          </div>
-          <div class="po-state-zone">
-            <div class="po-state-zone-left">
-              <div class="po-col po-state">Accepted</div>
-              <div class="po-col po-state-date"><i>on</i> Feb. 8, 2015</div>
-            </div>
-            <div class="po-col po-state-separator"></div>
-          </div>
-          <div class="po-bill">
-            <div class="po-bill-status"></div>
-            <div class="po-bill-header">
-              <div class="po-bill-title">
-                <h2>Purchase Order <span>#102</span></h2>
-              </div><div class="po-bill-date">Feb. 5, 2015</div>
-            </div>
-            <div class="po-bill-from-to">
-              <ul>
-                <li class="from">
-                  <h3>From</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Facebook</strong><br />
-                    1 Hacker Way,<br />
-                    California 94025<br />
-                    USA<br /><br />
-                    VAT. 10596540152
+        <div id='calendar-erp-2' class="calendar-erp"></div>
+        <div class="some-button">
+          <a href="#setAvailability" class="popup">Set availability window</a>
+        </div>
+        <div id="setAvailability" class="mfp-hide availabilityPop">
+          <h2>Set availability window</h2>
+          <form method="post" action="">
+            <div class="inside-content form-project">
+              <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' /> </div>
+              <div id="div_id_comp" class="control-group">
+                <label for="id_comp" class="control-label">set</label>
+                <div class="controls">
+                  <div class="availabilityBtn">
+                    <button>-</button>
+                    <span>8h</span>
+                    <button class="plus">+</button>
                   </div>
-                </li><li class="contact-info">
-                  <h3>Contact info</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Mark Zuckerberg</strong><br />
-                    <div class="detail-contact"><span class="detail-contact-title">Email : </span><span class="detail-contact-content">mark@facebook.com</span></div>
-                    <div class="detail-contact"><span class="detail-contact-title">Skype : </span><span class="detail-contact-content">mark_z</span></div>
-                    <a class="underline" href="#">Send a message</a>
-                  </div>
-                </li><li class="to">
-                  <h3>To</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Nicolas Gregoire</strong><br />
-                    7, rue Ecorchard<br />
-                    44000 Nantes<br />
-                    FRANCE<br /><br />
-                    VAT. 10596540152
-                  </div>
-                </li>
-              </ul>
+                </div>
+              </div>
+              <div id="div_id_deadline" class="control-group">
+                <label for="id_deadline" class="control-label">from</label>
+                <div class="controls">
+                  <input id="id_deadlineTo" type="text" class="datetimeinput" value="07-08-2015" name="deadlineTo"/> 
+                  <input type="hidden" name="initial-deadlineTo" value="2015-02-15 13:42:14.808521" id="initial-id_deadlineTo" />
+                  <div class="cat-calendar"></div>
+                </div>
+              </div>   
+              <div id="div_id_deadline" class="control-group">
+                <label for="id_deadline" class="control-label">to</label>
+                <div class="controls">
+                  <input id="id_deadlineFrom" type="text" class="datetimeinput" value="09-08-2015" name="deadlineFrom"/> 
+                  <input type="hidden" name="initial-deadlineFrom" value="2015-02-15 13:42:14.808521" id="initial-id_deadlineFrom" />
+                  <div class="cat-calendar"></div>
+                </div>
+              </div>
             </div>
-            <div class="po-bill-description">
-              <table class="table-description">
-                <tr class="border-bottom">
-                  <th class="col-description">Description</th>
-                  <th class="col-qty">QTY</th>
-                  <th class="col-rate">Rate</th>
-                  <th class="col-amount">Amount</th>
-                </tr>
-                <tr class="border-bottom">
-                  <td>Translation <a class="underline" href="#">View file</a></td>
-                  <td>1000</td>
-                  <td>0,15€</td>
-                  <td>150€</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td colspan="2" class="border-bottom strong-title">Sub. total</td>
-                  <td class="border-bottom">150€</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td colspan="2" class="border-bottom strong-title">VAT. 20%</td>
-                  <td class="border-bottom">30€</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td colspan="2" class="border-bottom strong-title">Total</td>
-                  <td class="border-bottom  strong-title">180€</td>
-                </tr>
-              </table>
+            <div class="bottom-pop">
+              <input type="submit" name="send" value="Apply" />
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

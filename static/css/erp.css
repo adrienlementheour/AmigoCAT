@@ -642,10 +642,6 @@ ul.list-tiers a#btn-decline {
   color: #4A4A4A;
   font-weight: 800;
   padding: 10px 0;
-  /*<th class="col-description">Description</th>
-                <th class="col-qty">QTY</th>
-                <th class="col-rate">Rate</th>
-                <th class="col-amount">Amount</th>*/
 }
 .po-bill .po-bill-description table.table-description tr th.col-description {
   width: 66.66666%;
@@ -671,4 +667,68 @@ ul.list-tiers a#btn-decline {
 }
 .po-bill .po-bill-description table.table-description .border-bottom {
   border-bottom: 1px solid #dcdcdc;
+}
+/* @group Calendar */
+.calendar-erp {
+  min-width: 920px;
+  position: relative;
+}
+.calendar-erp + .some-button {
+  background: #969696;
+  border: 2px solid #969696;
+  padding: 5px 0;
+  margin: 0;
+}
+.calendar-erp + .some-button a {
+  font-size: 11px;
+}
+.calendar-erp + .some-button:hover {
+  background: #fff;
+}
+.calendar-erp + .some-button:hover a,
+.calendar-erp + .some-button a:hover {
+  color: #969696 !important;
+}
+.calendar-erp .availabilityBtn {
+  float: right;
+  width: 35px;
+  padding: 2px 0;
+  margin: -1px 0 0;
+}
+.calendar-erp .fc-today .availabilityBtn {
+  background: #008ba6;
+}
+.calendar-erp .availabilityBtn button {
+  top: -5px;
+  left: 5px;
+}
+.calendar-erp .availabilityBtn button,
+.calendar-erp .availabilityBtn {
+  font-size: 11px;
+}
+.calendar-erp .availabilityBtn button {
+  top: -5px;
+  left: 5px;
+}
+.calendar-erp .availabilityBtn button.plus {
+  left: auto;
+  right: 3px;
+  height: 23px;
+}
+#content-erp .calendar-erp .fc-toolbar {
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 10px;
+  margin: 0;
+}
+#content-erp .calendar-erp .fc-toolbar h2 {
+  font-size: 11px;
+  padding-left: 0;
+}
+#content-erp .calendar-erp .fc-toolbar .fc-right {
+  position: absolute;
+  bottom: -55px;
+  right: 0;
+}
+.calendar-erp .fc-toolbar .fc-left {
+  margin: 7px 0 0 0;
 }
