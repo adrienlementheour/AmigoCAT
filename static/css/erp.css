@@ -732,3 +732,54 @@ ul.list-tiers a#btn-decline {
 .calendar-erp .fc-toolbar .fc-left {
   margin: 7px 0 0 0;
 }
+/* @end */
+/* @group Table pending */
+table.pending-erp {
+  table-layout: fixed;
+  margin: 0 0 50px 0;
+}
+table.pending-erp tr td {
+  vertical-align: middle;
+  padding: 10px 0;
+}
+table.pending-erp tr td.col-pending {
+  width: 36%;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ACACAC;
+  font-size: 11px;
+}
+table.pending-erp tr td.col-month {
+  width: 15%;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ACACAC;
+  font-size: 11px;
+}
+table.pending-erp tr td.col-price {
+  width: 15%;
+  text-align: right;
+  font-size: 20px;
+  font-weight: 800;
+}
+table.pending-erp tr td.col-blank {
+  width: 8%;
+}
+table.pending-erp tr td.col-late {
+  width: 26%;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ACACAC;
+  font-size: 11px;
+}
+table.pending-erp tr td.big {
+  font-size: 50px;
+  font-weight: 800;
+  color: #4A4A4A;
+}
+table.pending-erp tr td.red {
+  color: #DE382B;
+}
+table.pending-erp tr td.border-bottom {
+  border-bottom: 1px solid #dcdcdc;
+}
