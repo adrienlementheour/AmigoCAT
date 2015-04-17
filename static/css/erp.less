@@ -202,6 +202,18 @@ a{
 			background: #008BA6;
 		}
 	}
+	&.btn-plus{
+		font-size: 11px;
+		font-weight: 800;
+		margin-left: -10px;
+		.transition(.3s ease);
+		span{
+			text-decoration: underline;
+		}
+		&:hover{
+			color: #9B9B9B;
+		}
+	}
 	&.cat-question-mark{
 		color: #707070;
 		font-size: 12px;
@@ -210,8 +222,35 @@ a{
 		vertical-align: top;
 		padding: 2px 0 0 0;
 		.transition(.3s ease);
-		&:hover{
-			color: #008BA6;
+		position: relative;
+		span{
+			display: none;
+			width: 220px;
+			color: #fff;
+			background-color: #707070;
+			.border-radius(4px);
+			padding: 10px 10px;
+			font-weight: 800;
+			position: absolute;
+			bottom: -42px;
+			left: 50%;
+			margin-left: -120px;
+			text-align: center;
+			&:before{
+				.triangle(top, 8px, 6px, #707070);
+				position: absolute;
+				top: -6px;
+				left: 50%;
+				margin-left: -4px;
+			}
+			i{
+				font-weight: normal;
+			}
+		}
+		&:hover, &.hover{
+			span{
+				display: inline-block;
+			}
 		}
 	}
 }
@@ -778,6 +817,14 @@ ul.list-tiers{
     		.border-bottom{
     			border-bottom: 1px solid #dcdcdc;
     		}
+    	}
+    	.bloc-txt-po-bill-description{
+    		display: block;
+    		color: #707070;
+    		font-size: 12px;
+    		font-weight: normal;
+    		padding-left: 66.66666%;
+    		margin: 60px 0 0 0;
     	}
     }
 }

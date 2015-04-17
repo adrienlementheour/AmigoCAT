@@ -141,6 +141,21 @@ a.white-btn:hover {
   color: #fff;
   background: #008BA6;
 }
+a.btn-plus {
+  font-size: 11px;
+  font-weight: 800;
+  margin-left: -10px;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+a.btn-plus span {
+  text-decoration: underline;
+}
+a.btn-plus:hover {
+  color: #9B9B9B;
+}
 a.cat-question-mark {
   color: #707070;
   font-size: 12px;
@@ -152,9 +167,48 @@ a.cat-question-mark {
   -moz-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  position: relative;
 }
-a.cat-question-mark:hover {
-  color: #008BA6;
+a.cat-question-mark span {
+  display: none;
+  width: 220px;
+  color: #fff;
+  background-color: #707070;
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  border-radius: 4px;
+  background-clip: padding-box;
+  padding: 10px 10px;
+  font-weight: 800;
+  position: absolute;
+  bottom: -42px;
+  left: 50%;
+  margin-left: -120px;
+  text-align: center;
+}
+a.cat-question-mark span:before {
+  width: 0px;
+  height: 0px;
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  border-width: 0 4px 6px 4px;
+  border-bottom-color: #707070;
+  border-left-color: rgba(112, 112, 112, 0);
+  border-right-color: rgba(112, 112, 112, 0);
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -4px;
+}
+a.cat-question-mark span i {
+  font-weight: normal;
+}
+a.cat-question-mark:hover span,
+a.cat-question-mark.hover span {
+  display: inline-block;
 }
 table .img,
 .project-entity .img {
@@ -706,6 +760,14 @@ ul.list-tiers a#btn-decline {
 }
 .po-bill .po-bill-description table.table-description .border-bottom {
   border-bottom: 1px solid #dcdcdc;
+}
+.po-bill .po-bill-description .bloc-txt-po-bill-description {
+  display: block;
+  color: #707070;
+  font-size: 12px;
+  font-weight: normal;
+  padding-left: 66.66666%;
+  margin: 60px 0 0 0;
 }
 /* @group Calendar */
 .calendar-erp {
