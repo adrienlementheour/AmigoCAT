@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
 <!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
 <!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
 <!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
@@ -7,25 +6,19 @@
 
   <head>
 
-    <title>Invoice Late | AmigoCAT</title>
+    <title>Invoice Archives | AmigoCAT</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="This is a demo installation of amigoCAT beta." />
-    
-    <link rel="stylesheet" type="text/css" href="static/css/fullcalendar.css">
+
     <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="static/css/style.css" />
     <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
     <link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/markup.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/select2.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
     <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
     <link rel="stylesheet" type="text/css" href="static/css/project.css">
     <link rel="stylesheet" type="text/css" href="static/css/erp.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="static/favicon.png" />
@@ -58,8 +51,6 @@
     <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
     <script type="text/javascript" src="static/js/vendor/spin.js"></script>
     <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
-    <script type="text/javascript" src="static/js/moment.js"></script>
-    <script type="text/javascript" src="static/js/fullcalendar.js"></script>
     <script type="text/javascript">
       function l(path) {
         var basepath = "";
@@ -134,7 +125,7 @@
         <li class="s-title">Myspace</li>
         <li><a class="s-item " href="/">Home</a></li>
         <li><a class="s-item has-notif" href="#">Notifications <span>19</span></a></li>
-        <li><a class="s-item " href="#">Purchase Orders</a></li>
+        <li><a class="s-item" href="#">Purchase Orders</a></li>
         <li><a class="s-item" href="#">Calendar</a></li>
         <li><a class="s-item sub-active-dash" href="#">Invoices</a></li>
         <li><a class="s-item" href="#">Work IQ</a></li>
@@ -150,8 +141,9 @@
           <a href="#" class="s-item is-open">Notifications</a>
           <ul class="ss-sub">
             <li class="sss-item"><a href="#">All</a></li>
-            <li class="sss-item active"><a href="#">Project 1</a></li>
+            <li class="sss-item"><a href="#">Project 1</a></li>
             <li class="sss-item"><a href="#">Project 2</a></li>
+            <li class="sss-item active"><a href="#">Archives</a></li>
           </ul>
         </li>
       </ul>
@@ -159,99 +151,65 @@
 
     <div id="main-container">
       <div id="content-erp">
-        <div class="po late">
-          <div class="zone-title border-bottom clearfix">
-            <h3>Invoice 102</h3>
-            <ul class="links-title-list">
-              <li><a class="cat-preferences" href="#"></a></li>
-              <li><a class="cat-print" href="#"></a></li>
-              <li><a class="cat-link" href="#"></a></li>
-            </ul>
-          </div>
-          <div class="po-state-zone">
-            <div class="po-state-zone-left">
-              <div class="po-col po-state">Late</div>
-              <div class="po-col po-state-date">reminded 2 times <a href="#" class="cat-question-mark hover"><span><i>on</i> Feb. 10, 2015 <i>and</i> Feb. 20, 2015</span></a><a class="underline" href="#">Send a reminder</a></div>
-            </div>
-            <div class="po-col po-state-separator"></div>
-            <div class="po-state-zone-right">
-              <div class="po-col po-state-action"><a class="underline margin-right" href="#">Send to collection</a> <i>or</i> <a class="btn blue-btn big-btn margin-left" href="">Mark as paid</a></div>
-            </div>
-          </div>
-          <div class="po-bill">
-            <div class="po-bill-status"></div>
-            <div class="po-bill-header">
-              <div class="po-bill-title has-ref">
-                <h2>Invoice <span>#102</span></h2>
-              </div><div class="po-bill-ref">
-                <span class="po-ref">Project Order #25</span>
-              </div><div class="po-bill-date"><span class="due-date">Due </span>Feb. 5, 2015<span class="late-date"> Late!</span></div>
-            </div>
-            <div class="po-bill-from-to">
-              <ul>
-                <li class="from">
-                  <h3>From</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Facebook</strong><br />
-                    1 Hacker Way,<br />
-                    California 94025<br />
-                    USA<br /><br />
-                    VAT. 10596540152
-                  </div>
-                </li><li class="contact-info">
-                  <h3>Contact info</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Mark Zuckerberg</strong><br />
-                    <div class="detail-contact"><span class="detail-contact-title">Email : </span><span class="detail-contact-content">mark@facebook.com</span></div>
-                    <div class="detail-contact"><span class="detail-contact-title">Skype : </span><span class="detail-contact-content">mark_z</span></div>
-                    <a class="underline" href="#">Send a message</a>
-                  </div>
-                </li><li class="to">
-                  <h3>To</h3>
-                  <div class="po-bill-from-to-content">
-                    <strong>Nicolas Gregoire</strong><br />
-                    7, rue Ecorchard<br />
-                    44000 Nantes<br />
-                    FRANCE<br /><br />
-                    VAT. 10596540152
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="po-bill-description">
-              <table class="table-description">
-                <tr class="border-bottom">
-                  <th class="col-description">Description</th>
-                  <th class="col-qty">QTY</th>
-                  <th class="col-rate">Rate</th>
-                  <th class="col-amount">Amount</th>
-                </tr>
-                <tr class="border-bottom">
-                  <td>Translation <a class="underline" href="#">View file</a></td>
-                  <td>1000</td>
-                  <td>0,15€</td>
-                  <td>150€</td>
-                </tr>
-                <tr>
-                  <td><a class="btn-plus" href="#">+ <span>Add a discount or increase</span></a></td>
-                  <td colspan="2" class="border-bottom strong-title">Sub. total</td>
-                  <td class="border-bottom">150€</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td colspan="2" class="border-bottom strong-title">VAT. 20%</td>
-                  <td class="border-bottom">30€</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td colspan="2" class="border-bottom strong-title">Total</td>
-                  <td class="border-bottom  strong-title">180€</td>
-                </tr>
-              </table>
-              <div class="bloc-txt-po-bill-description">Thank you for your business!</div>
-            </div>
-          </div>
-        </div>
+       <table class="po-table">
+         <tbody>
+           <tr>
+             <th><a href="">ID</a></th>
+             <th><a href="">Client</a></th>
+             <th class="active"><a href="">Project</a></th>
+             <th><a href="">Budget</a></th>
+             <th><a href="">Date</a></th>
+             <th><a href="">Status</a></th>
+             <th></th>
+           </tr>
+           <tr>    
+              <td class="id">#102</td>
+              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
+              <td class="project active">Project 1</td>
+              <td>$12000</td>
+              <td>March 3, 2014</td>
+              <td><span class="status-archived">Archived</span></td>
+              <td class="btn-search-results"><a href=""></a></td>
+           </tr>
+           <tr>    
+              <td class="id">#103</td>
+              <td><span class="container-img"><img src="static/images/erp/spotify.png"></span>Spotify</td>
+              <td class="project active">Project 2</td>
+              <td>$2000</td>
+              <td>April 2, 2014</td>
+              <td><span class="status-archived">Archived</span></td>
+              <td class="btn-search-results"><a href=""></a></td>
+           </tr>
+           <tr>    
+              <td class="id">#104</td>
+              <td><span class="container-img"><img src="static/images/erp/clever-cloud.png"></span>CleverCloud</td>
+              <td class="project active">Project 1</td>
+              <td>$32000</td>
+              <td>May 2, 2013</td>
+              <td><span class="status-archived">Archived</span></td>
+              <td class="btn-search-results"><a href=""></a></td>
+           </tr>
+           <tr>    
+              <td class="id">#100</td>
+              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
+              <td class="project active">Project 1</td>
+              <td>$1000</td>
+              <td>August 5, 2015</td>
+              <td><span class="status-archived">Archived</span></td>
+              <td class="btn-search-results"><a href=""></a></td>
+           </tr>
+           <tr>    
+              <td class="id">#105</td>
+              <td><span class="container-img"><img src="static/images/erp/facebook.png"></span>Facebook</td>
+              <td class="project active">Project 1</td>
+              <td>$500</td>
+              <td>March 4, 2013</td>
+              <td><span class="status-archived">Archived</span></td>
+              <td class="btn-search-results"><a href=""></a></td>
+           </tr>
+         </tbody>
+       </table>
+       <a href="" class="white-btn big-padding">Export all</a>
       </div>
     </div>
             
