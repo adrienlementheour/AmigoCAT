@@ -50,6 +50,12 @@ a.underline {
 a.underline:hover {
   color: #9B9B9B;
 }
+a.underline.grey {
+  color: #9F9F9F;
+}
+a.underline.grey:hover {
+  color: #008BA6;
+}
 a.btn.btn-right {
   display: inline-block;
   vertical-align: top;
@@ -259,6 +265,16 @@ table .img .default.user,
 }
 .po.late .po-bill .po-bill-status {
   background-color: #C40821;
+}
+.po.paid .po-state-zone .po-col.po-state {
+  color: #148900;
+  border-color: #148900;
+}
+.po.paid .po-state-zone .po-col.po-state-action {
+  padding: 12px 0 0 0;
+}
+.po.paid .po-bill .po-bill-status {
+  background-color: #148900;
 }
 .zone-title {
   display: block;

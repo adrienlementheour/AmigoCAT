@@ -125,6 +125,12 @@ a{
 		&:hover{
 			color: #9B9B9B;
 		}
+		&.grey{
+			color: #9F9F9F;
+			&:hover{
+				color: #008BA6;
+			}
+		}
 	}
 	&.btn{
 		&.btn-right{
@@ -331,6 +337,24 @@ table, .project-entity{
 		.po-bill{
 			.po-bill-status{
 				background-color: #C40821;
+			}
+		}
+	}
+	&.paid{
+		.po-state-zone{
+			.po-col{
+				&.po-state{
+					color: #148900;
+					border-color: #148900;
+				}
+				&.po-state-action{
+					padding: 12px 0 0 0;
+				}
+			}
+		}
+		.po-bill{
+			.po-bill-status{
+				background-color: #148900;
 			}
 		}
 	}
