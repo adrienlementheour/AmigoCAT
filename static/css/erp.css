@@ -162,6 +162,27 @@ a.btn-plus span {
 a.btn-plus:hover {
   color: #9B9B9B;
 }
+a.btn-edit {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 11px;
+  font-weight: 800;
+  padding-right: 10px;
+  position: relative;
+}
+a.btn-edit span {
+  text-decoration: underline;
+}
+a.btn-edit.cat-pen:before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 9px;
+  font-weight: normal;
+}
+a.btn-edit:hover {
+  color: #9B9B9B;
+}
 a.cat-question-mark {
   color: #707070;
   font-size: 12px;
@@ -275,6 +296,13 @@ table .img .default.user,
 }
 .po.paid .po-bill .po-bill-status {
   background-color: #148900;
+}
+.po.pending .po-state-zone .po-col.po-state {
+  color: #008BA6;
+  border-color: #008BA6;
+}
+.po.pending .po-bill .po-bill-status {
+  background-color: #008BA6;
 }
 .zone-title {
   display: block;
@@ -784,6 +812,9 @@ ul.list-tiers a#btn-decline {
   font-weight: normal;
   padding-left: 66.66666%;
   margin: 60px 0 0 0;
+}
+.po-bill .po-bill-description .bloc-txt-po-bill-description a.btn-edit {
+  margin: 0 0 0 15px;
 }
 /* @group Calendar */
 .calendar-erp {
