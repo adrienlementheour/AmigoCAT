@@ -237,6 +237,81 @@ a.cat-question-mark:hover span,
 a.cat-question-mark.hover span {
   display: inline-block;
 }
+/* @group form */
+form.erp-form {
+  font-size: 12px;
+}
+form.erp-form textarea {
+  display: block;
+  background-color: #F7F7F7;
+  color: #989898;
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  border-radius: 4px;
+  background-clip: padding-box;
+  padding: 15px 8px;
+  border: 1px solid #e0e4ea;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  resize: vertical;
+  resize: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  font-style: italic;
+}
+form.erp-form textarea:focus {
+  background: #fff;
+  outline: 0;
+  font-style: normal;
+}
+form.erp-form .btn {
+  height: 36px;
+  line-height: 32px;
+  -webkit-border-radius: 18px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 18px;
+  -moz-background-clip: padding;
+  border-radius: 18px;
+  background-clip: padding-box;
+  background-color: #008BA6;
+  border: 2px solid #008BA6;
+  color: #fff;
+  padding: 0 12px;
+  height: 26px;
+  line-height: 22px;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+}
+form.erp-form .btn:hover {
+  background-color: #fff;
+  color: #008BA6;
+}
+form.erp-form#form-footer-invoice textarea {
+  width: 100%;
+  height: 100px;
+  margin: 0 0 10px 0;
+}
+form.erp-form#form-footer-invoice .zone-btn {
+  text-align: right;
+}
+form.erp-form#form-footer-invoice .zone-btn .btn {
+  margin-left: 14px;
+}
+form.erp-form#form-footer-invoice .zone-btn a.underline {
+  margin-right: 14px;
+}
+/* @end */
 table .img,
 .project-entity .img {
   text-align: center;

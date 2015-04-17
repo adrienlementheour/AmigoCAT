@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 8 ]><html lang="en-us" class="is_ie7 lt_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+  <head>
+
+    <title>Invoice Pending Edit | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+    
+    <link rel="stylesheet" type="text/css" href="static/css/fullcalendar.css">
+    <link rel="stylesheet" href="static/css/zz-all.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/tipsy.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/markup.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/sprite.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/select2-pootle.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/custom/custom.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/project.css">
+    <link rel="stylesheet" type="text/css" href="static/css/erp.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript" src="static/js/moment.js"></script>
+    <script type="text/javascript" src="static/js/fullcalendar.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+
+  </head>
+
+
+  <body id="" class="sidebar-open">
+
+    <header id="header" class="header">
+      <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+      </h1>
+
+      <form action="" method="post" class="cssc-form h-item h-form">
+        <input type="text" name="search" placeholder="Search">
+        <button type="submit">&#xe005;</button>
+      </form>
+              
+      <div class="h-avatar" id="open-usermenu">
+        <span class="ha-name ha-name-iconed">Boris</span>
+        <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+        <ul class="usermenu">
+          <li><a class="s-item" href=''>CAT</a></li>
+          <li><a class="s-item" href=''>TMS</a></li>
+          <li><a class="s-item" href=''>Jobcenter</a></li>
+          <li><a class="s-item" href=''>Community</a></li>
+          <li><a class="s-item" href=''>workIQ</a></li>
+          <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+        </ul>
+      </div>
+              
+    </header>
+
+    <div class="header-sub-disable cf">
+      <div class="hs-inner">
+        <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item">&nbsp;</a>
+      </div>
+    </div>
+
+    <div class="js-both-sidebars">
+      <ul class="sidebar">
+        <li class="s-title">Myspace</li>
+        <li><a class="s-item " href="/">Home</a></li>
+        <li><a class="s-item has-notif" href="#">Notifications <span>19</span></a></li>
+        <li><a class="s-item " href="#">Purchase Orders</a></li>
+        <li><a class="s-item" href="#">Calendar</a></li>
+        <li><a class="s-item sub-active-dash" href="#">Invoices</a></li>
+        <li><a class="s-item" href="#">Work IQ</a></li>
+        <li class="s-menu">
+          <ul>
+            <li class="cat-gear"><a class="s-item" href="">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="sidebar is-submenu">
+        <li>
+          <a href="#" class="s-item is-open">Notifications</a>
+          <ul class="ss-sub">
+            <li class="sss-item"><a href="#">All</a></li>
+            <li class="sss-item active"><a href="#">Project 1</a></li>
+            <li class="sss-item"><a href="#">Project 2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="main-container">
+      <div id="content-erp">
+        <div class="po pending">
+          <div class="zone-title border-bottom clearfix">
+            <h3>Invoice 102</h3>
+            <ul class="links-title-list">
+              <li><a class="cat-preferences" href="#"></a></li>
+              <li><a class="cat-print" href="#"></a></li>
+              <li><a class="cat-link" href="#"></a></li>
+            </ul>
+          </div>
+          <div class="po-state-zone">
+            <div class="po-state-zone-left">
+              <div class="po-col po-state">Pending</div>
+              <div class="po-col po-state-date"><i>on</i> Feb. 8, 2015</div>
+            </div>
+            <div class="po-col po-state-separator"></div>
+          </div>
+          <div class="po-bill">
+            <div class="po-bill-status"></div>
+            <div class="po-bill-header">
+              <div class="po-bill-title has-ref">
+                <h2>Invoice <span>#102</span></h2>
+              </div><div class="po-bill-ref">
+                <span class="po-ref">Project Order #25</span>
+              </div><div class="po-bill-date"><span class="due-date">Due </span>Feb. 5, 2015</div>
+            </div>
+            <div class="po-bill-from-to">
+              <ul>
+                <li class="from">
+                  <h3>From</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Facebook</strong><br />
+                    1 Hacker Way,<br />
+                    California 94025<br />
+                    USA<br /><br />
+                    VAT. 10596540152
+                  </div>
+                </li><li class="contact-info">
+                  <h3>Contact info</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Mark Zuckerberg</strong><br />
+                    <div class="detail-contact"><span class="detail-contact-title">Email : </span><span class="detail-contact-content">mark@facebook.com</span></div>
+                    <div class="detail-contact"><span class="detail-contact-title">Skype : </span><span class="detail-contact-content">mark_z</span></div>
+                    <a class="underline" href="#">Send a message</a>
+                  </div>
+                </li><li class="to">
+                  <h3>To</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Nicolas Gregoire</strong><br />
+                    7, rue Ecorchard<br />
+                    44000 Nantes<br />
+                    FRANCE<br /><br />
+                    VAT. 10596540152
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="po-bill-description">
+              <table class="table-description">
+                <tr class="border-bottom">
+                  <th class="col-description">Description</th>
+                  <th class="col-qty">QTY</th>
+                  <th class="col-rate">Rate</th>
+                  <th class="col-amount">Amount</th>
+                </tr>
+                <tr class="border-bottom">
+                  <td>Translation <a class="underline" href="#">View file</a></td>
+                  <td>1000</td>
+                  <td>0,15€</td>
+                  <td>150€</td>
+                </tr>
+                <tr>
+                  <td><a class="btn-plus" href="#">+ <span>Add a discount or increase</span></a></td>
+                  <td colspan="2" class="border-bottom strong-title">Sub. total</td>
+                  <td class="border-bottom">150€</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="border-bottom strong-title">VAT. 20%</td>
+                  <td class="border-bottom">30€</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="border-bottom strong-title">Total</td>
+                  <td class="border-bottom  strong-title">180€</td>
+                </tr>
+              </table>
+              <div class="bloc-txt-po-bill-description">
+                <form id="form-footer-invoice" class="erp-form" action="" method="post" class="">
+                  <textarea name="textarea">Thank you for your business!</textarea>
+                  <div class="zone-btn"><a href="#" class="underline">Cancel</a> <i>or</i> <button class="btn" type="submit">Validate</button></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            
+    <script type="text/javascript" src="static/js/project_add-files.js"></script>
+    <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+          
+    <div id="footer">
+      <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>
