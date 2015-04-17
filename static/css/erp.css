@@ -269,6 +269,31 @@ form.erp-form textarea:focus {
   outline: 0;
   font-style: normal;
 }
+form.erp-form input[type="text"] {
+  background-color: #F7F7F7;
+  color: #989898;
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  border-radius: 4px;
+  background-clip: padding-box;
+  border: 1px solid #e0e4ea;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 8px 8px;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  font-style: italic;
+}
+form.erp-form input[type="text"]:focus {
+  background: #fff;
+  outline: 0;
+  font-style: normal;
+}
 form.erp-form .btn {
   height: 36px;
   line-height: 32px;
@@ -309,6 +334,17 @@ form.erp-form#form-footer-invoice .zone-btn .btn {
   margin-left: 14px;
 }
 form.erp-form#form-footer-invoice .zone-btn a.underline {
+  margin-right: 14px;
+}
+form.erp-form#form-add-line-invoice input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 90%;
+}
+form.erp-form#form-add-line-invoice .zone-btn .btn {
+  margin-left: 14px;
+}
+form.erp-form#form-add-line-invoice .zone-btn a.underline {
   margin-right: 14px;
 }
 /* @end */
@@ -872,6 +908,7 @@ ul.list-tiers a#btn-decline {
   font-weight: normal;
   font-size: 12px;
   color: #707070;
+  vertical-align: middle;
 }
 .po-bill .po-bill-description table.table-description tr td.strong-title {
   font-weight: 800;

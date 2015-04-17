@@ -306,6 +306,21 @@ form.erp-form{
 			font-style: normal;
 		}
 	}
+	input[type="text"]{
+		background-color: #F7F7F7;
+		color: #989898;
+		.border-radius(4px);
+		border: 1px solid #e0e4ea;
+		.box-sizing(border-box);
+		padding: 8px 8px;
+		.transition(0.3s ease);
+		font-style: italic;
+		&:focus{
+			background: #fff;
+			outline: 0;
+			font-style: normal;
+		}
+	}
 	.btn{
 		height: 36px;
 		line-height: 32px;
@@ -332,6 +347,21 @@ form.erp-form{
 		}
 		.zone-btn{
 			text-align: right;
+			.btn{
+				margin-left: 14px;
+			}
+			a.underline{
+				margin-right: 14px;
+			}
+		}
+	}
+	&#form-add-line-invoice{
+		input[type="text"]{
+			display: block;
+			margin: 0;
+			width: 90%;
+		}
+		.zone-btn{
 			.btn{
 				margin-left: 14px;
 			}
@@ -930,6 +960,7 @@ ul.list-tiers{
     				font-weight: normal;
     				font-size: 12px;
     				color: #707070;
+    				vertical-align: middle;
     				&.strong-title{
     					font-weight: 800;
     					text-transform: uppercase;
