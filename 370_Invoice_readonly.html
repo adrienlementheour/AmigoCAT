@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+  <head>
+
+    <title>Invoice Readonly | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+    
+    <link rel="stylesheet" href="static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/erp.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript" src="static/js/moment.js"></script>
+    <script type="text/javascript" src="static/js/fullcalendar.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+
+  </head>
+
+
+  <body id="" class="readonly">
+
+    <header id="header" class="header">
+      <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+      </h1> 
+    </header>
+
+    <div id="main-container">
+      <div id="content-erp">
+        <div id="zone-left-readonly">
+          <div class="po late">
+            <div class="zone-title clearfix">
+              <ul class="links-title-list">
+                <li><a class="cat-preferences" href="#"></a></li>
+                <li><a class="cat-print" href="#"></a></li>
+                <li><a class="cat-link" href="#"></a></li>
+              </ul>
+            </div>
+            <div class="po-bill">
+              <div class="po-bill-status"></div>
+              <div class="po-bill-header">
+                <div class="po-bill-title has-ref">
+                  <h2>Invoice <span>#102</span></h2>
+                </div><div class="po-bill-ref">
+                  <span class="po-ref">Project Order #25</span>
+                </div><div class="po-bill-date"><span class="due-date">Due </span>Feb. 5, 2015<span class="late-date"> Late!</span></div>
+              </div>
+              <div class="po-bill-from-to">
+                <ul>
+                  <li class="from">
+                    <h3>From</h3>
+                    <div class="po-bill-from-to-content">
+                      <strong>Facebook</strong><br />
+                      1 Hacker Way,<br />
+                      California 94025<br />
+                      USA<br /><br />
+                      VAT. 10596540152
+                    </div>
+                  </li><li class="contact-info">
+                    <h3>Contact info</h3>
+                    <div class="po-bill-from-to-content">
+                      <strong>Mark Zuckerberg</strong><br />
+                      <div class="detail-contact"><span class="detail-contact-title">Email : </span><span class="detail-contact-content">mark@facebook.com</span></div>
+                      <div class="detail-contact"><span class="detail-contact-title">Skype : </span><span class="detail-contact-content">mark_z</span></div>
+                      <a class="underline" href="#">Send a message</a>
+                    </div>
+                  </li><li class="to">
+                    <h3>To</h3>
+                    <div class="po-bill-from-to-content">
+                      <strong>Nicolas Gregoire</strong><br />
+                      7, rue Ecorchard<br />
+                      44000 Nantes<br />
+                      FRANCE<br /><br />
+                      VAT. 10596540152
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="po-bill-description">
+                <table class="table-description">
+                  <tr class="border-bottom">
+                    <th class="col-description">Description</th>
+                    <th class="col-qty">QTY</th>
+                    <th class="col-rate">Rate</th>
+                    <th class="col-amount">Amount</th>
+                  </tr>
+                  <tr class="border-bottom">
+                    <td>Translation <a class="underline" href="#">View file</a></td>
+                    <td>1000</td>
+                    <td>0,15€</td>
+                    <td>150€</td>
+                  </tr>
+                  <tr>
+                    <td><a class="btn-plus" href="#">+ <span>Add a discount or increase</span></a></td>
+                    <td colspan="2" class="border-bottom strong-title">Sub. total</td>
+                    <td class="border-bottom">150€</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td colspan="2" class="border-bottom strong-title">VAT. 20%</td>
+                    <td class="border-bottom">30€</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td colspan="2" class="border-bottom strong-title">Total</td>
+                    <td class="border-bottom  strong-title">180€</td>
+                  </tr>
+                </table>
+                <div class="bloc-txt-po-bill-description">Thank you for your business!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="zone-right-readonly">
+          <ul id="bill-payment">
+            <li class="image-bill-payment"><div class="container-image-bill-payment"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="116" width="116"/></div></li>
+            <li class="price-bill-payment">180€</li>
+            <li class="to-bill-payment">To <span class="recipient-bill-payment">Nicolas Gregoire</span></li>
+            <li class="pay-bill-payment"><a class="btn blue-btn big-btn" href="">Pay now with <img src="static/images/erp/paypal.png"></a></li>
+            <li class="info-bill-payment">Secured-payment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+            
+    <script type="text/javascript" src="static/js/project_add-files.js"></script>
+    <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+          
+    <div id="footer">
+      <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>

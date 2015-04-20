@@ -37,6 +37,10 @@
   bottom: inherit;
   right: inherit;
 }
+.readonly #content-erp {
+  padding-top: 85px;
+  background-color: #f3f3f3;
+}
 h3.border-bottom {
   border-bottom: 1px solid #DCDCDC;
 }
@@ -749,6 +753,7 @@ ul.list-tiers a#btn-decline {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 .po-bill .po-bill-status {
   display: block;
@@ -1057,4 +1062,100 @@ table.pending-erp tr td.border-bottom {
 .zone-message p {
   color: #4A4A4A;
   margin: 0 0 15px 0;
+}
+/* @end */
+/* @group ReadOnly */
+/*<div id="zone-right-readonly">
+          <ul id="bill-payment">
+            <li class="price-bill-payment">180€</li>
+            <li>To <span class="to-bill-payment">Nicolas Gregoire</span></li>
+            <li class="pay-bill-payment"><a href="#">Pay now with <img src=""></a></li>
+            <li class="info-bill-payment">Secured-payment</li>
+          </ul>
+        </div>*/
+#zone-left-readonly {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 334px 0 0;
+}
+#zone-right-readonly {
+  display: block;
+  width: 206px;
+  height: auto;
+  position: absolute;
+  top: 120px;
+  right: 110px;
+}
+ul#bill-payment {
+  display: block;
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul#bill-payment li {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #707070;
+  border-bottom: 1px solid #dcdcdc;
+}
+ul#bill-payment li:last-of-type {
+  border-bottom: none;
+}
+ul#bill-payment li.image-bill-payment {
+  padding: 0 0 20px 0;
+}
+ul#bill-payment li.image-bill-payment .container-image-bill-payment {
+  display: inline-block;
+  vertical-align: middle;
+  width: 116px;
+  height: 116px;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+ul#bill-payment li.price-bill-payment {
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 36px;
+  padding: 8px 0;
+}
+ul#bill-payment li.to-bill-payment {
+  padding: 10px 0;
+}
+ul#bill-payment li.to-bill-payment .recipient-bill-payment {
+  font-weight: 800;
+}
+ul#bill-payment li.pay-bill-payment {
+  padding: 25px 0;
+}
+ul#bill-payment li.pay-bill-payment a {
+  font-size: 15px;
+}
+ul#bill-payment li.pay-bill-payment a img {
+  vertical-align: middle;
+  padding-bottom: 1px;
+}
+ul#bill-payment li.info-bill-payment {
+  padding: 10px 0;
+  font-style: italic;
+  color: #AEAEAE;
 }
