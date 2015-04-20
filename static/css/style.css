@@ -124,6 +124,10 @@
     -moz-osx-font-smoothing:grayscale
 }
 
+.cat-paypal:before {
+    content: "\e61f";
+}
+
 .cat-preferences:before {
     content:"\e61d"
 }
