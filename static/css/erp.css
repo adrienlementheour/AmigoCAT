@@ -16,7 +16,7 @@
 .clearfix:after {
   clear: both;
 }
-.readonly body {
+body.readonly {
   background-color: #f3f3f3;
 }
 #content-erp {
