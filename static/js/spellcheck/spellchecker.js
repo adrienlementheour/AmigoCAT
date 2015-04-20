@@ -51,9 +51,7 @@
       var editor = $('<div contenteditable="true" class="spellchecker"></div>');
       var editor_copy = $('<div class="spellchecker-copy" style="display: none;"></div>');
       editor.css({
-        'min-height': textarea.height() + 'px',
-        'max-width': textarea.width() + 'px',
-        'min-width': '30px',
+        'max-width': textarea.width() + 'px'
       });
       textarea.after(editor_copy);
       textarea.after(editor).hide();

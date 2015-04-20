@@ -77,36 +77,46 @@
       PTL.editor.addMTButtons(PTL.editor.mt.google);
     },
 
-    translate: function () {
-      PTL.editor.translate(this, function(sourceText, langFrom, langTo, resultCallback) {
+    translate: function (translateFunction) {
 
-        $.ajax({
-            type: 'POST',
-            url: '/mt/',
-            data: {
-                from: langFrom,
-                to: langTo,
-                text: sourceText,
-                backend: PTL.editor.mt.google.backend,
-            },
-            success: function(data, status) {
-                if (data.text && data.text.data && data.text.data.translations) {
-                    resultCallback(data.text.data.translations[0].translatedText);
+        function getTranslation(sourceText, langFrom, langTo, resultCallback) {
+            $.ajax({
+                type: 'POST',
+                url: '/mt/',
+                data: {
+                    from: langFrom,
+                    to: langTo,
+                    text: sourceText,
+                    backend: PTL.editor.mt.google.backend,
+                },
+                success: function(data, status) {
+                    if (data.text && data.text.data && data.text.data.translations) {
+                        resultCallback(data.text.data.translations[0].translatedText);
+                    }
+                    if (data.captcha) {
+                        PTL.editor.displayError("Login required");
+                        $(document).trigger('google_translate_error');
+                    }
+                    if (data.error) {
+                        console.log(data.error);
+                        PTL.editor.displayError(data.error);
+                        $(document).trigger('google_translate_error');
+                    }
+                },
+                error: function(request, status, error) {
+                    console.log('error: ', status, error);
+                    $(document).trigger('google_translate_error');
                 }
-                if (data.captcha) {
-                    PTL.editor.displayError("Login required");
-                }
-                if (data.error) {
-                    console.log(data.error);
-                    PTL.editor.displayError(data.error)
-                }
-            },
-            error: function(request, status, error) {
-                console.log('error: ', status, error);
-            }
-        });
-      });
-      return false;
+            });
+        }
+
+        if (typeof translateFunction === 'function') {
+            translateFunction(getTranslation);
+        } else {
+            PTL.editor.translate(this, getTranslation);
+        }
+
+        return false;
     }
   };
 })(jQuery);

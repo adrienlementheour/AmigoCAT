@@ -390,6 +390,10 @@
           sorttable.makeSortable($("table#project").get(0));
         };
       });
+
+      PTL.common.monitor_notifications();
+      setInterval(PTL.common.monitor_notifications, 2000);
+
     },
 
     /* Navigates to `languageCode`, `projectCode` while retaining the
@@ -484,6 +488,84 @@
           }
         }
       });
+    },
+
+    details: function (action, details) {
+      if (action == 'upload_file') {
+        return 'uploaded file ' + details;
+      }
+      else if (action == 'add_user') {
+        return 'added user ' + details;
+      }
+      else if (action == 'change_metadata') {
+        return details;
+      }
+      else if (action == 'start_translation') {
+        return 'started translation on project';
+      }
+      else if (action == 'create_project') {
+        return 'created project';
+      }
+      else if (action == 'file_done') {
+        return 'file ' + details + ' marked as done';
+      }
+      return 'closed project';
+    },
+
+    monitor_notifications: function () {
+      var notifsLimit = 5;
+
+      if (window.location.pathname ==='/') {
+        $.ajax({
+          url: '/notifications/?limit=' + notifsLimit,
+          success: function (data) {
+              var container = $('div.project-entity.notif-dashboard');
+              var header = $(container).children()[0];
+              var html = '';
+              $.each(data, function (index, object) {
+                html += '<div class="tr bordered">'
+                +  '<div class="td entity-in">'
+                +  '<div class="stat project-stats-name inline">'
+                +   object.user
+                +  '</div>'
+                +  '<span class="files">' + PTL.common.details(object.action, object.details) + '</span>'
+                +  '<span><span class="aired"><a href="/projects/' + object.project_code + '/">'
+                +  object.project + '</a>'
+                +  '</span>' + object.date.split(';')[0] + ' ' + object.date.split(';')[1]
+                +  '</span></div></div>';
+              });
+              $(container).html('');
+
+              if (data.length >= notifsLimit) {
+                  html += '<div class="tr">'
+                  + '    <div class="td  project-stats-in">'
+                  + '        <div class="some-button">'
+                  + '            <a href="/notifications#all">View all</a>'
+                  + '        </div>'
+                  + '        <div class="clear"></div>'
+                  + '    </div>'
+                  + '</div>';
+              }
+
+              $(container).append(header, html);
+          },
+          global: false
+        });
+
+      } else if (window.location.pathname.indexOf('/notifications') != 0) {
+        $.ajax({
+        url: '/notifications/count/',
+        success: function (data) {
+          $href = $('a.has-notif');
+          var html = 'Notifications ';
+          if (data > 0) {
+            html += '<span>' + data + '</span>';
+          }
+          $href.html(html);
+        },
+        global: false
+      });
+      }
     }
 
   };
@@ -510,3 +592,50 @@ window.addEventListener('pageshow', function (e) {
     $el.select2('val', initial);
   }
 }, false);
+
+jQuery(function($) {
+    $(document).ready(function() {
+        var $form = $('#global-search-form'),
+            $searchField = $form.find('input[name=search]');
+
+        // Do not allow submit empty search request
+        $form.on('submit', function(e) {
+            if ($searchField.val().trim().length === 0) {
+                return false;
+            }
+        });
+        var $mt_api_form = $('form.mt_api');
+        $mt_api_form.on('submit', function(e) {
+          var this_form = this;
+          $.ajax({type: 'POST',
+                  url: $(this).attr('action'),
+                  data: $(this).serializeArray(),
+                  success: function (data) {
+                    //remove errors and error classes
+                    $(this_form).find('label.error').remove();
+                    $(this_form).find('.error').removeClass('error');
+                    if (data['status'] == 'ok') {
+                      if (window.PTL.editor) {
+                        location.reload(true);
+                      }
+                      $.magnificPopup.close();
+                    }
+                    else {
+                      //show errors and add error classes
+                      $.each(data['errors'], function (k, v) {
+                        var input = $(this_form).find('input[name=' + k + ']')[0];
+                        if (k == '__all__') {
+                          input = $('input[id^="id_key"]')[0];
+                        }
+                        $(input).after('<label for="' + $(input).attr('id') + '" class="error">' + v + '</label>');
+                      });
+                    }
+                  },
+                  error: function (data) {
+                    console.log(data);
+                  }
+          });
+          return false;
+        });
+    });
+}(jQuery));

@@ -1,4 +1,4 @@
-;(function ($) {
+(function ($) {
     'use strict';
 
     // Plugin interface
@@ -48,7 +48,7 @@
         $textarea
             .data('autogrow-origin', $origin)
             .on('keyup change input paste autogrow', function () {
-                grow($textarea, $origin, origin, height, offset);               
+                grow($textarea, $origin, origin, height, offset);
             });
 
         grow($textarea, $origin, origin, height, offset);
@@ -72,11 +72,18 @@
         height = scrollHeight - offset;
         $origin.hide();
 
-        $textarea.height(height > initialHeight ? height : initialHeight);
+
+        if (height == offset/2) {
+            $textarea.css('height', initialHeight);
+        } else if (height == offset) {
+            $textarea.height(height);
+        }   else {
+            $textarea.height(height > initialHeight ? height : initialHeight);
+        }
 
         /* Adapt the size of the table for searchTm */
         if($('.popOverflow').length){
-            $('.popOverflow').height($('.popTm').find('.mfp-content').height() - $('.popTm').find('.mfp-content').find('h2').innerHeight() - $('.popTm').find('.mfp-content').find('form').innerHeight());
+            $('.popOverflow').height($('.popTm').find('.mfp-content').height() - $('.popTm').find('.mfp-content').find('h2').innerHeight() - $('.popTm').find('.mfp-content').find('.form-popTm').innerHeight());
         }
     }
 }(jQuery));

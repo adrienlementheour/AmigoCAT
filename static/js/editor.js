@@ -44,6 +44,9 @@
     this.isLoading = true;
     this.showActivity();
 
+    this.isRunningAutoTranslate = false;
+    this.lastUnitIndexAutoTranslate = undefined;
+
     /* Currently active search fields */
     this.searchFields = [];
     this.searchOptions = [];
@@ -153,18 +156,51 @@
       }
     });
 
-    /* Bind hotkeys */
-    $(document).on('keydown', '.spellchecker', function(e) {
-        if (!(String.fromCharCode(e.which).toLowerCase() == 'f' && e.ctrlKey) &&
-            e.which != 19) {
-          return true;
-        }
-        PTL.editor.showPreTraslationPopup();
-        $('#pre_translate_search').focus();
+    /* Tags group */
+    if (window.GROUP_TAGS) {
+        $(document).on('click', '.spellchecker .tag-group', function(e) {
+            e.preventDefault();
+            PTL.editor.groupTags();
+            PTL.editor.removeTagsGroup( $(this) );
 
+            return false;
+        });
+        $(document).on('click', '.spellchecker', function(e) {
+            //e.preventDefault();
+            PTL.editor.groupTags();
+        });
+    }
+
+    /* Automatic Translation */
+    $(document).on('click', 'li.cat-g a', function(e) {
         e.preventDefault();
-        return false;
+        PTL.editor.translateAllWithBackend('google');
     });
+    $(document).on('click', 'li.cat-bing a', function(e) {
+        e.preventDefault();
+        PTL.editor.translateAllWithBackend('bing');
+    });
+    $(document).on('click', '#stop-auto-translate', function(e) {
+        e.preventDefault();
+        PTL.editor.stopAutomaticTranslation();
+    });
+
+    /* Bind hotkeys */
+    var last, diff;
+    $(document).on('keydown', '.spellchecker', function(e) {
+      if (e.keyCode == 17 || e.metaKey) {
+        if (last) {
+            diff = e.timeStamp - last;
+            if(diff <= 400){
+              PTL.editor.showPreTraslationPopup();
+              $('#pre_translate_search').focus();
+              e.preventDefault();
+            }
+          }
+        last = e.timeStamp;
+      }
+    });
+
 
     $(document).on('focusout', '#pre_translate_search', function(e) {
       $('.pre-translate-popup').focus();
@@ -172,6 +208,17 @@
       e.preventDefault();
       return false;
     });
+
+    function scrollToElement(selector, time, verticalOffset) {
+      time = typeof(time) != 'undefined' ? time : 0;
+      verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+      element = $(selector);
+      offset = element.offset();
+      offsetTop = (offset.top + verticalOffset)/1.5;
+      $('html, body').animate({
+          scrollTop: offsetTop
+      }, time);
+    }
 
     $('#pre_translate_search').bind('change paste keyup', function(e) {
       if (!$('.pre-translate-popup').is(':visible'))
@@ -191,7 +238,8 @@
             var words_array = $(e).text().split(' ');
             for (var i = 0; i < words_array.length; i++) {
               if (words_array[i].toLowerCase().indexOf(search_val) != -1) {
-                $(e).html($(e).html().replace(words_array[i], '<span class="pre-translate-word">' + words_array[i] + '</span>'));
+                  var word = words_array[i].substring(0, search_val.length);
+                  $(e).html($(e).html().replace(word, '<span class="pre-translate-word">' + word + '</span>'));
               }
             }
           });
@@ -199,6 +247,7 @@
             .first()
             .removeClass('pre-translate-word')
             .addClass('pre-translate-word-main');
+          scrollToElement('.pre-translate-word-main');
         }, 700);
       }
     });
@@ -207,8 +256,8 @@
       clearTimeout(PTL.editor.wordSearchTimeout);
       PTL.editor.wordSearchTimeout = null;
 
-      $('.results-popup').hide();
-      $('.results-popup').find('li').remove();
+      $('.terminology-results-popup').hide();
+      $('.terminology-results-popup').find('tr[class^="amigo"]').remove();
       $('.pre-translate-popup').hide();
       $('.pre-translate-word')
         .removeClass('pre-translate-word');
@@ -231,7 +280,7 @@
         $('.tt-row-block.active').find('.translation-area').text(translated_text);
         spellchecker.html(translated_text);
         PTL.editor.autosubmitTimeout = setTimeout(PTL.editor.submitNonEmpty, 200);
-        $('.results-popup').hide();
+        $('.terminology-results-popup').hide();
         $('.pre-translate-popup').hide();
     });
 
@@ -241,29 +290,31 @@
             $('.tag-error').text('');
             $('.tag-error').css('display', 'none');
             if ($('.tt-row-block.active').find('.spellchecker').text().trim() !== '') {
-                $('input.submit').trigger('click');
+              $('input.submit').trigger('click');
             }
             PTL.editor.gotoNext();
             return;
           }
           if (!PTL.editor.isAllTags()) {
-              if (e.which === 9){
-                  PTL.editor.addTranslationTag();
-              } else {
-                  $('.tag-error').css('display', 'block');
-                  $('.tag-error').text('Error: tags misssing');
-                  PTL.editor.addTranslationTag();
-              }
-              return;
+            if (e.which === 9) {
+              PTL.editor.addTranslationTag();
+            } else {
+              $('.tag-error').css('display', 'block');
+              $('.tag-error').text('Error: tags misssing');
+              PTL.editor.addTranslationTag();
+            }
+            return;
           }
           $('.tag-error').text('');
           $('.tag-error').css('display', 'none');
         });
         return;
-    }
+    };
+    this.nextTranslation = nextTranslation;
     shortcut.add('ctrl+return', nextTranslation);
     shortcut.add('tab', nextTranslation);
     shortcut.add('esc', function(){$('.results-popup-close').click();});
+    shortcut.add('alt+t', PTL.editor.addTranslationTag);
 
     shortcut.add('meta+shift+up', function () {
       PTL.editor.gotoEmptyTranslation('prev');
@@ -371,61 +422,72 @@
       PTL.editor.displayError('Could not connect to server');
     }
 
-    function convertText(back, text) {
-      if (text === undefined) {
+    function convertText(back, data_text) {
+      var text = '';
+      if (data_text === undefined) {
         text = '-- Nothing was found --';
       }
       if (back === 'taas') {
         text = '';
-        if (data[search]) {
-          text = data[search][0];
+        try {
+          if (data_text) {
+            text = data_text[0];
+          }
+        } catch(err) {
+          console.log(err.message);
+        }
       } else if (back == 'google') {
         text = '';
-        if (data.text && data.text.data && data.text.data.translations) {
-          text = data.text.data.translations[0].translatedText;
-        }
-        if (!text) {
-          text = '-- Nothing was found --';
-        }
-      }
-      if (!text) {
-          text = '-- Nothing was found --';
+        try {
+          if (data_text && data_text.data && data_text.data.translations) {
+            text = data_text.data.translations[0].translatedText;
+          }
+        } catch(err) {
+          console.log(err.message);
         }
       }
-
+      if (text == '') {
+        text = '-- Nothing was found --';
+      }
       return text;
     }
 
+    var search_count = 0;
     function makeSuccessHandler(back, search) {
+      var $popup = $('.terminology-results-popup');
+
       return function(data, status) {
-        var text = data.data || data.text || data.error;
-        var iconclass = '';
-        $('.results-popup-term').text(search);
+        var text = data.data || data.text || data.error,
+            iconclass = '';
+        $('.results-popup-term').text('"'+search+'"');
 
         text = convertText(back, text);
-
+        if (text != '-- Nothing was found --'){
+          search_count++;
+        }
         switch (back) {
           case 'google':
             iconclass = 'icon-google';
-            $('.results-popup').find('ul').append('<li class="google-tm">' +
-              '<i class="' + iconclass + '">' +
-              '</i><div class="search-term popup-term">' + search + '</div>' +
-              '<div class="result-variations">' + text + '</div></div></li>');
+            $popup.find('tbody').append('<tr class="amigo-google"><td class="'+iconclass+'"></td><td class="bold">'+search+'</td><td class="result-variations">'+
+              text+'</td><td class="arrow"></td></tr>');
             break;
           case 'bing':
-            iconclass = 'icon-Bing_logo';
-            $('.results-popup').find('ul').append('<li class="bing-tm">' +
-              '<i class="' + iconclass + '">' +
-              '</i><div class="search-term popup-term">' + search + '</div>' +
-              '<div class="result-variations">' + text + '</div></div></li>');
+            iconclass = 'cat-bing';
+            $popup.find('tbody').append('<tr class="amigo-bing"><td class="'+iconclass+'"></td><td class="bold">'+search+'</td><td class="result-variations">'+
+              text+'</td><td class="arrow"></td></tr>');
             break;
           case 'taas':
-            $('.results-popup').find('ul').append('<li class="taas-tm">' +
-              '<i>TaaS' +
-              '</i><div class="search-term popup-term">' + search + '</div>' +
-              '<div class="result-variations">' + text + '</div></div></li>');
+            iconclass = 'cat-MT';
+            $popup.find('tbody').append('<tr class="amigo-taas"><td class="'+iconclass+'"></td><td class="bold">'+search+'</td><td class="result-variations">'+
+              text+'</td><td class="arrow"></td></tr>');
             break;
         }
+        if (search_count == 1){
+          $popup.find('.it').text(search_count+' result');
+        } else{
+          $popup.find('.it').text(search_count+' results');
+        }
+
         if (data.captcha) {
           PTL.editor.displayError('Login required');
         }
@@ -433,7 +495,7 @@
           PTL.editor.displayError(data.error);
         }
         window.tunePositions();
-        $('.results-popup').show();
+        $popup.show();
       };
     }
     var PRE_TRAN_CNT = 1;
@@ -449,6 +511,7 @@
           $('.pre-translate-word:eq(' + PRE_TRAN_CNT + ')')
             .removeClass('pre-translate-word')
             .addClass('pre-translate-word-main');
+          scrollToElement('.pre-translate-word-main');
           PRE_TRAN_CNT = (PRE_TRAN_CNT + 1 < $('.pre-translate-word').length ? PRE_TRAN_CNT + 1 : $('.pre-translate-word').length);
 
           break;
@@ -461,6 +524,7 @@
           $('.pre-translate-word:eq(' + PRE_TRAN_CNT + ')')
             .removeClass('pre-translate-word')
             .addClass('pre-translate-word-main');
+          scrollToElement('.pre-translate-word-main');
 
           break;
 
@@ -475,13 +539,19 @@
           e.preventDefault();
           if ($('#pre_translate_search').val()) {
 
-            var backends = ['taas', 'google', 'bing'];
+            var backends = [];
+            if (!PTL.editor.settings.review) {
+              backends.push('taas');
+              $(PTL.editor.settings.mt).each(function (index, element) {
+                backends.push(element.name)
+              });
+            }
             if (PTL.editor.is_unit_locked) {
               backends = [];
               $('.trad-list').css('display', 'none');
             }
 
-            $('.results-popup').find('li').remove();
+            $('.terminology-results-popup').find('li').remove();
 
             var search = $('.pre-translate-word-main').text().toLowerCase();
             for (var i = 0; i < backends.length; i++) {
@@ -710,6 +780,22 @@
 
   /* Stuff to be done when the editor is ready  */
   ready: function () {
+    // Pop up //
+    if($('.popConnect').length){
+        $('.popConnect').magnificPopup({
+          type:'inline',
+          midClick: true,
+          mainClass: 'popConnect',
+          callbacks: {
+              open: function() {
+                shortcut.remove('tab');
+              },
+              close: function() {
+                shortcut.add('tab', PTL.editor.nextTranslation);
+              }
+          }
+        });
+    }
     // Set textarea's initial height as well as the max-height
     PTL.editor.selectMemory = '';
     var maxheight = $(window).height() * 0.3;
@@ -729,7 +815,9 @@
       // Start retrieving TM units from amaGama
       PTL.editor.getTMUnits();
     }
-    TauSData();
+    if (!PTL.editor.settings.review) {
+      TauSData();
+    }
 
     // All is ready, let's call the ready functions of the MT backends
     //$("table.translate-table").trigger("mt_ready");
@@ -942,9 +1030,44 @@
     selector.off('dragstart').on('dragstart', function(e) {
         if (!e.target.id)
             e.target.id = (new Date()).getTime();
+        e.originalEvent.dataTransfer.setDragImage(this, 5, 10);
         e.originalEvent.dataTransfer.setData('text/html', e.target.outerHTML);
         $(e.target).addClass('dragged');
+        $('.tipsy').remove();
     });
+  },
+
+  bindDropOnTagGroup: function($selector) {
+      $selector.off('drop').on('drop', function(e) {
+          e.preventDefault();
+          e = e.originalEvent;
+
+          var $this = $(this),
+              $content = $( e.dataTransfer.getData('text/html') );
+
+          if ($content.hasClass('tag-number')) {
+              $content = $content.hide();
+          } else if ($content.hasClass('tag-group')) {
+              $content = $content.children().hide();
+          } else {
+              return false;
+          }
+
+          $this.append($content);
+          PTL.editor.bindDraggables($content);
+          PTL.editor.setTagGroupText($this);
+
+          $('.dragged').remove();
+          $('.tipsy').remove();
+
+          return false;
+      });
+  },
+
+  bindDragAndDropForTagGroups: function() {
+      var $groups = $('.spellchecker .tag-group');
+      PTL.editor.bindDraggables($groups);
+      PTL.editor.bindDropOnTagGroup($groups);
   },
 
   /* Does the actual diffing */
@@ -1121,7 +1244,10 @@
       $("#js-editor-error span").text(msg).parent().parent().stop(true, true)
                                 .fadeIn(300).delay(2000).fadeOut(3500);
     }
-    $('.spellchecker').caret(0, 0);
+    var spellchecker = $('.spellchecker');
+    if (spellchecker.length) {
+      $(spellchecker).caret(0, 0);
+    }
   },
 
 
@@ -1148,6 +1274,8 @@
         msg = gettext("Unknown error");
       }
     }
+
+    PTL.editor.stopAutomaticTranslation();
 
     PTL.editor.displayError(msg);
   },
@@ -1323,21 +1451,22 @@
       active = ' active';
 
     function getSpanStatus() {
-      if (unit_obj.target[0] && unit_obj.target[0].length){
+      if (unit_obj.target[0] && unit_obj.target[0].length > 0){
         return "is-ok";
       } else {
         return "not-ok";
       }
     }
+    var status = $('#row'+unit.id).find('.is-status')
+    status.find('.status').remove();
+    status.append('<span class="status ' +getSpanStatus() +'"></span>')
 
     return [
       '<div class="tt-row-block', active, '" id="row', unit.id, '">',
       '<div class="ttr-cel is-notif"><span class="notifs is-two">N</span>',
       '</div><div class="ttr-cel is-id"><span>', unit_obj.relative_id, '</span></div>',
       editor_widget(unit),
-      '<div class="ttr-cel is-status">',
-      '<span class="status ', getSpanStatus(), '"></span>',
-      '</div></div>'
+      '</div>'
     ].join('');
   },
 
@@ -1361,7 +1490,7 @@
       for (i=0; i<unitGroup.length; i++) {
         unit = unitGroup[i];
 
-        if (unit.id === currentUnit.id) {
+        if (unit.id === currentUnit.id && !PTL.editor.settings.review) {
           rows.push(this.getEditUnit());
         } else {
           rows.push(this.buildRow(unit, cls, renderer));
@@ -1371,7 +1500,6 @@
         even = !even;
       }
     }, this);
-
     return rows.join('');
   },
 
@@ -1487,6 +1615,9 @@
       }
       original_tags_codes[tag_number] = tag_code;
     });
+
+    PTL.editor.removeAllTagsGroup( $('.spellchecker-copy') );
+
     var html = $('.spellchecker-copy').text();
     $('.spellchecker-copy .tag-number').each(function(index, unit) {
       tag_number = PTL.editor.tagNumber($(unit));
@@ -1554,14 +1685,23 @@
   },
 
   tagElementCode: function(tag_number) {
-    t = document.createElement('span');
+    var t = document.createElement('span');
     t.innerHTML = tag_number;
     t.setAttribute('class', 'tag_number_'+tag_number+' highlight-html tag-number');
     t.setAttribute('bounce', 'south');
     //t.setAttribute('style', 'display: inline !important;');
-    //t.setAttribute('draggable', 'true');
+    t.setAttribute('draggable', 'true');
     t.setAttribute('contenteditable', 'false');
     return t;
+  },
+
+  getTagGroupElement: function() {
+      return $('<span>', {
+          'class': 'highlight-html tag-group',
+          'bounce': 'south',
+          'contenteditable': false
+      })
+          .attr('draggable', true);
   },
 
   addTranslationTag: function() {
@@ -1656,13 +1796,16 @@
       pos = getCaretCharacterOffsetWithin(spellchecker[0]);
       var sel = rangy.getSelection();
       var range = sel.getRangeAt(0);
-      var html_tag = PTL.editor.tagCode(tag_number);
       range.insertNode(PTL.editor.tagElementCode(tag_number));
       setCaretCharIndex(spellchecker[0], pos+1);
-      $('.spellchecker .tag-number').attr('contenteditable', 'false');
+
+      PTL.editor.bindDraggables($('.spellchecker .tag-number'));
+      PTL.editor.groupTags();
+
       if (PTL.editor.isAllTags()) {
-        $('.tag-error').text('');
-        $('.tag-error').css('display', 'none');
+        $('.tag-error')
+            .text('')
+            .css('display', 'none');
       }
       return true;
     }
@@ -1675,8 +1818,140 @@
     return (translation_tag_count == original_tags_count);
   },
 
+  groupTags: function() {
+      var isCurrentIsTag,
+          isNextIsTag,
+          isCurrentIsGroup,
+          isNextIsGroup,
+          $current,
+          $next,
+          group = [],
+          spellcheckerContent = $('.spellchecker').contents(),
+          contentLength = spellcheckerContent.length;
+
+      for (var i = 0; i < contentLength - 1; i++) {
+          $current = $(spellcheckerContent[i]);
+          $next = $(spellcheckerContent[i + 1]);
+
+          isCurrentIsTag = $current.is('.tag-number');
+          isNextIsTag = $next.is('.tag-number');
+
+          isCurrentIsGroup = $current.is('.tag-group');
+          isNextIsGroup = $next.is('.tag-group');
+
+          if (isCurrentIsTag && isNextIsTag) {
+              group.push($current[0]);
+              group.push($next[0]);
+          } else if (isCurrentIsGroup && isNextIsTag) {
+              group.push.apply( group, PTL.editor.removeTagsGroup($current).toArray() );
+              group.push($next[0]);
+          } else if (isCurrentIsTag && isNextIsGroup) {
+              group.push($current[0]);
+              group.push.apply( group, PTL.editor.removeTagsGroup($next).toArray() );
+          } else if (isCurrentIsGroup && isNextIsGroup) {
+              group.push.apply( group, PTL.editor.removeTagsGroup($current).toArray() );
+              group.push.apply( group, PTL.editor.removeTagsGroup($next).toArray() );
+          } else if (group.length) {
+              processGroup(group);
+              group = [];
+          }
+
+      }
+
+      // Process last elements in spellcheckerContent,
+      // as it won't be called on last turn in loop
+      if (group.length) {
+          processGroup(group);
+      }
+
+      function processGroup(group) {
+          var $wrapper,
+              $groupElems;
+
+          $wrapper = $(PTL.editor.getTagGroupElement());
+          $groupElems = $(group);
+
+          $groupElems
+              .wrapAll($wrapper)
+              .hide();
+
+          $wrapper = $groupElems.parent();
+          PTL.editor.setTagGroupText($wrapper);
+          PTL.editor.bindDragAndDropForTagGroups();
+
+          $('.tipsy').remove();
+      }
+
+  },
+
+  setTagGroupText: function($group) {
+      var tagNumber,
+          prevTagNumber,
+          maxTagNumber,
+          minTagNumber,
+          groupName,
+          $children = $group.children(),
+          isTagsOrdered = true,
+          groupNumbers = [],
+          groupPopup = [],
+          groupNameNode = $group.contents()[0];
+
+      $.each($children, function(i, v) {
+          tagNumber = parseInt($(this).text(), 10);
+
+          if (isTagsOrdered) {
+              isTagsOrdered = i === 0 || tagNumber >= prevTagNumber;
+              prevTagNumber = tagNumber;
+          }
+
+          groupNumbers.push(tagNumber);
+          groupPopup.push('[' + tagNumber + ']');
+      });
+
+      maxTagNumber = Math.max.apply(null, groupNumbers)
+      minTagNumber = Math.min.apply(null, groupNumbers)
+
+      if (isTagsOrdered) {
+          groupName = minTagNumber + '-' + maxTagNumber;
+      } else {
+          groupName = minTagNumber + '..' + maxTagNumber;
+      }
+
+      if (groupNameNode.nodeType === 3) {
+          groupNameNode.textContent = groupName;
+      } else {
+          $group.prepend( document.createTextNode(groupName) );
+      }
+
+      $group.attr('original-title', groupPopup.join(' '));
+  },
+
+  removeTagsGroup: function($group) {
+      var groupNameNode = $group.contents()[0];
+
+      $('.tipsy').remove();
+
+      if (groupNameNode.nodeType === 3) {
+          $(groupNameNode).remove();
+      }
+
+      $group.children().show()
+      return $group.contents().unwrap();
+  },
+
+  removeAllTagsGroup: function($wrapper) {
+      $.each( $wrapper.find('.tag-group'), function() {
+          PTL.editor.removeTagsGroup( $(this) );
+      });
+  },
+
   MTTranslates: function(){
-    var backends = ['google', 'bing'];
+    var backends = [];
+    if (!PTL.editor.settings.review) {
+      $(PTL.editor.settings.mt).each(function (index, element) {
+        backends.push(element.name)
+      });
+    }
     for (var i=0; i<backends.length; i++) {
       var back = backends[i];
       if (PTL.editor.mt[back]) {
@@ -1701,7 +1976,10 @@
       // Unescape titles
       $('.translation-text').each(function() {
         var $el = $(this);
-        $el.attr('title', PTL.utils.escapeHtml($el.attr('title')));
+        var title = $el.attr('title');
+        if (title) {
+          $el.attr('title', PTL.utils.escapeHtml(title));
+        }
       });
 
       // Don't disable buttons so user see he reached first/last page.
@@ -1718,10 +1996,32 @@
       var spellchecker = translationarea.siblings('.spellchecker');
       spellchecker.wrap($('<div class="spellchecker-wrapper"></div>'));
       spellchecker.html(translationarea.val());
+
+      if (window.GROUP_TAGS) {
+          PTL.editor.groupTags();
+      }
+
+      var $api_disable = $('a.api-disable');
+        $api_disable.on('click', function(e) {
+          $.ajax({
+            type: 'POST',
+            url: $(this).attr('href'),
+            async: false,
+            data: {'api': $(this).attr('api')}
+          });
+          location.reload(true);
+          return false;
+        });
+
       spellchecker.on('dragover', function (e) {
         e.preventDefault();
         return false;
       });
+
+      if (PTL.editor.settings.review) {
+        $('.active').removeClass('active');
+        $('.is-amagama, .is-search').hide();
+      }
 
       spellchecker.on('drop', function(e) {
         e.preventDefault();
@@ -1743,23 +2043,35 @@
 
         sel.removeAllRanges();
         PTL.editor.bindDraggables($('.spellchecker .tag-number'));
+        PTL.editor.bindDragAndDropForTagGroups();
 
+        $('.tipsy').remove();
         $('.dragged').remove();
       });
 
       PTL.editor.bindDraggables($('.spellchecker .tag-number'));
+      PTL.editor.bindDragAndDropForTagGroups();
 
       translationarea.focus(function(){$(this).siblings('spellcheck').focus();});
       PTL.editor.triggers.segment_ready = true;
       $(document).trigger('segment_ready');
-      $('.translate-translation, .is-original').css({'max-width': $(window).width()*0.4+'px'});
+      $('.is-original').css({'max-width': $(window).width()*0.4+'px'});
       PTL.editor.scrollToSegment();
     }
   },
 
-  scrollToSegment: function(){
-    $('.spellchecker').caret(0, 0);
-    $('body').animate({scrollTop: $('.is-workspace .tl-item').first().offset().top-100}, 200);
+  scrollToSegment: function() {
+    var spellChecker = $('.spellchecker');
+    if (spellChecker.length) {
+      $(spellChecker).caret(0, 0);
+    }
+    var top = 0;
+    var offset_obj = $('.is-workspace .tl-item');
+    if (offset_obj.length) {
+      top = $(offset_obj).first().offset().top;
+    }
+    $('body').animate({scrollTop: top-100}, 200,
+      function() { $('body').scrollTop(0); });
   },
 
   /* reDraws the translate table rows */
@@ -1768,6 +2080,8 @@
         oldRows = $('div.tt-row-block', tTable);
 
     $(tTable).removeClass('first-active').removeClass('second-active').css('padding-top', '');
+    $('span.first-step').remove();
+    $('div.last-step').remove();
     oldRows.remove();
 
     // This fixes the issue with tipsy popups staying on the screen
@@ -1784,16 +2098,45 @@
     var newRows = $('div.tt-row-block', tTable);
     if ($(newRows[0]).hasClass('active')) {
       $(tTable).addClass('first-active');
+      $(tTable).append('<span class="first-step">Press ⇥ TAB to validate segment</span>');
+    } else if ($(newRows[newRows.length - 1]).hasClass('active')) {
+       $(tTable).addClass('last-active');
+       $(tTable).append(
+           "<div class='last-step edit'>That's all folks !<br>" +
+             "<div class='some-button'><a href=''>Download file</a></div>" +
+           "</div>"
+       );
+       $(tTable).css('padding-top', '18px');
     } else if ($(newRows[1]).hasClass('active')) {
         if ($(newRows[0]).height() < 54){
           $(tTable).addClass('second-active');
         } else {
-          var top = ((113 - $(newRows[0]).height())>0?(113 - $(newRows[0]).height()):0);
+          var top = $('.is-search').height();
+          top = (top > $(newRows[0]).height()) ? (top - $(newRows[0]).height()) : 0;
           $(tTable).css('padding-top', top + 'px');
         }
+    } else {
+      var active = this.activeRow(newRows);
+      if (active) {
+        var sum_height = this.upperRowsHeight(active, newRows);
+        if ($('.is-search').height() > sum_height) {
+          $(tTable).css('padding-top', $('.is-search').height() - sum_height + 'px');
+        }
+      }
     }
   },
 
+  activeRow: function(newRows) {
+    return $(newRows).index($('.active'));
+  } ,
+
+  upperRowsHeight: function(index, newRows) {
+    var height = 0;
+    for (i = 0; i < index; i++) {
+      height += $(newRows[i]).height();
+    }
+    return height;
+  },
 
   /* Updates a button in `selector` to the `disable` state */
 // updateNavButton: function (selector, disable) {
@@ -1988,7 +2331,7 @@
         if (data.ctx) {
           // Initialize context gap to the maximum context rows available
           PTL.editor.ctxGap = Math.max(data.ctx.before.length,
-                                       data.ctx.after.length);
+              data.ctx.after.length);
           ctx.before = data.ctx.before;
           ctx.after = data.ctx.after;
         }
@@ -2107,6 +2450,31 @@
             $('#percent').text(data.percent+'%');
             $('#words').text(data.untranslated);
           }
+          // remove old quality check messages
+
+          $activeUnit = $('.tt-row-block.active');
+          // add new quality check messages
+          if (data.quality_messages) {
+              var $errorAlert = $activeUnit.find('.error-alert'),
+                  $trFormTable = $activeUnit.find('.tr-form-table'),
+                  errorsText = data.quality_messages.join('. ') + '.';
+
+              $activeUnit.find('span.status span.error-alert span.error-line').remove();
+              $activeUnit.find('span.status span.error-alert span.error-alert').remove();
+              $trFormTable.find('div.is-status').remove();
+
+
+              if ($errorAlert.length) {
+                  $errorAlert.text(errorsText);
+              } else {
+                  $trFormTable
+                      .append('<span class="error-alert">' + errorsText + '</span>' +
+                      '<div class="is-status">' +
+                      '<span class="error-line"></span>' +
+                      '<span class="status is-error"></span></div>'
+                  );
+              }
+          }
 
           // FIXME: handle this via events
           translations = $('textarea[name^=target_f_]').map(function (i, el) {
@@ -2160,6 +2528,156 @@
   },
 
 
+  /* Hide backdrop and stop automatic tranlation */
+  stopAutomaticTranslation: function() {
+      var unitIndex = PTL.editor.lastUnitIndexAutoTranslate;
+
+      PTL.editor.isRunningAutoTranslate = false;
+      $('body').css('overflow', '');
+      $('.modal-backdrop').hide();
+
+      if (unitIndex === undefined) {
+          return;
+      }
+
+      // If it's not last segment then open segment right after translated
+      if (unitIndex < PTL.editor.pager.count) {
+          unitIndex++;
+      }
+
+      PTL.editor.gotoIndex(unitIndex);
+
+      // Reset units, os it will load translations
+      PTL.editor.units.reset();
+
+      PTL.editor.lastUnitIndexAutoTranslate = undefined;
+  },
+
+
+  /* Translate all untranslated segments from opened file with provided backend */
+  translateAllWithBackend: function(back) {
+      var units,
+          unitsLen,
+          unitToTranslate,
+          unitToTranslateID,
+          store = PTL.editor.units.getCurrent().get('store'),
+          langFrom = store.get('source_lang'),
+          langTo = store.get('target_lang'),
+
+          $backdropDiv = $('.modal-backdrop'),
+          $progressbarSpan = $('#progressbar'),
+          $percentSpan = $('#percent'),
+          $wordsSpan = $('#words'),
+          $progressbarBackSpan = $('#progressbar-backdrop'),
+          $percentBackSpan = $('#percent-backdrop'),
+          $wordsBackSpan = $('#words-backdrop');
+
+
+      $('body').css('overflow', 'hidden');
+      $backdropDiv.show();
+
+      if (back === 'google') {
+          $backdropDiv.find('h2').text('Translating all with Google ...');
+      } else if (back === 'bing') {
+          $backdropDiv.find('h2').text('Translating all with Bing ...');
+      } else {
+          return;
+      }
+
+      PTL.editor.isRunningAutoTranslate = true;
+
+      $progressbarBackSpan.css('width', $progressbarSpan.css('width'));
+      $percentBackSpan.text($percentSpan.text());
+      $wordsBackSpan.text($wordsSpan.text());
+
+      // Get data (like form data) for all untranslated units
+      $.get('/xhr/units/get_all_units_data/', {'path': PTL.editor.settings.pootlePath})
+          .done(function(data) {
+              if (data.units_data) {
+                  units = data.units_data;
+                  unitsLen = data.units_data.length;
+
+                  if (unitsLen) {
+                      translateNextUnit();
+                  } else {
+                      PTL.editor.displayMsg('All segments have been translated.');
+                      PTL.editor.stopAutomaticTranslation();
+                  }
+
+              }
+          })
+          .fail(PTL.editor.error);
+
+      // Pick unit for translation and call backend translate
+      function translateNextUnit() {
+          if (!PTL.editor.isRunningAutoTranslate) {
+              PTL.editor.stopAutomaticTranslation();
+              return;
+          }
+
+          if (unitToTranslateID === unitsLen - 1) {
+              PTL.editor.displayMsg('All segments have been translated.');
+              PTL.editor.stopAutomaticTranslation();
+              return;
+          } else if (unitToTranslateID === undefined) {
+              unitToTranslateID = 0;
+          } else {
+              unitToTranslateID++;
+          }
+
+          unitToTranslate = units[unitToTranslateID];
+
+          if (PTL.editor.mt[back]) {
+              PTL.editor.mt[back].translate(translateOneUnit);
+          } else {
+              PTL.editor.stopAutomaticTranslation();
+          }
+      }
+
+      // Called by backend translate function. Get translation and call submit.
+      function translateOneUnit(resultCallback) {
+          var text = unitToTranslate.source_f_0,
+              sourceText = PTL.editor.cleanSourceText(text);
+
+          resultCallback(sourceText, langFrom, langTo, function(translation, message) {
+              if (translation === false) {
+                  PTL.editor.displayError(message);
+                  return;
+              }
+
+              unitToTranslate.target_f_0 = PTL.editor.cleanTranslatedText(sourceText, translation);
+
+              submitUnitData();
+          })
+      }
+
+      function submitUnitData() {
+          var url = l(['/xhr/units/', unitToTranslate.id].join(''));
+
+          $.post(url, unitToTranslate)
+              .done(function(data) {
+                  if (data.captcha) {
+                      PTL.editor.stopAutomaticTranslation();
+
+                  } else if (data.untranslated && data.percent) {
+                      $progressbarSpan.css('width', data.percent);
+                      $percentSpan.text(data.percent + '%');
+                      $wordsSpan.text(data.untranslated);
+
+                      $progressbarBackSpan.css('width', data.percent);
+                      $percentBackSpan.text(data.percent + '%');
+                      $wordsBackSpan.text(data.untranslated);
+
+                      PTL.editor.lastUnitIndexAutoTranslate = unitToTranslate.relative_id;
+                      translateNextUnit();
+                  }
+              })
+              .fail(PTL.editor.error);
+      }
+
+  },
+
+
   /* Loads the next unit */
   gotoNext: function () {
     // Buttons might be disabled so we need to fake an event
@@ -2177,9 +2695,28 @@
 
     // Try loading the prev/next unit
     if (newUnit) {
-      var newHash = PTL.utils.updateHashPart("unit", newUnit.id);
-      $.history.load(newHash);
-      PTL.editor.scrollToSegment();
+      if (SKIP_SEGMENT == 'True'){
+        var new_collections = PTL.editor.units.toJSON();
+        var unit_obj;
+
+        for (i = 0; i < new_collections.length; i++) {
+            if (new_collections[i].id >= newUnit.id){
+              unit_obj = new_collections[i];
+              var newHash = PTL.utils.updateHashPart("unit", new_collections[i].id);
+              if (unit_obj.target[0] && unit_obj.target[0].length > 0) {
+                $.history.load(newHash);
+              } else {
+                $.history.load(newHash);
+                PTL.editor.scrollToSegment();
+                return false;
+              }
+            }
+        }
+      } else{
+        var newHash = PTL.utils.updateHashPart("unit", newUnit.id);
+        $.history.load(newHash);
+        PTL.editor.scrollToSegment();
+      }
     } else {
       if (elementId === 'js-nav-prev') {
         PTL.editor.displayMsg(gettext("You reached the beginning of the list"));
@@ -2360,6 +2897,8 @@
   },
 
   orderItems: function() {
+    window.showLoader();
+
     var orderBy = $('#order-items option:selected').val();
     var newHash = PTL.utils.updateHashPart('order', orderBy);
     $.history.load(newHash);
@@ -2492,6 +3031,8 @@
   /* Loads the search view */
   search: function (e) {
     e.preventDefault();
+
+    window.showLoader();
 
     var newHash,
         text = $("#id_search").val();
@@ -2640,6 +3181,9 @@
 
   /* Gets TM suggestions from amaGama */
   getTMUnits: function (sText) {
+    if (PTL.editor.settings.review) {
+      return;
+    }
     var unit = this.units.getCurrent(),
         store = unit.get('store'),
         src = store.get('source_lang'),
@@ -2678,6 +3222,7 @@
       success: function (data) {
         if (data.length) {
           var $container = $('.is-amagama');
+          $container.prepend('<div class="amagama-results"></div>');
           var $results_cont = $container.find('.amagama-results');
           $results_cont.empty();
           var count = Math.min(data.length, 3);
@@ -2695,7 +3240,7 @@
         $container.fadeIn();
         tuneSizes();
         } else {
-          PTL.editor.displayError('Not suggestions found');
+          PTL.editor.displayError('No suggestions found');
         }
       }
     });
@@ -2930,12 +3475,6 @@
         langFrom = store.get('source_lang'),
         langTo = store.get('target_lang'),
         sources = $('.tt-row-block.active').find('.translation-text'),
-        htmlPat = /<[\/]?\w+.*?>/g,
-        // The printf regex based on http://phpjs.org/functions/sprintf:522
-        cPrintfPat = /%%|%(\d+\$)?([-+\'#0 ]*)(\*\d+\$|\*|\d+)?(\.(\*\d+\$|\*|\d+))?([scboxXuidfegEG])/g,
-        csharpStrPat = /{\d+(,\d+)?(:[a-zA-Z ]+)?}/g,
-        percentNumberPat = /%\d+/g,
-        pos = 0,
         _this = this;
 
     if (PTL.editor.is_unit_locked) {
@@ -2951,16 +3490,7 @@
           sourceText = PTL.editor.selectMemory;
         }
 
-        // Reset collected arguments array and counter
-        _this.argSubs = [];
-        _this.argPos = 0;
-
-        // Walk through known patterns and replace them with [N] placeholders
-
-        sourceText = sourceText.replace(htmlPat, function(s) { return _this.collectArguments(s); });
-        sourceText = sourceText.replace(cPrintfPat, function(s) { return _this.collectArguments(s); });
-        sourceText = sourceText.replace(csharpStrPat, function(s) { return _this.collectArguments(s); });
-        sourceText = sourceText.replace(percentNumberPat, function(s) { return _this.collectArguments(s); });
+        sourceText = _this.cleanSourceText(sourceText);
 
         var result = providerCallback(sourceText, langFrom, langTo, function(translation, message) {
           if (translation === false) {
@@ -2968,21 +3498,24 @@
             return;
           }
 
-          // Fix whitespace which may have been added around [N] blocks
-          for (var i = 0; i < _this.argSubs.length; i++) {
-            if (sourceText.match(new RegExp("\\[" + i + "\\][^\\s]"))) {
-              translation = translation.replace(new RegExp("\\[" + i + "\\]\\s+"), "[" + i + "]");
-            }
-            if (sourceText.match(new RegExp("[^\\s]\\[" + i + "\\]"))) {
-              translation = translation.replace(new RegExp("\\s+\\[" + i + "\\]"), "[" + i + "]");
+          $('.tt-row-block.active').find('.tl-item.is-' + mt_name.backend).show();
+          tuneSizes();
+
+          var tTable = $('.table-trad');
+          var upperRows = $('.tt-row-block');
+          var current = $('.tt-row-block.active');
+          upperRows = upperRows.slice(0, upperRows.index(current));
+          if (upperRows.length) {
+            var sum_height = 0;
+            upperRows.each(function () {
+              sum_height += $(this).height();
+            });
+            if ($('.is-search').height() > sum_height) {
+              $(tTable).css('padding-top', $('.is-search').height() - sum_height + 'px');
             }
           }
 
-          // Replace temporary [N] placeholders back to their real values
-          for (i = 0; i < _this.argSubs.length; i++) {
-            var value = _this.argSubs[i].replace(/\&/g, "&amp;").replace(/</g, "&lt;").replace(/\\>/g, "&gt;");
-            translation = translation.replace("[" + i + "]", value);
-          }
+          translation = _this.cleanTranslatedText(sourceText, translation);
 
           var $el = $('.tt-row-block.active').find('.' + mt_name.backend + '-translation-result');
           $el.html(translation);
@@ -2994,6 +3527,47 @@
     return false;
   },
 
+  cleanSourceText: function(sourceText) {
+      var _this = PTL.editor,
+          htmlPat = /<[\/]?\w+.*?>/g,
+          // The printf regex based on http://phpjs.org/functions/sprintf:522
+          cPrintfPat = /%%|%(\d+\$)?([-+\'#0 ]*)(\*\d+\$|\*|\d+)?(\.(\*\d+\$|\*|\d+))?([scboxXuidfegEG])/g,
+          csharpStrPat = /{\d+(,\d+)?(:[a-zA-Z ]+)?}/g,
+          percentNumberPat = /%\d+/g;
+
+      // Reset collected arguments array and counter
+      _this.argSubs = [];
+      _this.argPos = 0;
+
+      // Walk through known patterns and replace them with [N] placeholders
+      sourceText = sourceText.replace(htmlPat, function(s) { return _this.collectArguments(s); });
+      sourceText = sourceText.replace(cPrintfPat, function(s) { return _this.collectArguments(s); });
+      sourceText = sourceText.replace(csharpStrPat, function(s) { return _this.collectArguments(s); });
+      sourceText = sourceText.replace(percentNumberPat, function(s) { return _this.collectArguments(s); });
+      return sourceText;
+  },
+
+  cleanTranslatedText: function(sourceText, translation) {
+      var _this = PTL.editor;
+
+      // Fix whitespace which may have been added around [N] blocks
+      for (var i = 0; i < _this.argSubs.length; i++) {
+          if (sourceText.match(new RegExp("\\[" + i + "\\][^\\s]"))) {
+              translation = translation.replace(new RegExp("\\[" + i + "\\]\\s+"), "[" + i + "]");
+          }
+          if (sourceText.match(new RegExp("[^\\s]\\[" + i + "\\]"))) {
+              translation = translation.replace(new RegExp("\\s+\\[" + i + "\\]"), "[" + i + "]");
+          }
+      }
+
+      // Replace temporary [N] placeholders back to their real values
+      for (i = 0; i < _this.argSubs.length; i++) {
+          var value = _this.argSubs[i].replace(/\&/g, "&amp;").replace(/</g, "&lt;").replace(/\\>/g, "&gt;");
+          translation = translation.replace("[" + i + "]", value);
+      }
+
+      return translation;
+  },
 
   /*
    * Lookup
@@ -3127,50 +3701,67 @@
   var PRE_AMAGAMA_UNIT = 0;
 
   function goUpTerminology() {
-    if ($('.google-tm').hasClass('highlight') === false &&
-        $('.taas-tm').hasClass('highlight') === false &&
-        $('.bing-tm').hasClass('highlight') === false) {
-      $('.bing-tm').addClass('highlight');
-    } else if ($('.bing-tm').hasClass('highlight')) {
-      $('.bing-tm').removeClass('highlight');
-      $('.google-tm').addClass('highlight');
-    } else if ($('.google-tm').hasClass('highlight')) {
-      $('.google-tm').removeClass('highlight');
-      $('.taas-tm').addClass('highlight');
-    } else if ($('.taas-tm').hasClass('highlight')) {
-      $('.taas-tm').removeClass('highlight');
-      $('.bing-tm').addClass('highlight');
+    if ($('.amigo-google').hasClass('actif') === false &&
+        $('.amigo-taas').hasClass('actif') === false &&
+        $('.amigo-bing').hasClass('actif') === false) {
+      $('.amigo-bing').addClass('actif');
+      $('.amigo-bing').find('.arrow').text('↵')
+    } else if ($('.amigo-bing').hasClass('actif')) {
+      $('.amigo-bing').removeClass('actif');
+      $('.amigo-bing').find('.arrow').text('');
+      $('.amigo-google').addClass('actif');
+      $('.amigo-google').find('.arrow').text('↵');
+    } else if ($('.amigo-google').hasClass('actif')) {
+      $('.amigo-google').removeClass('actif');
+      $('.amigo-google').find('.arrow').text('');
+      $('.amigo-taas').addClass('actif');
+      $('.amigo-taas').find('.arrow').text('↵');
+    } else if ($('.amigo-taas').hasClass('actif')) {
+      $('.amigo-taas').removeClass('actif');
+      $('.amigo-taas').find('.arrow').text('');
+      $('.amigo-bing').addClass('actif');
+      $('.amigo-bing').find('.arrow').text('↵');
     }
   }
 
   function goDownTerminology() {
-    if ($('.google-tm').hasClass('highlight')) {
-      $('.google-tm').removeClass('highlight');
-      $('.bing-tm').addClass('highlight');
-    } else if ($('.bing-tm').hasClass('highlight')) {
-      $('.bing-tm').removeClass('highlight');
-      $('.taas-tm').addClass('highlight');
-    } else if ($('.taas-tm').hasClass('highlight')) {
-      $('.taas-tm').removeClass('highlight');
-      $('.google-tm').addClass('highlight');
-    } else if ($('.taas-tm').hasClass('highlight') === false &&
-               $('.google-tm').hasClass('highlight') === false &&
-               $('.bing-tm').hasClass('highlight') === false) {
-      $('.taas-tm').addClass('highlight');
+    if ($('.amigo-google').hasClass('actif')) {
+      $('.amigo-google').removeClass('actif');
+      $('.amigo-google').find('.arrow').text('');
+      $('.amigo-bing').addClass('actif');
+      $('.amigo-bing').find('.arrow').text('↵');
+    } else if ($('.amigo-bing').hasClass('actif')) {
+      $('.amigo-bing').removeClass('actif');
+      $('.amigo-bing').find('.arrow').text('');
+      $('.amigo-taas').addClass('actif');
+      $('.amigo-taas').find('.arrow').text('↵');
+    } else if ($('.amigo-taas').hasClass('actif')) {
+      $('.amigo-taas').removeClass('actif');
+      $('.amigo-taas').find('.arrow').text('');
+      $('.amigo-google').addClass('actif');
+      $('.amigo-google').find('.arrow').text('↵');
+    } else if ($('.amigo-taas').hasClass('actif') === false &&
+               $('.amigo-google').hasClass('actif') === false &&
+               $('.amigo-bing').hasClass('actif') === false) {
+      $('.amigo-taas').addClass('actif');
+      $('.amigo-taas').find('.arrow').text('↵');
     }
   }
 
   function selectTerminology() {
-    if ($('.highlight .result-variations').text() !== '-- Nothing was found --') {
-      var text = $('.highlight .result-variations').text();
+    if ($('.actif .result-variations').text() !== '-- Nothing was found --') {
+      var text = $('.actif .result-variations').text();
       $('.tt-row-block.active').find('.spellchecker').text(text);
       $('.tt-row-block.active').find('.translation-area').text(text);
 
       setTimeout(function() {
-        $('.google-tm').removeClass('highlight');
-        $('.bing-tm').removeClass('highlight');
-        $('.taas-tm').removeClass('highlight');
-        $('.results-popup').hide();
+        $('.amigo-google').removeClass('actif');
+        $('.amigo-bing').removeClass('actif');
+        $('.amigo-taas').removeClass('actif');
+        $('.amigo-google').find('.arrow').text('');
+        $('.amigo-bing').find('.arrow').text('');
+        $('.amigo-taas').find('.arrow').text('');
+        $('.terminology-results-popup').hide();
       }, 200);
       PTL.editor.placeCaretAtEnd($('.spellchecker')[0]);
     }
@@ -3182,6 +3773,9 @@
     var nav = $('.trad-list.is-search .tl-item.is-bing, ' +
                 '.trad-list.is-search .tl-item.is-google, ' +
                 '.block-tradmore .bt-row.js-editor-copytext');
+
+    var upper_nav_blocks = $('.trad-list.is-search .tl-item.is-bing, ' +
+                             '.trad-list.is-search .tl-item.is-google').length;
 
     return {
       goUp: goUp,
@@ -3210,7 +3804,11 @@
     function goUp() {
       var highlightIndex = getHighlightIndex();
       if (highlightIndex < 0) {
-        highlight(1);
+        var index = upper_nav_blocks - 1;
+        if (index == -1) {
+          index = nav.length - 1;
+        }
+        highlight(index);
       } else if (highlightIndex === 0) {
         highlight(nav.length - 1);
       } else {
@@ -3223,7 +3821,11 @@
     function goDown() {
       var highlightIndex = getHighlightIndex();
       if (highlightIndex < 0) {
-        highlight(2);
+        var index = upper_nav_blocks;
+        if (nav.length == upper_nav_blocks) {
+          index = 0;
+        }
+        highlight(0);
       } else if (highlightIndex === nav.length - 1) {
         highlight(0);
       } else {
@@ -3265,7 +3867,7 @@
   $(document).on('keydown', '.spellchecker', function(e) {
     if (e.which == 38) { // up
       e.stopImmediatePropagation();
-      if ($('.results-popup').css('display') === "block") {
+      if ($('.terminology-results-popup').css('display') === "block") {
         return goUpTerminology();
       } else if ($('.spellchecker').text().trim() === '') {
         return mtHighlight().goUp();
@@ -3274,7 +3876,7 @@
 
     if (e.which == 40) {
       e.stopImmediatePropagation();
-      if ($('.results-popup').css('display') === "block") {
+      if ($('.terminology-results-popup').css('display') === "block") {
         goDownTerminology();
       } else if ($('.spellchecker').text().trim() === '') {
         return mtHighlight().goDown();
@@ -3284,7 +3886,7 @@
 
   $(document).on('keypress', '.spellchecker', function(e) {
     if (e.which == 13) {
-      if ($('.results-popup').css('display') === "block") {
+      if ($('.terminology-results-popup').css('display') === "block") {
         return selectTerminology();
       } else {
         return mtHighlight().selectCurrent();
@@ -3308,6 +3910,10 @@
     PTL.editor.autosubmitTimeout = setTimeout(PTL.editor.submitNonEmpty, 200);
   });
 
+  $(document).on('bing_translate_error google_translate_error', function() {
+      PTL.editor.stopAutomaticTranslation();
+  });
+
   var TauSData = function() {
     if (!PTL.editor.is_unit_locked) {
       var unit = PTL.editor.units.getCurrent(),
@@ -3328,6 +3934,7 @@
         success: function(data) {
           if (data.length) {
             var $container = $('.is-amagama');
+            $container.append('<div class="taus-results"></div>');
             var $results_cont = $container.find('.taus-results');
             $results_cont.empty();
             for (var i = 0; i < data.length; i++) {
@@ -3350,4 +3957,133 @@
       });
     }
   };
+
+  var getTMUnitsSerch = function() {
+    var store = PTL.editor.units.getCurrent().get('store'),
+        src = store.get('source_lang'),
+        tgt = store.get('target_lang'),
+        sourceText = $('.amagama-results-popup .amagama-results-text').val().trim();
+
+    var tmUrl = '/tmserver/'+store['attributes']['project_code']+ '/' + src + "/" + tgt +
+          "/unit/?source=" + sourceText + "&jsoncallback=?";
+    window.showLoader();
+
+    this.tmReq = $.jsonp({
+      url: tmUrl,
+      dataType: 'jsonp',
+      cache: true,
+      success: function (data) {
+        if (data.length) {
+          for (var i = 0; i < data.length; i++) {
+              var part = data[i];
+              var $container = $('.amagama-results-popup tbody');
+              $container.append('<tr class="mt-amagama-results-popup"><td class="cat-TM"></td><td>'+part['target']+'</td></tr>');
+          }
+        } else {
+          PTL.editor.displayError('Not suggestions found');
+          var $container = $('.amagama-results-popup tbody');
+          $container.find('.mt-amagama-results-popup').remove();
+        }
+      }
+    });
+  }
+
+  $(document).on('click', '.config-dropdown .icon-search', function() {
+      if (!PTL.editor.settings.review) {
+        PTL.editor.showPreTraslationPopup();
+        $('#pre_translate_search').focus();
+      }
+    })
+
+  var TauSDataSerch = function() {
+    if (!PTL.editor.is_unit_locked) {
+      var unit = PTL.editor.units.getCurrent(),
+          store = unit.get('store'),
+          langFrom = store.get('source_lang'),
+          langTo = store.get('target_lang'),
+          sourceText = $('.amagama-results-popup .amagama-results-text').val().trim();
+
+       window.showLoader();
+
+      $.ajax({
+        type: 'GET',
+        url: '/taus/',
+        data: {
+          from: langFrom,
+          to: langTo,
+          text: sourceText
+        },
+        cache: true,
+        success: function(data) {
+          if (data.length) {
+            for (var i = 0; i < data.length; i++) {
+              var part = data[i];
+              var $container = $('.amagama-results-popup tbody');
+              $container.append('<tr class="taus-amagama-results-popup"><td class="cat-TAUS"></td><td>'+part[0]+'</td></tr>');
+            }
+          } else {
+            PTL.editor.displayError('No TAUS suggestions found');
+            var $container = $('.amagama-results-popup tbody');
+            $container.find('.taus-amagama-results-popup').remove();
+          }
+        }
+      });
+    }
+  };
+
+  $(document).on('click', '.config-dropdown .cat-TM', function(e) {
+    e.preventDefault();
+    $('#tptranslate .mfp-wrap').css('overflow-y', 'auto');
+    $('#tptranslate .mfp-wrap').css('overflow-x', 'hidden');
+    $('#tptranslate .mfp-wrap').css('position','fixed');
+    $('.amagama-results-popup').show();
+    $('.amagama-results-popup .amagama-results-text').eq(1).hide();
+  })
+
+  $(document).on('click', '.amagama-results-popup .amagama-results-popup-close', function() {
+    $('#tptranslate .mfp-wrap').css('position','static');
+    $('.amagama-results-popup').hide();
+    var $container = $('.amagama-results-popup tbody');
+    $container.find('.taus-amagama-results-popup').remove();
+    $container.find('.mt-amagama-results-popup').remove();
+    $('.amagama-results-popup .amagama-results-text').val('');
+    $('.amagama-results-popup .amagama-results-text').eq(0).css('height','53');
+  })
+
+  $(document).off('click.results-submint');
+  $(document).on('click.results-submint', '.amagama-results-popup .amagama-results-submint', function(e) {
+    var text = $('.amagama-results-popup .amagama-results-text').val().trim();
+    if (text != '') {
+      var $container = $('.amagama-results-popup tbody');
+      $container.find('.mt-amagama-results-popup').remove();
+      $container.find('.taus-amagama-results-popup').remove();
+      TauSDataSerch();
+      getTMUnitsSerch();
+    }
+  })
+
+  $(document).off('keydown.results-submint');
+  $(document).on('keydown.results-submint', '.amagama-results-popup', function(e) {
+    var text = $('.amagama-results-popup .amagama-results-text').val().trim();
+    if (text != '' && e.keyCode == 13) {
+      $('.amagama-results-popup .amagama-results-submint').trigger( "click" );
+      return false;
+    }
+  })
+
+  $('.amagama-results-popup .popOverflow').bind('mousewheel DOMMouseScroll', function(e) {
+    var scrollTo = null;
+
+    if (e.type == 'mousewheel') {
+        scrollTo = (e.originalEvent.wheelDelta * -1);
+    }
+    else if (e.type == 'DOMMouseScroll') {
+        scrollTo = 40 * e.originalEvent.detail;
+    }
+
+    if (scrollTo) {
+        e.preventDefault();
+        $(this).scrollTop(scrollTo + $(this).scrollTop());
+    }
+  })
 }(jQuery));

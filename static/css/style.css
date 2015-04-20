@@ -318,6 +318,14 @@ hr.clearfix {
     background:none
 }
 
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
 /* ----------------------------------------------------------
     Basic
 ------------------------------------------------------- */
@@ -1812,10 +1820,7 @@ body.sidebar-disable .sidebar {
 }
 
 .s-menu .s-item,.sidebar.is-submenu .s-menu .s-item {
-    font-family:Open Sans,"Open Sans",sans-serif;
-    -webkit-font-smoothing:auto;
-    -moz-osx-font-smoothing:auto;
-    padding:0 0 0 40px
+    padding:0 0 0 17px
 }
 
 .sidebar.is-submenu .s-menu .s-item {
@@ -3073,8 +3078,9 @@ div.error {
 }
 
 /* Create project */
-#create-project,#parameters-social {
-    padding:23px 50px 50px
+#create-project, #parameters-social {
+    padding:22px 50px 50px;
+    min-width: 800px
 }
 
 #create-project form {

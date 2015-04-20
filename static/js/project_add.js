@@ -2,6 +2,33 @@ $( document ).ready(function() {
     document.projectCreation = {};
     document.projectCreation.doSubmit = false;
 
+    var $removeButton = $('<input type="button" name="remove_language2" value="× Remove" class="btn btn-remove-language" id="button-id-remove_language">'),
+        $divTargetLanguages = $('#div_id_target_languages'),
+        $divControls = $divTargetLanguages.children('.controls').first(),
+        $selectOptions = $divControls.find('option'),
+        languagesCount = $selectOptions.filter('[value!=""]').length,
+        clientIDInput = $('#id_client'),
+        clientNameInput = $('#id_client_name'),
+        $modal = $('.mfp-wrap'),
+        $chooseClientDiv = $('#chooseClient'),
+        $clientsBox = $chooseClientDiv.find('.box-list'),
+        $clientsList = $clientsBox.children('li').not('.add'),
+        $searchClientInput = $chooseClientDiv.find('#search-client'),
+        $createClientForm = $('#create-client-form'),
+        createCletnURL = $createClientForm.attr('action'),
+        $createClientInput = $('#create-client-input');
+
+
+    // Event listeners
+    $(document).on('click', '#button-id-add_language', addLanguage);
+    $(document).on('click', '.btn-remove-language', removeLanguage);
+    $(document).on('click', '#chooseClient a.client', selectClient);
+    $(document).on('input', '#chooseClient #search-client', searchClient);
+    $(document).on('submit', '#chooseClient .search-block form', searchSubmit);
+    $(document).on('click', '#popup-client', showClientPopup);
+    $(document).on('submit', '#create-client-form', createNewClient);
+
+
     $(function() {
         $( ".datetimeinput:not([readonly])" ).datepicker({'dateFormat': 'dd-mm-yy', 'changeYear':true});
         console.log($( ".datetimeinput").length);
@@ -20,99 +47,143 @@ $( document ).ready(function() {
         return false;
     });
 
-    // Change fields
-    $('.controls :input').change(function () {
-        $.ajax({
-            url: $('#create-project form').attr('action'),
-            type: "POST",
-            data: {'value': this.value, 'name': this.name},
-            success: function(data) {
-            },
-            error: function(data) {
-            }
-        });
-    });
+    function addLanguage() {
+        var $this = $(this),
+            $divClear = $('<div class="clear"></div>'),
+            $newDivControls = $divControls.clone().addClass('control-language'),
+            selectsCount = $divTargetLanguages.children('.controls').length;
 
-    // Remove Language
-    $(document).on('click', '.action-button.remove a', function() {
-        $(this).closest('tr').remove();
-        if ($('#languages tr:first').length === 0) {
-            content = "<tr><td></td<td class='content light'>There are no "+
-                "languages have been added yet</td><td></td></tr>";
-            $('#languages tbody').append(content);
+        $newDivControls.find('option').prop('selected', false);
+
+        if (selectsCount >= languagesCount) {
+            return;
         }
 
-        $.ajax({
-            url: $('#create-project form').attr('action'),
-            type: "POST",
-            data: {
-                'value': '',
-                'name': $(this).closest('tr').find('input')[0].name
-            },
-            success: function(data) {
-            },
-            error: function(data) {
-            }
-        });
-        return false;
-    });
+        $this.before($removeButton.clone());
+        $this.before($divClear.clone());
+        $this.before($newDivControls);
 
-    // Add Language
-    function languageAdd (async) {
-        async = typeof async !== 'undefined' ? async : true;
-        select = $('#id_target_languages')[0];
-        title = select.options[select.selectedIndex].text;
-        value = select.options[select.selectedIndex].value;
-
-        if (value === '') {
-            // return if selected the first empty element in languages
-            return false;
+        if (selectsCount === languagesCount - 1) {
+            $this.before($removeButton.clone());
+            $this.hide();
         }
-
-        inputs = $('#languages input');
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == value) {
-                return false;
-            }
-        }
-
-        $.ajax({
-            url: $('#create-project form').attr('action'),
-            type: "POST",
-            async: async,
-            data: {'value': value, 'name': 'language_'+value},
-            success: function(data) {
-                first_row = $('#languages tr:first')[0];
-                if (first_row.textContent.indexOf('There are no languages') >= 0) {
-                    //remove empty content
-                    first_row.remove();
-                }
-                content = "<tr>" +
-                            "        <td>" +
-                            "            <input type='hidden' name='language_"+value+"' value='"+value+"' />" +
-                            "        </td>" +
-                            "        <td class='content js-content'>"+title+"</td>" +
-                            "        <td class=actions'>" +
-                            "            <div class='action-button remove'><a href=''>Remove&nbsp;&nbsp;&times;</a></div>" +
-                            "        </td>" +
-                            "    </tr>";
-                $('#languages tbody').append(content);
-/*                if (document.projectCreation.doSubmit) {
-                    $('#submit-form').click();
-                }*/
-            },
-            error: function(data) {
-            }
-        });
-        return false;
     }
-    $(document).on('click', '#button-id-add_language', languageAdd);
-    $('#submit-form').click(function(e){
-        if ($('#languages tr td.js-content').length === 0) {
-            document.projectCreation.doSubmit = true;
-            languageAdd(false);
-            e.preventDefault()
-            return false;
+
+    function removeLanguage() {
+        var $this = $(this),
+            $addButton = $('#button-id-add_language'),
+            $divTargetLanguages = $('#div_id_target_languages'),
+            selectsCount = $divTargetLanguages.children('.controls').length;
+
+        $this.prevAll('.controls').first().remove();
+        $this.nextAll('.clear').first().remove();
+        $this.remove();
+
+        $divTargetLanguages.find('.controls').first().removeClass('control-language');
+
+        if (selectsCount === languagesCount) {
+            $addButton.prevAll('.btn-remove-language').first().remove();
+            $addButton.prev('.clear').remove();
+            $addButton.show();
         }
-    });
+    }
+
+    function selectClient(e) {
+        var $this = $(this),
+            clientID = $this.data('client-id'),
+            clientName = $this.children('.nom').text();
+
+        clientIDInput.val(clientID);
+        clientNameInput.val(clientName);
+        $modal.magnificPopup('close');
+
+        e.preventDefault();
+    }
+
+    function searchClient() {
+        var clientName,
+            $filteredElements,
+            text = $(this).val().toLowerCase(),
+            searchRegEx = new RegExp(text);
+
+        $filteredElements = $clientsList.filter(function(i, el) {
+            clientName = $(el).find('.nom').text().toLowerCase();
+            return (searchRegEx.test(clientName));
+        });
+
+        $clientsList.not($filteredElements).hide();
+        $filteredElements.show();
+    }
+
+    function searchSubmit(e) {
+        e.preventDefault();
+    }
+
+    function showClientPopup() {
+        $searchClientInput
+            .val('')
+            .trigger('input');
+    }
+
+    function insertFormErrors($form, errors) {
+        var $errorLabel,
+            fieldID,
+            $field;
+
+        $.each(errors, function(field, field_errors) {
+            fieldID = 'id_' + field;
+            $field = $form.find('#' + fieldID).addClass('error');
+
+            $.each(field_errors, function(i, error_text) {
+                $errorLabel = $('<label>', {
+                    'class': 'error',
+                    'for': fieldID,
+                    'text': error_text
+                });
+                $field.after($errorLabel);
+            });
+        });
+    }
+
+    function clearFormErrors($form) {
+        $form.find('label.error').remove();
+        $form.find('select.error').removeClass('error');
+        $form.find('input.error').removeClass('error');
+    }
+
+    function clearForm($form) {
+        $form[0].reset();
+        clearFormErrors($form);
+    }
+
+    function createNewClient(e) {
+        var response;
+
+        $createClientInput.prop('disabled', true);
+
+        $.post(createCletnURL, $createClientForm.serializeArray())
+            .done(function(data) {
+                clientIDInput.val(data.id);
+                clientNameInput.val(data.name);
+                $modal.magnificPopup('close');
+
+                $clientsBox.children('li.add').before(data.html);
+
+                clearForm($createClientForm);
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                response = $.parseJSON(jqXHR.responseText);
+
+                clearFormErrors($createClientForm);
+                insertFormErrors($createClientForm, response.company_form_errors);
+                insertFormErrors($createClientForm, response.contact_form_errors);
+            })
+            .always(function() {
+                $createClientInput.prop('disabled', false);
+            });
+
+
+        e.preventDefault();
+    }
+
 });

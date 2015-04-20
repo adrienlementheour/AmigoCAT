@@ -3,6 +3,10 @@ $(function () {
     $.mask.definitions['d'] = '[0-9]';
 
     function set_country(country) {
+        if (!country) {
+            return;
+        }
+
         $.ajax({
             url: '/clients/client/get_phone_format/',
             type: "POST",
@@ -13,14 +17,14 @@ $(function () {
             },
             error: function(data) {
                 alert('Error occured while loading phone format!\n' +
-                      'Please refresh page and try again.');
+                'Please refresh page and try again.');
             }
         });
     }
 
     $('#id_country').change(function () {
-           set_country($(this).val());
-        });
+        set_country($(this).val());
+    });
 
     set_country($('#id_country').val());
 });

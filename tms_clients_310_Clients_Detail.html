@@ -1,0 +1,556 @@
+<!DOCTYPE HTML>
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+    <head>
+
+    <title>Add new client | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+
+    <link rel="stylesheet" href="static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/tms.css" type="text/css" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript">
+      function l(path) {
+        var basepath = "";
+        if (path[0] == '/') {
+          return basepath + path;
+        }
+        return path;
+      }
+      function s(path) {
+        return "static/" + path;
+      }
+      $(function() {
+        $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 'n'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+          gravity: $.fn.tipsy.autoBounds(150, 's'),
+          html: true, fade: true, delayIn: 750, live: true
+        });
+        $.ajaxSetup({ traditional: true });
+        $.ajaxPrefilter(function (options, originalOptions) {
+          if (options.type === 'post' || options.type === 'POST') {
+            options.data = $.param(
+              $.extend(originalOptions.data,
+             { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }) );
+          }
+        });
+      });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+</head>
+
+
+<body id="main-body" class="sidebar-open">
+
+<header id="header" class="header">
+    <h1 class="h-logo h-item">
+        <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+    </h1>
+
+    <form action="" method="get" class="cssc-form h-item h-form">
+        <input type="text" name="search" placeholder="Search">
+        <button type="submit">&#xe005;</button>
+    </form>
+
+    <div class="h-avatar" id="open-usermenu">
+        <span class="ha-name ha-name-iconed">Boris</span>
+        <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+        <ul class="usermenu">
+            <li><a class="s-item" href=''>CAT</a></li>
+            <li><a class="s-item" href=''>TMS</a></li>
+            <li><a class="s-item" href=''>Jobcenter</a></li>
+            <li><a class="s-item" href=''>Community</a></li>
+            <li><a class="s-item" href=''>workIQ</a></li>
+            <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<div class="out">
+    <div class="header-sub-disable cf">
+    <div class="hs-inner">
+        <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item">&nbsp;</a>
+    </div>
+</div>
+
+<div class="js-both-sidebars">
+    <ul class="sidebar">
+        <li class="s-title">Myspace</li>
+        <li class=""><a class="s-item " href="dashboard">Home</a></li>
+        <li class=""><a class="s-item has-notif" href="notification">Notifications <span>19</span></a></li>
+        <li class=""><a class="s-item " href="project">Projects</a></li>
+        <li class=""><a class="s-item sub-active-dash" href="clients">Clients</a></li>
+        <li class=""><a class="s-item " href="translators">Translators</a></li>
+        <li class=""><a class="s-item " href="reviewers">Reviewers</a></li>
+        <li class=""><a class="s-item " href="managers">Project Managers</a></li>
+        <li class="s-menu">
+            <ul>
+                <li class="support"><a class="s-item" href="contact"><i class="icon-info-circled"></i>Support</a></li>
+                <li class="community"><a class="s-item" href="community"><i class="icon-globe"></i>Community</a></li>
+                <li class="settings"><a class="s-item" href="account"><i class="icon-cog"></i>Settings</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="sidebar is-submenu not-nested">
+    <li class="sss-item active"><a href="clients">Current clients</a></li>
+    <li class="sss-item "><a href="clients/all">All clients</a></li>
+    <li class="sss-item "><a href="clients/add">Add a client</a></li>
+</ul></div>
+<div id="main-container">
+    <div class="project-container">
+        <div class="dashboard-settings clearfix">
+            <div class="text">
+                <span class="project-name">Facebook</span> <span class="edit-link"><a href="#">Edit</a></span>
+            </div>
+
+            <div class="switch">
+                <div class="switch-item first-item active">
+                    <i></i>
+                </div>
+                <div class="switch-item second-item">
+                    <i></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-main">
+        <div class="table">
+        <div class="tr dashboard-top">
+            <div class="td">
+                <div>
+                    1
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    2
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    3
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    4
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    5
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    6
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    7
+                </div>
+            </div>
+        </div>
+
+        <div class="tr dashboard-type">
+            <div class="td">
+                <div>
+                    Opening
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Teaming
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Translating
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Reviewing
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Delivering
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Pending Payment
+                </div>
+            </div>
+            <div class="td">
+                <div>
+                    Rating & Closing
+                </div>
+            </div>
+        </div>
+
+        <div class="project-line-tr green normal">
+            <div class="tr project-title">
+                <div class="td">
+                    <div>
+                        Project 1
+                    </div>
+                </div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+            </div>
+            <div class="tr line-tr">
+                <div class="line">
+                    <div class="filled" style="width: 37%">
+                        <div class="circle">
+                            <div class="circle_content">
+                                2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-line-tr red big">
+            <div class="tr project-title">
+                <div class="td">
+                    <div>
+                        Project 1
+                    </div>
+                </div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+            </div>
+            <div class="tr line-tr">
+                <div class="line">
+                    <div class="filled" style="width: 70%">
+                        <div class="circle">
+                            <div class="circle_content">
+                                5
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-line-tr yellow small">
+            <div class="tr project-title">
+                <div class="td">
+                    <div>
+                        Project 1
+                    </div>
+                </div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+                <div class="td"><div></div></div>
+            </div>
+            <div class="tr line-tr">
+                <div class="line">
+                    <div class="filled" style="width: 20%">
+                        <div class="circle">
+                            <div class="circle_content">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="tr clearfix">
+            <div class="td dashboard-project-button">
+                <div class="some-button">
+                    <a href="/project/create/">Create a project</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="dashboard-left details-left">
+            <div class="dashboard-deatils-content clearfix">
+                <div class="dashboard-logo">
+                    <img src="static/images/tms/facebook.png">
+                    <div class="edit-block">
+                        <a>Edit</a>
+                    </div>
+                    <div class="stars-block">
+                        <span class="title">Pro</span>
+                        <span class="note note4">4/5</span>
+                    </div>
+                    <div class="stars-block">
+                        <span class="title">Nice</span>
+                        <span class="note note5">5/5</span>
+                    </div>
+                    <div class="stars-block">
+                        <span class="title">On time</span>
+                        <span class="note note3">3/5</span>
+                    </div>
+                    <div class="stars-block">
+                        <span class="title">Pays well</span>
+                        <span class="note note3">3/5</span>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-info">
+                    <div class="left-info">
+                        <h2>Facebook</h2>
+                        <div>
+                            <div class="bold">IT, Financial</div>
+                            <div><b>5</b> open projects</div>
+                            <div><b>21</b> closed projects</div>
+                            <div><a>http://facebook.com</a></div>
+                        </div>
+                    </div>
+                    <div class="right-info">
+                        <h2>Mark Zuckerberg</h2>
+                        <div>
+                            <div>CEO</div>
+                            <div><a>mark@facebook.com</a></div>
+                            <div class="phone">+33 3333 33</div>
+                            <div>United States</div>
+                            <div><span class="grey">GMT +2</span><span>(+5 hours than you)</span></div>
+                            <div>
+                                <a class="blue-link">Contact</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="details-notes">
+                        <h2>NOTES<i class="icon-pencil"></i></h2>
+                        <div>
+                            Some notes here
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-notification">
+                <div class="project-entity entity-dashboard">
+                    <div class="tr bordered">
+                        <div class="td"><h2 class="h2-black">Notifications</h2></div>
+                    </div>
+
+                    <div class="tr bordered">
+                        <div class="td entity-in">
+                            <div class="entity-image">
+                        <span class="notif-icon yellow">
+                        </span>
+                            </div>
+                            <div class="entity-author">
+                                Me
+                            </div>
+                            <div class="entity-files">
+                                make something
+                            </div>
+                            <div class="entity-date">
+                                Yesterday 8pm
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tr bordered">
+                        <div class="td entity-in">
+                            <div class="entity-image">
+                        <span class="notif-icon green">
+                        </span>
+                            </div>
+                            <div class="entity-author">
+                                A.Marianno
+                            </div>
+                            <div class="entity-files">
+                                make something too
+                            </div>
+                            <div class="entity-date">
+                                Yesterday 8pm
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="entity-button clearfix">
+                        <a class="btn link">View all</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dashboard-right">
+            <div class="dashboard-favorites">
+                <div class="client-table">
+                    <div class="head clearfix">
+                        <h2 class="h2-black">
+                            Favorite Team
+                        </h2>
+                        <input type="button" name="edit_team" value="Edit" class="btn">
+
+                    </div>
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="dashboard-favorites">
+                <div class="client-table">
+                    <div class="head clearfix">
+                        <h2 class="h2-black">
+                            Banned Team
+                        </h2>
+                        <input type="button" name="edit_team" value="Edit" class="btn">
+
+                    </div>
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="tr">
+                        <div class="image">
+                            <img src="static/images/tms/facebook.png" alt="Client 1">
+                        </div>
+                        <div class="name">
+                            C. Walken
+                        </div>
+                        <div class="oval_arrow">
+                            <i class="icon-oval-arrow-right"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="postcontent"></div>
+</div>
+
+<div id="footer" class="bottom">
+    <ul class="nav">
+        <li><a href='/contact/'>Contact Us</a></li>
+        <li><a href='/about/'>About</a></li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="static/js/project_add-files.js"></script>
+<script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+</body>
+</html>
