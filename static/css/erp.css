@@ -311,6 +311,9 @@ form.erp-form input[type="text"].small {
   min-width: inherit;
   margin: 0;
 }
+form.erp-form input[type="text"].align-center {
+  text-align: center;
+}
 form.erp-form input[type="text"]::-webkit-input-placeholder {
   color: #4A4A4A;
 }
