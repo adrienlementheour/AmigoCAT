@@ -307,7 +307,9 @@ form.erp-form input[type="text"].small {
   font-weight: 800;
   color: #4A4A4A;
   font-style: normal;
-  width: auto;
+  width: 60px;
+  min-width: inherit;
+  margin: 0;
 }
 form.erp-form input[type="text"]::-webkit-input-placeholder {
   color: #4A4A4A;
@@ -321,9 +323,12 @@ form.erp-form input[type="text"]::-moz-placeholder {
 form.erp-form input[type="text"]:-ms-input-placeholder {
   color: #4A4A4A;
 }
+form.erp-form table.table-inside-radio {
+  vertical-align: top;
+}
 form.erp-form label.radio {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
   font-weight: normal;
   font-size: 14px;
   color: #4A4A4A;
@@ -342,6 +347,28 @@ form.erp-form input[type="radio"] {
   display: inline-block;
   margin: 8px 0 0 0;
 }
+form.erp-form .btn-white {
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 10px;
+  height: 25px;
+  background: #fff;
+  border: 1px solid #e0e4ea;
+  border-radius: 14px;
+  color: #707070;
+  margin: 0;
+  font-size: 12px;
+  float: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+form.erp-form .btn-white:hover,
+form.erp-form .btn-white:focus {
+  background: #e0e4ea;
+  color: #fff;
+}
 form.erp-form .wrapper-control-group {
   display: block;
   padding: 4px 0;
@@ -352,6 +379,9 @@ form.erp-form .wrapper-control-group.border-bottom {
 form.erp-form .wrapper-control-group.border-dashed-bottom {
   border-bottom: 1px dashed #dcdcdc;
 }
+form.erp-form .wrapper-control-group.margin-bottom {
+  margin-bottom: 24px;
+}
 form.erp-form .control-group {
   padding: 15px 0;
 }
@@ -359,9 +389,29 @@ form.erp-form .bloc-inside-radio {
   display: inline-block;
   vertical-align: middle;
   line-height: 30px;
-  height: 30px;
   font-size: 14px;
   color: #4A4A4A;
+  display: none;
+}
+form.erp-form .bloc-inside-radio.txt-separation {
+  vertical-align: top;
+  margin: 0 0 0 2px;
+}
+form.erp-form table.table-inside-radio {
+  margin-left: 14px;
+}
+form.erp-form table.table-inside-radio tr:first-of-type td {
+  padding: 0 6px 6px 6px;
+}
+form.erp-form table.table-inside-radio tr td {
+  padding: 6px 6px;
+  border-bottom: 1px solid #dcdcdc;
+}
+form.erp-form table.table-inside-radio tr td:last-of-type {
+  border-bottom: none;
+}
+form.erp-form table.table-inside-radio tr:last-of-type td {
+  border-bottom: none;
 }
 form.erp-form .custom-select {
   position: relative;

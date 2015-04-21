@@ -336,7 +336,9 @@ form.erp-form{
 			font-weight: 800;
 			color: #4A4A4A;
 			font-style: normal;
-			width: auto;
+			width: 60px;
+			min-width: inherit;
+			margin: 0;
 		}
 		&::-webkit-input-placeholder {
 		   color: #4A4A4A;
@@ -347,13 +349,16 @@ form.erp-form{
 		&::-moz-placeholder {
 		   color: #4A4A4A;  
 		}
-		&:-ms-input-placeholder {  
+		&:-ms-input-placeholder {
 		   color: #4A4A4A;  
 		}
 	}
+	table.table-inside-radio{
+		vertical-align: top;
+	}
     label.radio{
     	display: inline-block;
-    	vertical-align: middle;
+    	vertical-align: top;
     	font-weight: normal;
     	font-size: 14px;
     	color: #4A4A4A;
@@ -372,6 +377,24 @@ form.erp-form{
     	display: inline-block;
     	margin: 8px 0 0 0;
     }
+    .btn-white{
+    	cursor: pointer;
+    	display: inline-block;
+    	padding: 3px 10px;
+    	height: 25px;
+    	background: #fff;
+    	border: 1px solid #e0e4ea;
+    	border-radius: 14px;
+    	color: #707070;
+    	margin: 0;
+    	font-size: 12px;
+    	float: none;
+    	.transition(.3s ease);
+    	&:hover, &:focus {
+    	  background: #e0e4ea;
+    	  color: #fff;
+    	}
+    }
     .wrapper-control-group{
     	display: block;
     	padding: 4px 0;
@@ -381,6 +404,9 @@ form.erp-form{
     	&.border-dashed-bottom{
     		border-bottom: 1px dashed #dcdcdc;
     	}
+    	&.margin-bottom{
+    		margin-bottom: 24px;
+    	}
     }
     .control-group{
     	padding: 15px 0;
@@ -389,9 +415,35 @@ form.erp-form{
     	display: inline-block;
     	vertical-align: middle;
     	line-height: 30px;
-    	height: 30px;
     	font-size: 14px;
     	color: #4A4A4A;
+    	display: none;
+    	&.txt-separation{
+    		vertical-align: top;
+    		margin: 0 0 0 2px;
+    	}
+    }
+    table.table-inside-radio{
+    	margin-left: 14px;
+    	tr{
+    		&:first-of-type{
+    			td{
+    				padding: 0 6px 6px 6px;
+    			}
+    		}
+    		td{
+    			padding: 6px 6px;
+    			border-bottom: 1px solid #dcdcdc;
+    			&:last-of-type{
+    				border-bottom: none;
+    			}
+    		}
+    		&:last-of-type{
+    			td{
+    				border-bottom: none;
+    			}
+    		}
+    	}
     }
     .custom-select{
     	position: relative;

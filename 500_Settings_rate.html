@@ -84,7 +84,7 @@
   </head>
 
 
-  <body id="" class="sidebar-open">
+  <body id="" class="sidebar-open rating-method">
 
     <header id="header" class="header">
       <h1 class="h-logo h-item">
@@ -162,16 +162,15 @@
               </div>
               <div class="wrapper-control-group border-dashed-bottom">
                 <div class="control-group">
-                  <input type="radio" name="radios" id="radios-2" value="total-source-words" checked="checked">
-                  <label class="radio" for="radios-2"><strong>Total</strong> source words.</label>
-                  <div class="bloc-inside-radio">
-                    Rate : 
+                  <input class="has-content-hide" type="radio" name="radios" id="radios-2" value="total-source-words" checked="checked">
+                  <label class="radio" for="radios-2"><strong>Total</strong> source words</label><div class="bloc-inside-radio">
+                    . Rate : 
                     <div class="custom-select">
-                      <select class="select" name="">
+                      <select class="select" name="select-total-source-words">
                         <option value="usd" selected="selected">$ — USD</option>
                       </select>
                     </div>
-                    <input type="text" class="small" name="" placeholder="0.15">
+                    <input type="text" class="small" name="input-text-total-source-words" placeholder="0.15">
                   </div>
                 </div>
                 <div class="control-group">
@@ -179,12 +178,96 @@
                   <label class="radio" for="radios-3"><strong>Total</strong> target words</label>
                 </div>
               </div>
-              <div class="wrapper-control-group border-bottom">
+              <div class="wrapper-control-group border-bottom margin-bottom">
                 <div class="control-group">
-                  <input type="radio" name="radios" id="radios-4" value="total-target-words">
-                  <label class="radio" for="radios-4"><strong>Grid</strong> <i>(rating linked to project analysis)</i></label>
+                  <input class="has-content-hide" type="radio" name="radios" id="radios-4" value="total-target-words">
+                  <label class="radio" for="radios-4"><strong>Grid</strong> <span class="hide-when-content"><i>(rating linked to project analysis)</i></span></label><div class="bloc-inside-radio txt-separation"> : </div><div class="bloc-inside-radio">
+                    <table class="table-inside-radio">
+                      <tr>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-grid-1">
+                              <option value="no-match" selected="selected">No match</option>
+                              <option value="90-match">90% match</option>
+                              <option value="80-match">80% match</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-currency-grid-1">
+                              <option value="usd" selected="selected">$ — USD</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <input type="text" class="small" name="input-text-grid-1" placeholder="0.045">
+                        </td>
+                        <td>
+                          
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-grid-2">
+                             <option value="no-match">No match</option>
+                             <option value="90-match" selected="selected">90% match</option>
+                             <option value="80-match">80% match</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-currency-grid-2">
+                              <option value="usd" selected="selected">$ — USD</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <input type="text" class="small" name="input-text-grid-2" placeholder="0.018">
+                        </td>
+                        <td>
+                          <input type="button" name="remove-grid-2" value="× Remove" class="btn-white">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-grid-3">
+                              <option value="no-match">No match</option>
+                              <option value="90-match">90% match</option>
+                              <option value="80-match" selected="selected">80% match</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="custom-select">
+                            <select class="select" name="select-currency-grid-3">
+                              <option value="usd" selected="selected">$ — USD</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <input type="text" class="small" name="input-text-grid-3" placeholder="0.017">
+                        </td>
+                        <td>
+                          <input type="button" name="remove-grid-3" value="× Remove" class="btn-white">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="button" name="add-another-line-table-grid" value="+ Add another line" class="btn-white">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </div>
                 </div>
               </div>
+              <input type="submit" name="save-rating-metthod" value="Save">
           </div>
         </form>
       </div>

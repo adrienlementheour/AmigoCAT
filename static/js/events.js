@@ -42,6 +42,27 @@ $j(function() {
         setTimeout(function(){ $j(window).trigger('resize'); }, 300);
     });
 
+    if($j('body').hasClass('rating-method')){
+        ratingMethodForm();
+    }
+
+    function ratingMethodForm(){
+        $j(".bloc-inside-radio", $j(".has-content-hide:checked").parent()).css("display", "inline-block");
+        $j(".hide-when-content", $j(".has-content-hide:checked").parent()).css("display", "none");
+        $j(".bloc-inside-radio", $j(".has-content-hide:not(:checked)").parent()).css("display", "none");
+        $j(".hide-when-content", $j(".has-content-hide:not(:checked)").parent()).css("display", "inline-block");
+        $j('.erp-form input[type="radio"]').click(function(){
+            majRadios();
+        });   
+    }
+
+    function majRadios(){
+        $j(".bloc-inside-radio", $j(".has-content-hide:checked").parent()).css("display", "inline-block");
+        $j(".hide-when-content", $j(".has-content-hide:checked").parent()).css("display", "none");
+        $j(".bloc-inside-radio", $j(".has-content-hide:not(:checked)").parent()).css("display", "none");
+        $j(".hide-when-content", $j(".has-content-hide:not(:checked)").parent()).css("display", "inline-block");
+    }
+
     function tuneSizes(){
         
         if($j('.sidebar').is(':visible')){
