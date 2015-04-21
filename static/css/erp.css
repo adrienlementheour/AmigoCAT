@@ -300,6 +300,120 @@ form.erp-form input[type="text"]:focus {
   outline: 0;
   font-style: normal;
 }
+form.erp-form input[type="text"].small {
+  float: none;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #4A4A4A;
+  font-style: normal;
+  width: auto;
+}
+form.erp-form input[type="text"]::-webkit-input-placeholder {
+  color: #4A4A4A;
+}
+form.erp-form input[type="text"]:-moz-placeholder {
+  color: #4A4A4A;
+}
+form.erp-form input[type="text"]::-moz-placeholder {
+  color: #4A4A4A;
+}
+form.erp-form input[type="text"]:-ms-input-placeholder {
+  color: #4A4A4A;
+}
+form.erp-form label.radio {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: normal;
+  font-size: 14px;
+  color: #4A4A4A;
+  margin: 0 0 0 12px;
+  height: 30px;
+  line-height: 30px;
+}
+form.erp-form label.radio strong {
+  font-weight: 800;
+}
+form.erp-form label.radio i {
+  font-style: italic;
+}
+form.erp-form input[type="radio"] {
+  vertical-align: middle;
+  display: inline-block;
+  margin: 8px 0 0 0;
+}
+form.erp-form .wrapper-control-group {
+  display: block;
+  padding: 4px 0;
+}
+form.erp-form .wrapper-control-group.border-bottom {
+  border-bottom: 1px solid #dcdcdc;
+}
+form.erp-form .wrapper-control-group.border-dashed-bottom {
+  border-bottom: 1px dashed #dcdcdc;
+}
+form.erp-form .control-group {
+  padding: 15px 0;
+}
+form.erp-form .bloc-inside-radio {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 30px;
+  font-size: 14px;
+  color: #4A4A4A;
+}
+form.erp-form .custom-select {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+form.erp-form .custom-select:before {
+  content: "";
+  right: 0;
+  top: 2px;
+  height: 26px;
+  width: 20px;
+  background: #f5f5f5;
+  position: absolute;
+  pointer-events: none;
+  display: block;
+  border-right: 1px solid #dcdcdc;
+  border-radius: 5px;
+}
+form.erp-form .custom-select:after {
+  content: "\0025BE";
+  color: #707070;
+  font-size: 15px;
+  line-height: 6px;
+  right: 10px;
+  top: 0;
+  height: 18px;
+  padding: 11px 0 0 8px;
+  border-left: 1px solid #ddd;
+  position: absolute;
+  pointer-events: none;
+}
+form.erp-form select {
+  display: inline-block;
+  height: 30px;
+  padding: 4px 50px 4px 14px;
+  margin: 0;
+  background: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #444;
+  color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 0 #444;
+  font-weight: 700;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  float: none;
+}
 form.erp-form .btn {
   height: 36px;
   line-height: 32px;

@@ -150,25 +150,40 @@
         <h3 class="border-bottom">Rating method</h3>
         <form method="post" class="erp-form">
           <div class="control-group">
-              <div class="controls">
-                <input type="radio" name="radios" id="radios-0" value="new-source-words" checked="checked">
-                <label class="radio" for="radios-0">New source words</label>
+              <div class="wrapper-control-group border-dashed-bottom">
+                <div class="control-group">
+                  <input type="radio" name="radios" id="radios-0" value="new-source-words">
+                  <label class="radio" for="radios-0"><strong>New</strong> source words</label>
+                </div>
+                <div class="control-group">
+                  <input type="radio" name="radios" id="radios-1" value="new-target-words">
+                  <label class="radio" for="radios-1"><strong>New</strong> target words</label>
+                </div>
               </div>
-              <div class="controls">
-                <input type="radio" name="radios" id="radios-1" value="new-target-words">
-                <label class="radio" for="radios-1">New target words</label>
+              <div class="wrapper-control-group border-dashed-bottom">
+                <div class="control-group">
+                  <input type="radio" name="radios" id="radios-2" value="total-source-words" checked="checked">
+                  <label class="radio" for="radios-2"><strong>Total</strong> source words.</label>
+                  <div class="bloc-inside-radio">
+                    Rate : 
+                    <div class="custom-select">
+                      <select class="select" name="">
+                        <option value="usd" selected="selected">$ — USD</option>
+                      </select>
+                    </div>
+                    <input type="text" class="small" name="" placeholder="0.15">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <input type="radio" name="radios" id="radios-3" value="total-target-words">
+                  <label class="radio" for="radios-3"><strong>Total</strong> target words</label>
+                </div>
               </div>
-              <div class="controls">
-                <input type="radio" name="radios" id="radios-2" value="total-source-words">
-                <label class="radio" for="radios-2">Total source words</label>
-              </div>
-              <div class="controls">
-                <input type="radio" name="radios" id="radios-3" value="total-target-words">
-                <label class="radio" for="radios-3">Total target words</label>
-              </div>
-              <div class="controls">
-                <input type="radio" name="radios" id="radios-4" value="total-target-words">
-                <label class="radio" for="radios-4">Grid (rating linked to project analysis)</label>
+              <div class="wrapper-control-group border-bottom">
+                <div class="control-group">
+                  <input type="radio" name="radios" id="radios-4" value="total-target-words">
+                  <label class="radio" for="radios-4"><strong>Grid</strong> <i>(rating linked to project analysis)</i></label>
+                </div>
               </div>
           </div>
         </form>
