@@ -1812,34 +1812,35 @@ body.sidebar-disable .sidebar {
 
 .s-menu .actif-settings {
     color:#fff;
-    background:#252525
+    background:#252525;
 }
 
 .s-menu .actif-settings:before,.s-menu .actif-settings a {
-    color:#fff
+    color:#fff;
 }
 
 .s-menu .s-item,.sidebar.is-submenu .s-menu .s-item {
-    padding:0 0 0 17px
+    padding:0 0 0 17px;
+    /*padding:0 0 0 42px;*/
 }
 
 .sidebar.is-submenu .s-menu .s-item {
     text-transform:none;
     color:#9b9b9b;
     font-size:14px;
-    font-weight:400
+    font-weight:400;
 }
 
 .is-submenu li:before {
-    color:#bfbfbf
+    color:#bfbfbf;
 }
 
 .is-submenu li:hover:before {
-    color:#04788f
+    color:#04788f;
 }
 
 .sidebar.is-submenu .s-menu .s-item:after {
-    display:none
+    display:none;
 }
 
 .s-item {
@@ -1852,7 +1853,7 @@ body.sidebar-disable .sidebar {
     width:160px;
     text-overflow:ellipsis;
     overflow:hidden;
-    white-space:nowrap
+    white-space:nowrap;
 }
 
 .sub-active-dash {
