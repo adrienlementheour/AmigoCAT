@@ -350,6 +350,28 @@ form.erp-form input[type="radio"] {
   display: inline-block;
   margin: 8px 0 0 0;
 }
+form.erp-form .zone-left-form,
+form.erp-form .zone-right-form {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+form.erp-form .zone-left-form input,
+form.erp-form .zone-right-form input,
+form.erp-form .zone-left-form label,
+form.erp-form .zone-right-form label {
+  float: none;
+}
+form.erp-form .zone-left-form {
+  width: 125px;
+  margin: 0 8px 0 0;
+}
+form.erp-form .zone-right-form {
+  width: 240px;
+}
+form.erp-form .zone-right-form input[type="text"] {
+  width: 100%;
+}
 form.erp-form .btn-white {
   cursor: pointer;
   display: inline-block;
