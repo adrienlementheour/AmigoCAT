@@ -22,6 +22,7 @@ body.readonly {
 }
 #content-erp {
   padding: 23px 50px 50px 50px;
+  min-width: 500px;
   /* calendar */
 }
 #content-erp .fc-toolbar {
@@ -284,6 +285,10 @@ a.cat-question-mark.hover span {
 }
 .icon-cog:before {
   content: '\e802';
+}
+.s-menu .s-item,
+.sidebar.is-submenu .s-menu .s-item {
+  padding: 0 20px;
 }
 /* @end */
 /* @group form */
