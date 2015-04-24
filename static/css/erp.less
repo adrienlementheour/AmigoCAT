@@ -93,9 +93,30 @@ body{
 	}
 }
 
+.ss-sub {
+  height: auto;
+  overflow: visible;
+  opacity: 1;
+}
+
+.sidebar.is-submenu {
+  padding: 58px 0 0;
+}
+
+#create-project, #parameters-social{
+	padding: 19px 50px 50px;
+}
+
+/*#file-list td, .page-notifs td, .search-results td{
+	padding: 3px 15px 2px 5px;
+}*/
+
 #content-erp{
-	padding: 23px 50px 50px 50px;
+	padding: 19px 50px 50px 50px;
 	min-width: 500px;
+	&.padding-top{
+		padding-top: 18px;
+	}
 	/* calendar */
 	.fc-toolbar{
 		border: none;
@@ -127,6 +148,7 @@ h3{
 		display: inline-block;
 		vertical-align: top;
 	}
+	margin: 3px 0 0 0;
 }
 
 a{
@@ -158,6 +180,7 @@ a{
 			.transition(.3s ease);
 			.box-sizing(border-box);
 			text-align: center;
+			text-rendering: optimizeLegibility;
 			&:hover{
 				background: #fff;
 				color: #008BA6;
@@ -736,7 +759,7 @@ table, .project-entity{
 					border-color: #148900;
 				}
 				&.po-state-action{
-					padding: 12px 0 0 0;
+					padding: 10px 0 0 0;
 				}
 			}
 		}
@@ -824,7 +847,8 @@ table.po-table{
 			}
 		}
 		td{
-			padding: 5px 0;
+			/*padding: 5px 0;*/
+			padding: 5px 0 4px 0;
 			&.active{
 				font-weight: 800;
 			}
@@ -911,7 +935,7 @@ ul.list-tiers{
 	li{
 		display: block;
 		border-bottom: 1px solid #DCDCDC;
-		padding: 12px 0;
+		padding: 10px 0 11px;
 		&.small-padding{
 			padding: 6px 0;
 		}
@@ -1256,7 +1280,7 @@ ul.list-tiers{
     		padding-left: 66.66666%;
     		margin: 60px 0 0 0;
     		a.btn-edit{
-    			margin: 0 0 0 15px;
+    			margin: 3px 0 0 15px;
     		}
     	}
     }
@@ -1337,7 +1361,11 @@ ul.list-tiers{
 }
 
 .calendar-erp .fc-toolbar .fc-left{
-	margin: 7px 0 0 0;
+	margin: 11px 0 0 0;
+}
+
+.fc .fc-widget-header, .fc-widget-header th{
+	margin: 18px 0 0;
 }
 
 /* @end */
@@ -1350,7 +1378,8 @@ table.pending-erp{
 	tr{
         td{
         	vertical-align: middle;
-        	padding: 10px 0;
+        	//padding: 10px 0;
+        	padding: 5px 0;
         	&.col-pending{
 				width: 36%;
 				text-transform: uppercase;
