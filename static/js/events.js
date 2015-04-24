@@ -297,10 +297,11 @@ $j(function() {
                 title: 'Payment received',
                 start: '2015-04-09',
                 end: '2015-04-10',
-                backgroundColor: '#d0e7cc',
+                /*backgroundColor: '#d0e7cc',*/
                 textColor: '#4a4a4a'
             },
             ],
+            //eventColor: '#d0e7cc',
             dayRender: function( date, cell ){ 
                 if(!cell.hasClass('fc-past')){
                     var sisterCell = cell.parents('.fc-bg').siblings('.fc-content-skeleton').find('thead tr').find('td').eq(cell.index()),
