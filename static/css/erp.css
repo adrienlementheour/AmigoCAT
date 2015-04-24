@@ -993,7 +993,8 @@ ul.list-tiers a#btn-decline {
 }
 .po-state-zone .po-col.po-state-date a.cat-question-mark {
   padding: 0;
-  margin: 0 5px 0 3px;
+  margin: 3px 5px 0 3px;
+  text-decoration: none;
 }
 .po-state-zone .po-col.po-state-separator {
   display: block;
