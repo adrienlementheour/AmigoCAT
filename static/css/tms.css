@@ -92,7 +92,7 @@ i {
 }
 .dashboard-main {
   background: transparent;
-  margin: 3px 0 20px 0;
+  margin: 3px 0 30px 0;
   position: relative;
 }
 .dashboard-main .table {
@@ -385,7 +385,6 @@ i {
   font-size: 13px;
   line-height: 9px;
   padding: 6px 14px;
-  letter-spacing: -1px;
 }
 .dashboard-main .dashboard-project-button .some-button.second-some-button {
   margin-left: 11px;
@@ -1785,9 +1784,6 @@ ul.rating-ul li.half {
   vertical-align: top;
   padding-top: 5px;
 }
-.project-container {
-  padding: 24px;
-}
 .project-line {
   position: relative;
   margin-top: 30px;
@@ -1833,7 +1829,7 @@ ul.rating-ul li.half {
 .project-stats-block .table .dashboard-top .td div a .icon-pencil {
   font-size: 10px;
   position: absolute;
-  top: 19px;
+  top: 22px;
   left: 16px;
 }
 .project-stats-block .table .dashboard-top .td div a:hover {
@@ -2828,7 +2824,7 @@ ul.rating-ul li.half {
 #project-progress .progress-item .head .expand {
   position: absolute;
   right: 0px;
-  bottom: -2px;
+  bottom: 4px;
 }
 #project-progress .progress-item .head .progress-dash {
   position: absolute;
@@ -2947,6 +2943,57 @@ ul.rating-ul li.half {
   display: block;
   background: url(../images/tms/oval_arrow.png);
 }
+.expand .btn-arrow{
+  float: none;
+}
+.btn-arrow{
+  color: #9D9D9D;
+  border: 1px solid #9D9D9D;
+  padding: 0;
+  line-height: 12px;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 50%;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 50%;
+  -moz-background-clip: padding;
+  border-radius: 50%;
+  background-clip: padding-box;
+  text-align: center;
+  display: inline-block;
+  margin: 0 2px 0 0;
+  float: right;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.btn-arrow:before{
+  border-color: transparent;
+  border-style: solid;
+  content: "";
+  border-width: 3px 0 3px 4px;
+  border-left-color: #9d9d9d;
+  border-top-color: rgba(157, 157, 157, 0);
+  border-bottom-color: rgba(157, 157, 157, 0);
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  margin: 0 0 0 2px;
+  padding: 0;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.btn-arrow:hover{
+  background: #9D9D9D;
+  color: #fff;
+  padding: 0;
+}
+.btn-arrow:hover:before{
+  border-left-color: #fff;
+}
 .file-icon {
   width: 40px;
   height: 51px;
@@ -3034,7 +3081,7 @@ ul.rating-ul li.half {
   background: url(../images/tms/star_half.png) no-repeat;
 }
 .project-container {
-  padding: 30px;
+  padding: 21px 30px 30px 30px;
 }
 .project-container.details-container {
   padding: 28px 30px 30px 24px;
@@ -3143,6 +3190,7 @@ ul.rating-ul li.half {
 .dashboard-favorites .btn {
   float: right;
   margin-bottom: 3px;
+  padding: 3px 15px;
 }
 .dashboard-favorites .btn.add {
   margin-top: 5px;
@@ -3202,6 +3250,9 @@ ul.rating-ul li.half {
 }
 .dashboard-favorites .client-table .tr .oval_arrow .oval {
   border-radius: 50%;
+}
+.dashboard-favorites .client-table .tr a.btn-arrow{
+  margin-top: 5px;
 }
 .dashboard-deatils-content {
   padding: 0 15px 0 0;
@@ -3271,19 +3322,23 @@ ul.rating-ul li.half {
 }
 .dashboard-info .translator-availability .name,
 .dashboard-info .entity-item-availability .name {
-  line-height: 37px;
+  line-height: 45px;
   color: #4A4A4A;
   font-size: 18px;
-  float: left;
   font-weight: bold;
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
 }
 .dashboard-info .translator-availability .availb,
 .dashboard-info .entity-item-availability .availb {
   line-height: 45px;
-  float: right;
   font-size: 14px;
   font-weight: bold;
-  margin-right: 58px;
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+  float: right;
 }
 .dashboard-info .translator-availability .availb.green,
 .dashboard-info .entity-item-availability .availb.green {
@@ -3411,7 +3466,7 @@ ul.rating-ul li.half {
 }
 .dashboard-info .details-notes h2 .icon-pencil {
   font-size: 10px;
-  margin-left: 3px;
+  margin-left: 8px;
   color: #4A4A4A;
 }
 .dashboard-rate {
@@ -3510,6 +3565,12 @@ ul.rating-ul li.half {
   padding-left: 38px;
   font-size: 14px;
 }
+.dead i{
+  top: 5px;
+}
+.delete-account .controls input{
+  height: 25px;
+}
 .delete-account .control-label {
   font-size: 14px;
   width: 175px;
@@ -3554,7 +3615,7 @@ ul.rating-ul li.half {
   padding: 6px 30px;
 }
 #account-password {
-  padding: 15px 50px 50px 35px;
+  padding: 22px 50px 50px 35px;
 }
 #account-password form {
   border-top: 1px solid #DCDCDC;
@@ -3574,7 +3635,7 @@ ul.rating-ul li.half {
   width: 240px;
 }
 #account-password form .underspaced {
-  margin: 20px 0 0 131px;
+  margin: 20px 0 0 136px;
 }
 #account-password form .underspaced input[type="submit"] {
   padding: 6px 30px;
@@ -3664,4 +3725,34 @@ div.note {
   margin: 0 0 0 70px;
   color: #4A4A4A;
   line-height: 16px;
+}
+
+.search-block{
+  margin: 0 0 34px;
+}
+
+.controls input, .controls textarea{
+  height: 26px;
+}
+
+.control-label {
+  padding: 2px 0 0;
+}
+
+#account-password form .row .controls{
+  margin-left: 5px;
+}
+
+.custom-select-wrapper select, .overrided-select .controls .select{
+  height: 30px!important;
+}
+
+.custom-select-wrapper:before, .overrided-select .controls:before{
+  height: 27px;
+}
+
+.custom-select-wrapper:after, .overrided-select .controls:after{
+  padding: 8px 0 0 8px;
+  height: 21px;
+  right: 9px;
 }
