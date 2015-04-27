@@ -92,7 +92,7 @@ i {
 }
 .dashboard-main {
   background: transparent;
-  margin-bottom: 20px;
+  margin: 3px 0 20px 0;
   position: relative;
 }
 .dashboard-main .table {
@@ -209,36 +209,48 @@ i {
 }
 .dashboard-main .table .project-line-tr.big .circle {
   right: -20px;
-  top: -20px;
-  width: 45px;
-  height: 45px;
+  top: -24px;
+  width: 50px;
+  height: 50px;
   border: 3px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .dashboard-main .table .project-line-tr.big .circle .circle_content {
-  width: 25px;
-  height: 25px;
-  margin: 7px;
-  line-height: 25px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
 }
 .dashboard-main .table .project-line-tr.normal.empty .circle {
-  right: -32px;
+  right: -36px;
 }
 .dashboard-main .table .project-line-tr.normal.full .circle {
   right: 0;
 }
 .dashboard-main .table .project-line-tr.normal .circle {
   right: -16px;
-  top: -16px;
-  width: 32px;
-  height: 32px;
+  top: -17px;
+  width: 36px;
+  height: 36px;
   border: 2px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .dashboard-main .table .project-line-tr.normal .circle .circle_content {
   width: 16px;
   height: 16px;
-  margin: 6px;
   line-height: 17px;
   font-size: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
 }
 .dashboard-main .table .project-line-tr.small {
   font-size: 9px;
@@ -250,17 +262,23 @@ i {
   right: 0;
 }
 .dashboard-main .table .project-line-tr.small .circle {
-  right: -10px;
-  top: -10px;
-  width: 24px;
-  height: 24px;
+  right: -12px;
+  top: -13px;
+  width: 28px;
+  height: 28px;
   border: 2px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .dashboard-main .table .project-line-tr.small .circle .circle_content {
   width: 12px;
   height: 12px;
-  margin: 4px;
   line-height: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
 }
 .dashboard-main .table .project-line-tr .line-tr.red .line .filled {
   background: #DA0000;
@@ -309,7 +327,7 @@ i {
   line-height: 25px;
 }
 .dashboard-main .table .project-line-tr .line-tr.normal.empty .circle {
-  right: -32px;
+  right: -36px;
 }
 .dashboard-main .table .project-line-tr .line-tr.normal.full .circle {
   right: 0;
@@ -317,16 +335,19 @@ i {
 .dashboard-main .table .project-line-tr .line-tr.normal .circle {
   right: -16px;
   top: -16px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border: 2px solid #9C9C9C;
 }
 .dashboard-main .table .project-line-tr .line-tr.normal .circle .circle_content {
   width: 16px;
   height: 16px;
-  margin: 6px;
   line-height: 17px;
   font-size: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
 }
 .dashboard-main .table .project-line-tr .line-tr.small {
   font-size: 9px;
@@ -339,16 +360,19 @@ i {
 }
 .dashboard-main .table .project-line-tr .line-tr.small .circle {
   right: -10px;
-  top: -10px;
-  width: 24px;
-  height: 24px;
+  top: -13px;
+  width: 28px;
+  height: 28px;
   border: 2px solid #9C9C9C;
 }
 .dashboard-main .table .project-line-tr .line-tr.small .circle .circle_content {
   width: 12px;
   height: 12px;
-  margin: 4px;
   line-height: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
 }
 .dashboard-main .dashboard-project-button {
   margin-top: 25px;
@@ -378,9 +402,9 @@ i {
 }
 .dashboard-notification .link,
 .dashboard-workers .link {
-  line-height: 22px;
+  /*line-height: 22px;*/
   float: right;
-  padding: 0 40px;
+  padding: 3px 40px;
 }
 .dashboard-notification .project-entity,
 .dashboard-workers .project-entity {
@@ -466,7 +490,7 @@ i {
   margin-top: 20px;
 }
 .dashboard-workers {
-  margin-top: 33px;
+  margin-top: 60px;
 }
 .dashboard-workers .entity-in .entity-image {
   margin-right: 20px;
@@ -602,8 +626,8 @@ i {
 .dashboard-languages .language-table .tr {
   line-height: 30px;
   border-bottom: 1px solid #DCDCDC;
-  padding-bottom: 4px;
-  padding-top: 4px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   font-size: 14px;
   display: inline-block;
   overflow: hidden;
@@ -642,7 +666,7 @@ i {
 }
 .dashboard-settings {
   position: relative;
-  top: -3px;
+  top: 0px;
 }
 .dashboard-settings .text {
   float: left;
@@ -800,7 +824,7 @@ i {
 .line-tr .line .filled {
   position: absolute;
   height: 3px;
-  top: -1;
+  top: -1px;
   z-index: 1;
 }
 .line-tr .line .filled .circle {
@@ -861,24 +885,30 @@ i {
   line-height: 25px;
 }
 .line-tr.normal.empty .circle {
-  right: -32px;
+  right: -36px;
 }
 .line-tr.normal.full .circle {
   right: 0;
 }
 .line-tr.normal .circle {
-  right: -16px;
-  top: -16px;
-  width: 32px;
-  height: 32px;
+  right: -18px;
+  top: -17px;
+  width: 36px;
+  height: 36px;
   border: 2px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .line-tr.normal .circle .circle_content {
   width: 16px;
   height: 16px;
-  margin: 6px;
   line-height: 17px;
   font-size: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
 }
 .line-tr.small {
   font-size: 9px;
@@ -890,17 +920,23 @@ i {
   right: 0;
 }
 .line-tr.small .circle {
-  right: -10px;
-  top: -10px;
-  width: 24px;
-  height: 24px;
+  right: -12px;
+  top: -12px;
+  width: 28px;
+  height: 28px;
   border: 2px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .line-tr.small .circle .circle_content {
   width: 12px;
   height: 12px;
-  margin: 4px;
   line-height: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
 }
 .openingPopup + .mfp-wrap .mfp-content,
 .paymentPopup + .mfp-wrap .mfp-content {
@@ -3037,7 +3073,7 @@ ul.rating-ul li.half {
   display: block;
   background: url(../images/tms/arrow.png);
   left: 15px;
-  top: 20px;
+  top: 23px;
 }
 .notif-icon {
   width: 16px;
