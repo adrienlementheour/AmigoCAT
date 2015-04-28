@@ -3080,7 +3080,7 @@ div.error {
 
 /* Create project */
 #create-project, #parameters-social {
-    padding:22px 50px 50px;
+    padding: 19px 50px 50px;
     min-width: 800px
 }
 
@@ -3619,7 +3619,7 @@ _:-ms-input-placeholder,:root .overrided-select .controls .select,:root .custom-
 }
 
 #file-list td,.page-notifs td,.search-results td {
-    padding:7px 15px 7px 5px;
+    padding: 5px 15px 5px 5px;
     border-bottom:1px solid #CCC;
     vertical-align:middle;
     font-size:14px

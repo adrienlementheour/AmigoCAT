@@ -453,12 +453,33 @@ $j(function() {
 
     // Function to show file info on progress page
     $(document).ready(function(){
-        $('#project-progress .expand').click(function(){
-            $(this).children('i').toggleClass('icon-oval-arrow-bottom');
+        $('#project-progress .expand a').click(function(){
+            
+            if($(this).hasClass('open')){
+                $(this).css({
+                    '-webkit-transform': 'rotate(0deg)',
+                    '-moz-transform': 'rotate(0deg)',
+                    '-ms-transform': 'rotate(0deg)',
+                    '-o-transform': 'rotate(0deg)',
+                    'transform': 'rotate(0deg)',
+                    'zoom': 1
+                }, 100);
+            }else{
+                $(this).css({
+                    '-webkit-transform': 'rotate(90deg)',
+                    '-moz-transform': 'rotate(90deg)',
+                    '-ms-transform': 'rotate(90deg)',
+                    '-o-transform': 'rotate(90deg)',
+                    'transform': 'rotate(90deg)',
+                    'zoom': 1
+                }, 100);
+            }
+            $(this).toggleClass('open');
             var parent = $(this).parents('.progress-item');
-            $('.progress-item-info', parent).toggle({
+            $('.progress-item-info', parent).slideToggle({
                 duration: 1000
             });
+            return false;
         });
     });
 
