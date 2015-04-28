@@ -3306,6 +3306,9 @@ ul.rating-ul li.half {
   display: block;
   float: right;
 }
+.dashboard-favorites .back-link:hover {
+  color: #9B9B9B;
+}
 .dashboard-favorites .back-link:before {
   content: "";
   display: block;
@@ -3316,6 +3319,14 @@ ul.rating-ul li.half {
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
   border-right: 4px solid #008BA6;
+}
+
+.dashboard-favorites .back-link:hover:before {
+  border-right-color: #9B9B9B;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .dashboard-favorites .client-table {
   margin-bottom: 0;
@@ -3356,7 +3367,7 @@ ul.rating-ul li.half {
   border-radius: 50%;
 }
 .dashboard-favorites .client-table .tr a.btn-arrow{
-  /*margin-top: 5px;*/
+  margin-top: 5px;
 }
 .dashboard-deatils-content {
   padding: 0 15px 0 0;
@@ -3507,6 +3518,9 @@ ul.rating-ul li.half {
 .dashboard-info .left-info div a {
   text-decoration: underline;
 }
+.dashboard-info .left-info div a:hover {
+  color: #9B9B9B;
+}
 .dashboard-info .left-info div a.blue-link {
   width: 100px;
   text-decoration: none;
@@ -3545,6 +3559,12 @@ ul.rating-ul li.half {
 }
 .dashboard-info .right-info div a {
   text-decoration: underline;
+}
+.dashboard-info .right-info div a:hover {
+  color: #9B9B9B;
+}
+.dashboard-info .right-info div a.blue-link:hover {
+  color: #008BA6;
 }
 .dashboard-info .right-info div a.blue-link {
   width: 72px;
@@ -3886,4 +3906,205 @@ div.note {
 
 .module.project-index{
   overflow: visible;
+}
+
+.po-bill {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 0 35px 0;
+  padding: 40px 35px 130px 35px;
+  border: 1px solid #d8d8d8;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+.po-bill .po-bill-status {
+  display: block;
+  width: auto;
+  height: 2px;
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+}
+.po-bill .po-bill-header {
+  display: block;
+}
+.po-bill .po-bill-header .po-bill-title {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 66.66666%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 50px 0 0;
+}
+.po-bill .po-bill-header .po-bill-title.has-ref {
+  width: 33.33333%;
+  padding: 0;
+}
+.po-bill .po-bill-header .po-bill-title h2 {
+  font-size: 36px;
+  color: #707070;
+  font-weight: 800;
+  margin: 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+.po-bill .po-bill-header .po-bill-title h2 span {
+  font-size: 12px;
+  font-weight: normal;
+}
+.po-bill .po-bill-header .po-bill-ref {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 33.33333%;
+  font-weight: normal;
+  font-size: 12px;
+  color: #707070;
+  padding: 0 50px 0 0;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.po-bill .po-bill-header .po-bill-ref .po-ref {
+  display: block;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+.po-bill .po-bill-header .po-bill-date {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 33.33333%;
+  font-weight: 800;
+  font-size: 12px;
+  color: #707070;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+}
+.po-bill .po-bill-header .po-bill-date:before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  display: block;
+  width: 26px;
+  height: 19px;
+  background: url("../images/cat.png") no-repeat 50% 50%;
+}
+.po-bill .po-bill-header .po-bill-date .due-date {
+  font-weight: normal;
+}
+.po-bill .po-bill-header .po-bill-date .late-date {
+  color: #C40821;
+}
+.po-bill .po-bill-from-to {
+  margin: 50px 0 0 0;
+}
+.po-bill .po-bill-from-to ul {
+  display: block;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.po-bill .po-bill-from-to ul li {
+  display: inline-block;
+  vertical-align: top;
+  width: 33.33333%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.po-bill .po-bill-from-to ul li.from {
+  padding-right: 50px;
+}
+.po-bill .po-bill-from-to ul li.contact-info {
+  padding-right: 50px;
+}
+.po-bill .po-bill-from-to ul li h3 {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #4A4A4A;
+  margin: 0 0 10px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+  line-height: 1em;
+}
+.po-bill .po-bill-from-to ul li .po-bill-from-to-content {
+  font-weight: normal;
+  font-size: 12px;
+  color: #707070;
+  line-height: 18px;
+}
+.po-bill .po-bill-from-to ul li .po-bill-from-to-content strong {
+  font-weight: 800;
+  font-size: 14px;
+  color: #707070;
+}
+.po-bill .po-bill-from-to ul li .po-bill-from-to-content .detail-contact .detail-contact-title {
+  font-style: italic;
+}
+.po-bill .po-bill-description {
+  margin: 50px 0 0 0;
+}
+.po-bill .po-bill-description table.table-description {
+  table-layout: fixed;
+}
+.po-bill .po-bill-description table.table-description tr th {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #4A4A4A;
+  font-weight: 800;
+  padding: 10px 0;
+}
+.po-bill .po-bill-description table.table-description tr th.col-description {
+  width: 66.66666%;
+}
+.po-bill .po-bill-description table.table-description tr th.col-qty {
+  width: 13.33333%;
+}
+.po-bill .po-bill-description table.table-description tr th.col-rate {
+  width: 10%;
+}
+.po-bill .po-bill-description table.table-description tr th.col-amount {
+  width: 10%;
+}
+.po-bill .po-bill-description table.table-description tr th:last-of-type {
+  text-align: right;
+}
+.po-bill .po-bill-description table.table-description tr td {
+  padding: 10px 0;
+  font-weight: normal;
+  font-size: 12px;
+  color: #707070;
+  vertical-align: middle;
+}
+.po-bill .po-bill-description table.table-description tr td.strong-title {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.po-bill .po-bill-description table.table-description tr td:last-of-type {
+  text-align: right;
+}
+.po-bill .po-bill-description table.table-description .border-bottom {
+  border-bottom: 1px solid #dcdcdc;
+}
+.po-bill .po-bill-description .bloc-txt-po-bill-description {
+  display: block;
+  color: #707070;
+  font-size: 12px;
+  font-weight: normal;
+  padding-left: 66.66666%;
+  margin: 60px 0 0 0;
+}
+.po-bill .po-bill-description .bloc-txt-po-bill-description a.btn-edit {
+  margin: 3px 0 0 15px;
 }

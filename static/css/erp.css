@@ -1199,6 +1199,9 @@ ul.list-tiers a#btn-decline {
 .po-bill .po-bill-description table.table-description tr th.col-amount {
   width: 10%;
 }
+.po-bill .po-bill-description table.table-description tr th:last-of-type {
+  text-align: right;
+}
 .po-bill .po-bill-description table.table-description tr td {
   padding: 10px 0;
   font-weight: normal;
@@ -1209,6 +1212,9 @@ ul.list-tiers a#btn-decline {
 .po-bill .po-bill-description table.table-description tr td.strong-title {
   font-weight: 800;
   text-transform: uppercase;
+}
+.po-bill .po-bill-description table.table-description tr td:last-of-type {
+  text-align: right;
 }
 .po-bill .po-bill-description table.table-description .border-bottom {
   border-bottom: 1px solid #dcdcdc;
@@ -1445,3 +1451,4 @@ ul#bill-payment li.info-bill-payment {
   font-style: italic;
   color: #AEAEAE;
 }
+/* @end */
