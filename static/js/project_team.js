@@ -38,7 +38,7 @@ $( document ).ready(function() {
 
     function addWorker(e) {
         e.preventDefault();
-
+        
         var $this = $(this),
             workerID = $this.data('user-id');
 
@@ -62,7 +62,7 @@ $( document ).ready(function() {
 
     function deleteWorker(e) {
         e.preventDefault();
-
+        
         var $this = $(this).attr('disabled', true),
             workerID = $this.siblings('a.worker').data('user-id');
 

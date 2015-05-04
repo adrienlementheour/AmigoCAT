@@ -3887,7 +3887,9 @@ table .img .default,.project-entity .img .default {
 }
 
 .orderby-notifs span {
-    line-height:18px
+    line-height:18px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .orderby-notifs ul {

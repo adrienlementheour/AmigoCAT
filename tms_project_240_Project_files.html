@@ -141,12 +141,12 @@
     <li class="sss-item disabled" style="padding-left: 0;"><a href="project">Overview</a></li>
     <li class="sss-item disabled" style="padding-left: 0;"><a href="notification">Notifications</a></li>
     <li class="sss-item disabled" style="padding-left: 0;"><a href="project/team">Team</a></li>
-    <li class="sss-item disabled" style="padding-left: 0;"><a href="project/files">Files</a></li>
-    <li class="sss-item active" style="padding-left: 0;"><a href="project/invoice">Invoice</a></li>
+    <li class="sss-item active" style="padding-left: 0;"><a href="project/files">Files</a></li>
+    <li class="sss-item disabled" style="padding-left: 0;"><a href="project/invoice">Invoice</a></li>
     <li class="sss-item disabled" style="padding-left: 0;"><a href="project/progress">Progress</a></li>
     <li class="sss-item disabled" style="padding-left: 0;"><a href="project/settings">Settings</a></li>
     <li class="add-project-sidebar">
-        <a>+ <span>Add a new project</span></a>
+        <a href="#">+ <span>Add a new project</span></a>
     </li>
 </ul></div>
 <div id="main-container">
@@ -188,6 +188,13 @@
                 </div>
                 <div class="td remove">
                 </div>
+                <div class="td export">
+                    <a class="cat-link" href="#"></a>
+                </div>
+                <div class="td actions">  
+                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
+                    <input type="file" name="add_file_0" class="hidden-element">
+                </div>
             </div>
             <div class="tr file">
                 <div class="td name">My file to translate's name (0%)</div>
@@ -212,17 +219,22 @@
                     </div>
                 </div>
                 <div class="td remove">
-                    <input type="button" name="remove_language" value="× Remove" class="btn" id="remove">
+                    <!--<input type="button" name="remove_language" value="× Remove" class="btn" id="remove">-->
+                </div>
+                <div class="td export">
+                    <a class="cat-link" href="#"></a>
+                </div>
+                <div class="td actions">  
+                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
+                    <input type="file" name="add_file_0" class="hidden-element">
                 </div>
             </div>
         </div>
 
         <div class="add-another">
             <input type="button" name="remove_language" value="+ Add another file" class="btn" id="remove">
-        </div>
-
-        <div class="upload-files">
-            <a class="blue-link big" href="#">Upload selected files</a>
+            <button name="download_file" class="btn btn-download-files-container"><i class="cat-download"></i>Download All</button>
+            <input type="file" name="add_file_0" class="hidden-element">
         </div>
     </div>
 </div>

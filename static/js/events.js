@@ -415,10 +415,15 @@ $j(function() {
             callbacks: {
                 open: function () {
                     var parentPopup = $(this);
-
+                    if($('#go-back-workers').length) {
+                        $('#go-back-workers').click(function(){
+                            $('.mfp-bg').removeClass('viewWorkerPopup').addClass('addWorkerPopup');
+                        });
+                    }
                     if($('.viewWorkerPopup-link').length) {
                         $('.viewWorkerPopup-link').click(function(){
                             $('.mfp-bg').removeClass('addWorkerPopup').addClass('viewWorkerPopup');
+                            
                         });
                         $('.viewWorkerPopup-link').magnificPopup({
                             type: 'inline',

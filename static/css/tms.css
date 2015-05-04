@@ -91,6 +91,9 @@ i {
   min-width: 400px;
   float: none;
 }
+.wrapper-dashboard{
+  min-width: 700px;
+}
 .dashboard-main {
   background: transparent;
   margin: 3px 0 30px 0;
@@ -1375,6 +1378,7 @@ i {
 .deliveringPopup + .mfp-wrap .mfp-content {
   min-width: 273px;
   min-height: 200px;
+  width: auto;
 }
 .deliveringPopup + .mfp-wrap .mfp-content .inside-content {
   padding: 30px;
@@ -1391,7 +1395,7 @@ i {
   padding: 12px 0;
 }
 .contactPopup + .mfp-wrap .mfp-content .inside-content .underspaced {
-  margin: 12px 0 0 90px;
+  margin: 12px 0 0 80px;
 }
 .contactPopup + .mfp-wrap .mfp-content .inside-content .control-label {
   width: 13%;
@@ -1404,6 +1408,7 @@ i {
 }
 .contactPopup + .mfp-wrap .mfp-content .inside-content textarea {
   width: 100%;
+  height: 256px;
 }
 .deliveringNoInvoicePopup + .mfp-wrap .mfp-content {
   width: 40%;
@@ -1594,7 +1599,7 @@ ul.rating-ul li.half {
   min-height: 285px;
 }
 .pmPopup + .mfp-wrap .mfp-content .inside-content {
-  padding: 30px;
+  padding: 15px 30px 30px 30px;
 }
 .pmPopup + .mfp-wrap .mfp-content .role .control-select {
   position: relative;
@@ -1679,17 +1684,23 @@ ul.rating-ul li.half {
   width: 10%;
 }
 .form-bottom-line-table .table .tr .td.count .circle {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border: 2px solid #9C9C9C;
-  margin-top: 5px;
   border-radius: 50%;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .form-bottom-line-table .table .tr .td.count .circle .circle_content {
-  width: 15px;
-  height: 15px;
-  margin: 3px;
-  line-height: 14px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  line-height: 16px;
   border-radius: 50%;
   color: white;
   font-size: 10px;
@@ -1708,7 +1719,7 @@ ul.rating-ul li.half {
   width: 100%;
   margin: 0;
   height: 25px;
-  line-height: 19px;
+  line-height: 25px;
   font-size: 14px;
 }
 .form-bottom-line-table .table .tr.head {
@@ -1721,6 +1732,7 @@ ul.rating-ul li.half {
 }
 .form-bottom-line-table .table .tr.worker .td {
   line-height: 35px;
+  vertical-align: middle;
 }
 .form-bottom-line-table .table .tr.worker .td.client {
   font-size: 15px;
@@ -2215,6 +2227,7 @@ ul.rating-ul li.half {
 }
 .files-container {
   padding: 20px 30px 30px 40px;
+  min-width: 850px;
 }
 .files-container h2 {
   color: #4A4A4A;
@@ -2322,8 +2335,11 @@ ul.rating-ul li.half {
   float: none;
   vertical-align: baseline;
 }
+.files-container .table .tr .td{
+  vertical-align: middle;
+}
 .files-container .table .tr .td.name {
-  width: 37%;
+  width: 30%;
 }
 .files-container .table .tr .td.format {
   width: 8%;
@@ -2334,7 +2350,15 @@ ul.rating-ul li.half {
 }
 .files-container .table .tr .td.remove {
   text-align: right;
+  width: 3%;
+}
+.files-container .table .tr .td.export {
+  width: 4%;
+  float: none;
+}
+.files-container .table .tr .td.actions {
   width: 12%;
+  text-align: right;
 }
 .files-container .table .tr.head {
   color: #9B9B9B;
@@ -2354,11 +2378,15 @@ ul.rating-ul li.half {
 .files-container .add-another {
   margin-top: 10px;
 }
+.files-container .add-another .btn-download-files-container{
+  float: right;
+}
 .files-container .upload-files {
   margin-top: 40px;
 }
 .invoice-container {
   padding: 26px 40px 40px 40px;
+  min-width: 850px;
 }
 .invoice-container h2 {
   color: #4A4A4A;
@@ -2818,6 +2846,7 @@ ul.rating-ul li.half {
 }
 #project-team {
   padding: 15px 40px 50px 40px;
+  min-width: 850px;
 }
 #project-team h3 {
   color: #4A4A4A;
@@ -2825,12 +2854,10 @@ ul.rating-ul li.half {
 }
 #project-progress {
   padding: 15px 20px 50px 40px;
+  min-width: 700px;
 }
 #project-progress h3 {
   color: #4A4A4A;
-}
-#project-progress {
-  min-width: 670px;
 }
 #project-progress hr {
   border-top: 1px #DCDCDC solid;
@@ -2895,7 +2922,7 @@ ul.rating-ul li.half {
   color: #4A4A4A;
 }
 #project-progress .progress-item .progress-item-info .info-group.none-progress {
-  opacity: 0.6;
+  color: #919191;
 }
 #project-progress .progress-item .progress-item-info .info-group::after {
   visibility: hidden;
@@ -3186,6 +3213,7 @@ ul.rating-ul li.half {
 }
 .project-container {
   padding: 21px 30px 30px 30px;
+  min-width: 850px;
 }
 .project-container.details-container {
   padding: 28px 30px 30px 24px;
@@ -3244,6 +3272,7 @@ ul.rating-ul li.half {
 }
 #create-client {
   padding: 22px 50px 50px 35px;
+  min-width: 800px;
 }
 #create-client form {
   min-width: 800px;
@@ -3259,24 +3288,37 @@ ul.rating-ul li.half {
 }
 #create-client .controls input::-webkit-input-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .controls input:-moz-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .controls input:-ms-input-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .controls textarea::-webkit-input-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .controls textarea::-moz-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .controls textarea:-ms-input-placeholder {
   font-style: italic;
+  color: #D0D0D0;
+  font-weight: normal;
 }
 #create-client .edit-client-company {
   margin-bottom: 37px;
+  position: relative;
 }
 .search-block .h-form input {
   border-radius: 2px;
@@ -3703,6 +3745,7 @@ ul.rating-ul li.half {
 }
 #account-info {
   padding: 15px 50px 50px 35px;
+  min-width: 700px;
 }
 #account-info h3 {
   margin: 0 0 0 3px;
@@ -3724,9 +3767,12 @@ ul.rating-ul li.half {
 #account-info form .row .controls .select {
   padding: 3px 0 4px 5px;
 }
+.dragPic{
+  top: 8px;
+}
 #account-info form .dragPic {
   right: 27px;
-  top: 123px;
+  top: 8px;
 }
 #account-info form .dragPic .removePic {
   right: 7px;
@@ -3740,6 +3786,7 @@ ul.rating-ul li.half {
 }
 #account-password {
   padding: 22px 50px 50px 35px;
+  min-width: 500px;
 }
 #account-password form {
   border-top: 1px solid #DCDCDC;
@@ -4107,4 +4154,32 @@ div.note {
 }
 .po-bill .po-bill-description .bloc-txt-po-bill-description a.btn-edit {
   margin: 3px 0 0 15px;
+}
+.custom-select-wrapper select, .overrided-select .controls .select{
+  padding: 4px 29px 4px 14px;
+}
+.container-tms-account{
+  min-width: 600px;
+  position: relative;
+}
+.form-project{
+  position: relative;
+}
+.txt-search-block{
+  line-height: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #4A4A4A;
+  font-size: 11px;
+}
+.search-block.entity-list.popup-search-block{
+  background: none;
+  margin: 0;
+  padding: 8px 0;
+}
+.search-block.entity-list.popup-search-block input[type=text]{
+  min-width: 240px;
+}
+.custom-select-wrapper.margin-left, .overrided-select .controls.margin-left{
+  margin-left: 150px;
 }
