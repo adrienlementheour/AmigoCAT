@@ -2227,7 +2227,7 @@ ul.rating-ul li.half {
 }
 .files-container {
   padding: 20px 30px 30px 40px;
-  min-width: 850px;
+  min-width: 800px;
 }
 .files-container h2 {
   color: #4A4A4A;
@@ -2257,6 +2257,25 @@ ul.rating-ul li.half {
   width: 100%;
   position: relative;
   border-bottom: 1px solid #DCDCDC;
+}
+.files-container .table .tr.yellow .assign-line{
+  background-color: #FF9800;
+}
+.files-container .table .tr.red .assign-line{
+  background-color: #DA0000;
+}
+.files-container .table .tr.green .assign-line{
+  background-color: #148900;
+}
+.files-container .table .tr .assign-line{
+  display: block;
+  height: 1px;
+  position: absolute;
+  bottom: -1px;
+}
+.files-container .table .tr.in-progress .td{
+  background-color: #F5F5F5;
+  color: #878787;
 }
 .files-container .table .tr .td {
   display: table-cell;
@@ -2295,6 +2314,10 @@ ul.rating-ul li.half {
   margin-right: 0;
   float: none;
   vertical-align: baseline;
+}
+.files-container .table .tr .td.source .control-select .worker-select:disabled,
+.files-container .table .tr .td.target .control-select .worker-select:disabled {
+  background-color: #E9E9E9;
 }
 .files-container .table .tr .td.source .control-select:after,
 .files-container .table .tr .td.target .control-select:after {
@@ -2337,9 +2360,18 @@ ul.rating-ul li.half {
 }
 .files-container .table .tr .td{
   vertical-align: middle;
+  padding: 5px 0;
 }
 .files-container .table .tr .td.name {
   width: 30%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 8px;
+}
+.files-container .table .tr .td.name .upload-in-progress{
+  font-style: italic;
+  color: #343434;
 }
 .files-container .table .tr .td.format {
   width: 8%;
@@ -2349,10 +2381,11 @@ ul.rating-ul li.half {
   text-align: center;
 }
 .files-container .table .tr .td.remove {
-  text-align: right;
+  text-align: center;
   width: 3%;
 }
 .files-container .table .tr .td.export {
+  text-align: center;
   width: 4%;
   float: none;
 }
@@ -4182,4 +4215,16 @@ div.note {
 }
 .custom-select-wrapper.margin-left, .overrided-select .controls.margin-left{
   margin-left: 150px;
+}
+a.btn-remove{
+  font-size: 13px;
+  color: #9B9B9B;
+}
+a.btn-remove:hover, a.btn-remove:focus{
+  color: #008ba6;
+}
+.export a{
+  font-size: 13px;
+  color: #9B9B9B;
+  padding: 0;
 }

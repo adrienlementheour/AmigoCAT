@@ -168,10 +168,13 @@
                 <div class="td arrow"></div>
                 <div class="td target">Target</div>
                 <div class="td remove"></div>
+                <div class="td export"></div>
+                <div class="td actions"></div>
             </div>
 
-            <div class="tr file">
-                <div class="td name">My file to translate's name (38%)</div>
+            <div class="tr file yellow">
+                <div class="assign-line" style="width: 38%"></div>
+                <div class="td name">My file 1 (38%)</div>
                 <div class="td format">.pdf</div>
                 <div class="td source">
                     <div class="selected-language">
@@ -187,6 +190,7 @@
                     </div>
                 </div>
                 <div class="td remove">
+                    <a class="btn-remove" href="#">✕</a>
                 </div>
                 <div class="td export">
                     <a class="cat-link" href="#"></a>
@@ -197,7 +201,8 @@
                 </div>
             </div>
             <div class="tr file">
-                <div class="td name">My file to translate's name (0%)</div>
+                <div class="assign-line" style="width: 0%"></div>
+                <div class="td name">My file 2 (0%)</div>
                 <div class="td format">.pdf</div>
                 <div class="td source">
                     <div class="control-select">
@@ -219,7 +224,7 @@
                     </div>
                 </div>
                 <div class="td remove">
-                    <!--<input type="button" name="remove_language" value="× Remove" class="btn" id="remove">-->
+                    <a class="btn-remove" href="#">✕</a>
                 </div>
                 <div class="td export">
                     <a class="cat-link" href="#"></a>
@@ -227,6 +232,34 @@
                 <div class="td actions">  
                     <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
                     <input type="file" name="add_file_0" class="hidden-element">
+                </div>
+            </div>
+            <div class="tr file in-progress">
+                <div class="td name">My file 3 <span class="upload-in-progress">[upload in progress]</span></div>
+                <div class="td format">.pdf</div>
+                <div class="td source">
+                    <div class="control-select">
+                        <select class="worker-select" disabled="disabled">
+                            <option value="—">—</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="td arrow">
+                    &rarr;
+                </div>
+                <div class="td target">
+                    <div class="control-select">
+                        <select class="worker-select" disabled="disabled">
+                            <option value="—">—</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="td remove">
+                    <a class="btn-remove" href="#">✕</a>
+                </div>
+                <div class="td export">
+                </div>
+                <div class="td actions">
                 </div>
             </div>
         </div>
