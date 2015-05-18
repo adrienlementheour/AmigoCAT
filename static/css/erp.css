@@ -1127,6 +1127,9 @@ ul.list-tiers a#btn-decline {
 .po-bill .po-bill-header .po-bill-date .late-date {
   color: #C40821;
 }
+.po-bill .po-bill-header .po-bill-date .paid-date {
+  color: #148900;
+}
 .po-bill .po-bill-from-to {
   margin: 50px 0 0 0;
 }
@@ -1450,5 +1453,70 @@ ul#bill-payment li.info-bill-payment {
   padding: 10px 0;
   font-style: italic;
   color: #AEAEAE;
+}
+ul#bill-payment li.bill-po-state {
+  width: 110%;
+  margin-left: -5%;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state {
+  margin: 20px 0 0 0;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col {
+  display: inline-block;
+  vertical-align: middle;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state {
+  padding: 4px 10px;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  border-radius: 4px;
+  background-clip: padding-box;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.new {
+  color: #C2C2C2;
+  border-color: #C2C2C2;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.accepted {
+  color: #148900;
+  border-color: #148900;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.declined {
+  color: #C40821;
+  border-color: #C40821;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.late {
+  color: #C40821;
+  border-color: #C40821;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.paid {
+  color: #148900;
+  border-color: #148900;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state.pending {
+  color: #008BA6;
+  border-color: #008BA6;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state-date {
+  color: #707070;
+  font-size: 12px;
+  margin: 0 0 0 5px;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state-date i {
+  font-style: italic;
+}
+ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state-date a.cat-question-mark {
+  padding: 0;
+  margin: 3px 5px 0 3px;
+  text-decoration: none;
 }
 /* @end */

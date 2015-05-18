@@ -1180,6 +1180,9 @@ ul.list-tiers{
 			.late-date{
 				color: #C40821;
 			}
+			.paid-date{
+				color: #148900;
+			}
     	}
     }
     .po-bill-from-to{
@@ -1520,12 +1523,69 @@ ul#bill-payment{
 					vertical-align: middle;
 				}
 			}
-			
 		}
 		&.info-bill-payment{
 			padding: 10px 0;
 			font-style: italic;
 			color: #AEAEAE;
+		}
+		&.bill-po-state{
+			width: 110%;
+			margin-left: -5%;
+			.zone-bill-po-state{
+				margin: 20px 0 0 0;
+				.po-col{
+					display: inline-block;
+					vertical-align: middle;
+					&.po-state{
+						padding: 4px 10px;
+						border-style: solid;
+						border-width: 2px;
+						font-size: 16px;
+						font-weight: 800;
+						text-transform: uppercase;
+						.box-sizing(border-box);
+						.border-radius(4px);
+						&.new{
+							color: #C2C2C2;
+							border-color: #C2C2C2;
+						}
+						&.accepted{
+							color: #148900;
+							border-color: #148900;
+						}
+						&.declined{
+							color: #C40821;
+							border-color: #C40821;
+						}
+						&.late{
+							color: #C40821;
+							border-color: #C40821;
+						}
+						&.paid{
+							color: #148900;
+							border-color: #148900;
+						}
+						&.pending{
+							color: #008BA6;
+							border-color: #008BA6;
+						}
+					}
+					&.po-state-date{
+						color: #707070;
+						font-size: 12px;
+						margin: 0 0 0 5px;
+						i {
+						  font-style: italic;
+						}
+						a.cat-question-mark{
+							padding: 0;
+							margin: 3px 5px 0 3px;
+							text-decoration: none;
+						}
+					}
+				}
+			}
 		}
 	}
 }
