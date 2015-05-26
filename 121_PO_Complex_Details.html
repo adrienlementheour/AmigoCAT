@@ -151,93 +151,109 @@
 
     <div id="main-container">
       <div id="content-erp">
-        <div class="zone-table">
-          <h3 class="border-bottom">PURCHASE ORDER 102 - PROJECT COBRA</h3>
-          <ul class="list-tiers list-tiers-left">
-            <li>
-              <span class="list-title">NEW WORDS</span><span class="list-content">1250</span>
-            </li>
-            <li>
-              <span class="list-title">100%</span><span class="list-content">253</span>
-            </li>
-            <li>
-              <span class="list-title">60 to 90% <a href="#" class="cat-question-mark"></a></span><span class="list-content">230</span>
-            </li>
-          </ul><ul class="list-tiers list-tiers-center">
-            <li>
-              <span class="list-title">CLIENT</span><span class="list-content">Facebook</span>
-            </li>
-            <li>
-              <span class="list-title">DEADLINE</span><span class="list-content">Feb 5, 15</span>
-            </li>
-            <li class="small-padding">
-              <span class="list-title">BUDGET</span><span class="list-content big">$3000</span>
-            </li>
-          </ul><ul class="list-tiers list-tiers-right">
-            <li>
-              <span class="list-title">YOUR AVAILABILITY</span><span class="list-content">20h</span>
-            </li>
-            <li>
-              <span class="list-title">IF YOU TAKE THE JOB</span><span class="list-content red">0h</span>
-            </li>
-            <li>
-              <span class="zone-btn-left"><a id="btn-accept" class="btn blue-btn" href="">See Purchase Order</a></span><span class="zone-btn-right"><a id="btn-decline" class="btn grey-btn" href="">Decline</a></span>
-            </li>
-          </ul>
+        <div class="po new">
+          <div class="zone-title border-bottom clearfix">
+            <h3>PURCHASE ORDER 102</h3>
+            <ul class="links-title-list">
+              <li><a class="cat-preferences" href="#"></a></li>
+              <li><a class="cat-print" href="#"></a></li>
+              <li><a class="cat-link" href="#"></a></li>
+            </ul>
+          </div>
+          <div class="po-state-zone">
+            <div class="po-state-zone-left">
+              <div class="po-col po-state">New</div>
+              <div class="po-col po-state-date"><i>on</i> Feb. 6, 2015</div>
+            </div>
+            <div class="po-col po-state-separator"></div>
+            <div class="po-state-zone-right">
+              <div class="po-col po-state-action"><a class="underline margin-right" href="#">Decline</a> <i>or</i> <a class="btn blue-btn big-btn margin-left big-padding" href="">Accept</a></div>
+            </div>
+          </div>
+          <div class="po-bill">
+            <div class="po-bill-status"></div>
+            <div class="po-bill-header">
+              <div class="po-bill-title">
+                <h2>Purchase Order <span>#102</span></h2>
+              </div><div class="po-bill-date">Feb. 5, 2015</div>
+            </div>
+            <div class="po-bill-from-to">
+              <ul>
+                <li class="from">
+                  <h3>From</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Facebook</strong><br />
+                    1 Hacker Way,<br />
+                    California 94025<br />
+                    USA<br /><br />
+                    VAT. 10596540152
+                  </div>
+                </li><li class="contact-info">
+                  <h3>Contact info</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Mark Zuckerberg</strong><br />
+                    <div class="detail-contact"><span class="detail-contact-title">Email : </span><span class="detail-contact-content">mark@facebook.com</span></div>
+                    <div class="detail-contact"><span class="detail-contact-title">Skype : </span><span class="detail-contact-content">mark_z</span></div>
+                    <a class="underline" href="#">Send a message</a>
+                  </div>
+                </li><li class="to">
+                  <h3>To</h3>
+                  <div class="po-bill-from-to-content">
+                    <strong>Nicolas Gregoire</strong><br />
+                    7, rue Ecorchard<br />
+                    44000 Nantes<br />
+                    FRANCE<br /><br />
+                    VAT. 10596540152
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="po-bill-description">
+              <table class="table-description">
+                <tr class="border-bottom">
+                  <th class="col-description">Description</th>
+                  <th class="col-qty">QTY</th>
+                  <th class="col-rate">Rate</th>
+                  <th class="col-amount">Amount</th>
+                </tr>
+                <tr class="border-bottom">
+                  <td>Translation - No match</td>
+                  <td>1000</td>
+                  <td>0,15€</td>
+                  <td>150€</td>
+                </tr>
+                <tr class="border-bottom">
+                  <td>Translation - 90% match</td>
+                  <td>500</td>
+                  <td>0,13€</td>
+                  <td>130€</td>
+                </tr>
+                <tr class="border-bottom">
+                  <td>Translation - 80% match</td>
+                  <td>1000</td>
+                  <td>0,10€</td>
+                  <td>100€</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="border-bottom strong-title">Sub. total</td>
+                  <td class="border-bottom">150€</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="border-bottom strong-title">VAT. 20%</td>
+                  <td class="border-bottom">30€</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="border-bottom strong-title">Total</td>
+                  <td class="border-bottom  strong-title">180€</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="zone-table">
-          <h3 class="inline">File(s)</h3>
-          <a href="#" class="btn btn-right"><i class="cat-download"></i>All</a>
-          <form enctype="multipart/form-data" method="POST" id="file-list-form">
-            <input type="hidden" name="is_finish" class="hidden-element">
-            <table id="file-list">
-              <tbody>
-                <tr class="headers">
-                  <th class="col-name">Name</th>
-                  <th class="col-format">Format</th>
-                  <th class="col-source">Source</th>
-                  <th class="col-arrow"></th>
-                  <th class="col-target">Target</th>
-                  <th class="col-download"></th>
-                </tr>
-                <tr class="file-meta newfile">    
-                  <td>File 1</td>    
-                  <td>.pdf</td>    
-                  <td class="col-source">
-                    French
-                  </td>    
-                  <td class="arrow">→</td>    
-                  <td class="col-target">
-                    English
-                  </td>     
-                  <td class="actions">  
-                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
-                    <input type="file" name="add_file_0" class="hidden-element">
-                  </td>
-                </tr>
-                <tr class="file-meta newfile">    
-                  <td>File 2</td>    
-                  <td>.pdf</td>    
-                  <td class="col-source">
-                    French
-                  </td>    
-                  <td class="arrow">→</td>    
-                  <td class="col-target">
-                    English
-                  </td>     
-                  <td class="actions">  
-                    <button name="download_file" class="btn"><i class="cat-download"></i>Download</button>
-                    <input type="file" name="add_file_0" class="hidden-element">
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="33nSfPP1V4DDoxFMWld5DP66GFIG5aOO"></div>
-          </form>
-        </div>
-        <h3 class="border-bottom">Calendar preview</h3>
-          <div id='calendar-erp'></div>
-     </div>
+      </div>
     </div>
             
     <script type="text/javascript" src="static/js/project_add-files.js"></script>

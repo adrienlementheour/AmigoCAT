@@ -74,6 +74,20 @@ h3.inline {
   display: inline-block;
   vertical-align: top;
 }
+.type-page h4 {
+  color: #4A4A4A;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  padding: 0;
+  margin: 40px 0 20px 0;
+}
+.type-page h4:first-of-type {
+  margin-top: 30px;
+}
+.type-page iframe {
+  margin: 20px 0 20px 0;
+}
 a.underline {
   text-decoration: underline;
 }
@@ -111,6 +125,9 @@ a.btn.blue-btn {
 a.btn.blue-btn:hover {
   background: #fff;
   color: #008BA6;
+}
+a.btn.blue-btn.big-padding {
+  padding: 0 38px;
 }
 a.btn.grey-btn {
   background-color: #707070;
@@ -911,19 +928,22 @@ ul.list-tiers.list-tiers-right li:last-of-type {
   border-bottom: none;
   padding-top: 10px;
 }
-ul.list-tiers .zone-btn-left,
-ul.list-tiers .zone-btn-right {
+ul.list-tiers .zone-btn-left {
   display: inline-block;
   vertical-align: top;
-  width: 50%;
+  width: 65%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-ul.list-tiers .zone-btn-left {
   padding: 0 7px 0 0;
 }
 ul.list-tiers .zone-btn-right {
+  display: inline-block;
+  vertical-align: top;
+  width: 35%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0 0 0 7px;
 }
 ul.list-tiers a#btn-accept,
@@ -932,6 +952,7 @@ ul.list-tiers a#btn-decline {
   vertical-align: top;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 #content-erp .file-meta .arrow {
   text-align: left;
