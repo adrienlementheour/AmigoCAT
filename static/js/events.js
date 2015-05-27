@@ -407,6 +407,13 @@ $j(function() {
             mainClass: 'selectClientPopup'
         });
     }
+    if($('.remindMePop-link').length) {
+        $('.remindMePop-link').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            mainClass: 'remindMePop'
+        });
+    }
     if($('.addWorkerPopup-link').length) {
         $('.addWorkerPopup-link').magnificPopup({
             type: 'inline',

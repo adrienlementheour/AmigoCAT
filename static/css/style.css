@@ -3499,7 +3499,7 @@ _:-ms-input-placeholder,:root .overrided-select .controls .select,:root .custom-
     color:#fff
 }
 
-.some-button {
+.some-button, .some-reverse-button{
     border-radius:20px;
     background:#008ba6;
     padding: 5px 0;
@@ -3510,25 +3510,43 @@ _:-ms-input-placeholder,:root .overrided-select .controls .select,:root .custom-
     -o-transition:.3s ease;
     transition:.3s ease
 }
+.some-reverse-button{
+    background: #fff;
+}
 
-.some-button:hover {
+.some-button:hover, .some-reverse-button:hover {
     background:#fff;
     -webkit-transition:.3s ease;
     -moz-transition:.3s ease;
     -o-transition:.3s ease;
     transition:.3s ease
 }
+.some-button:hover a{
+    color:#008ba6!important
+}
+.some-reverse-button:hover{
+    background: #008ba6;
+}
+.some-reverse-button:hover a{
+    color: #fff !important;
+}
 
-.some-button a {
+.some-button a, .some-reverse-button a {
     color:#fff!important;
     padding:0 20px;
     white-space:nowrap;
     text-decoration:none;
     font-size:16px
 }
+.some-reverse-button a{
+    color: #008ba6 !important;
+}
 
 .some-button a:hover,.some-button a:focus {
     color:#008ba6!important
+}
+.some-reverse-button a:hover, .some-reverse-button a:focus{
+    color: #fff !important;
 }
 
 .underspaced {
@@ -3537,6 +3555,37 @@ _:-ms-input-placeholder,:root .overrided-select .controls .select,:root .custom-
 
 .bigMargin {
     margin:30px 0 0
+}
+
+a.white-btn {
+  border: 1px solid #DCDCDC;
+  padding: 0 14px;
+  height: 28px;
+  margin: 0 0 0 10px;
+  background: #F7F7F7;
+  color: #9B9B9B;
+  float: right;
+  text-align: center;
+  display: inline-block;
+  border-radius: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 30px;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+a.white-btn.big-padding {
+  padding: 0 38px;
+}
+a.white-btn:hover {
+  border-color: #fff;
+  color: #fff;
+  background: #008BA6;
 }
 
 /* Add picture */
@@ -4411,6 +4460,11 @@ table .img .default,.project-entity .img .default {
     overflow:hidden
 }
 
+.box-list .know{
+    font-style: italic;
+    color: #008aa6;
+}
+
 .box-list a img {
     -webkit-transition:none;
     -moz-transition:none;
@@ -4435,6 +4489,9 @@ table .img .default,.project-entity .img .default {
     background:url(../images/stars.png) no-repeat;
     color:#4a4a4a;
     display:block
+}
+.note-blue{
+    background:url(../images/blue-stars.png) no-repeat;
 }
 
 .note4 {

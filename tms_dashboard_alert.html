@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="This is a demo installation of amigoCAT beta." />
-
+    
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
     <link rel="stylesheet" href="static/css/reset.css" type="text/css" />
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
     <link rel="stylesheet" href="static/css/tms.css" type="text/css" />
@@ -125,7 +126,7 @@
     <div class="warning-actions">
       <a class="white-btn" href="#">Pay now</a>
       <i>or</i>
-      <a href="#">remind me later</a>
+      <a href="#remindMe" class='remindMePop-link'>remind me later</a>
     </div>
   </div>
 </div>
@@ -632,6 +633,20 @@
 </div>
 
 </div>
+</div>
+
+<div id="remindMe" class="mfp-hide">
+    <h2>Remind me later</h2>
+    <div class="inside-content">
+        <p>Are you sure ? This invoice is <strong>45-days late !</strong></p>
+        <div class="some-button">
+            <a href="">Pay now</a>
+        </div>
+        <i>or</i>
+        <div class="some-reverse-button">
+            <a href="">remind me later anyway</a>
+        </div>
+    </div>
 </div>
 
 <div id="postcontent"></div></div>

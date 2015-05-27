@@ -2020,7 +2020,7 @@ ul.rating-ul li.half {
   display: block;
   padding: 20px 20px 30px;
   position: relative;
-  height: 70px;
+  height: 80px;
 }
 .box-list .worker-item-hover {
   display: none;
@@ -3985,12 +3985,6 @@ div.note {
   width: 26px;
 }
 
-.custom-select-wrapper:after, .overrided-select .controls:after{
-  padding: 7px 0 0 8px;
-  height: 22px;
-  right: 10px;
-}
-
 .loupeBtn {
   top: 1px;
   right: 2px;
@@ -4374,3 +4368,41 @@ a.btn-remove:hover, a.btn-remove:focus{
 .warning-actions a:hover{
   color: #fff;
 }
+
+.remindMePop .mfp-content{
+  width: 30%;
+  min-width: 500px;
+  min-height: 235px;
+}
+.remindMePop .inside-content{
+  text-align: center;
+}
+.remindMePop i, .nobody i{
+  cursor: auto;
+  font-style: italic;
+  padding: 0 15px;
+}
+.remindMePop p{
+  margin: 10px 0 35px;
+}
+
+.mfp-content .nobody{
+  text-align: center;
+}
+.mfp-content .white-btn{
+  float: none;
+}
+.nobody p{
+  margin: 0 0 50px;
+}
+
+.import-clients{
+  text-align: center;
+  margin: 5% 0 0;
+  padding: 100px 0 0;
+}
+.import-clients p{
+  color: #a7a7a7;
+  font-size: 16px;
+}
+
