@@ -748,7 +748,7 @@ i {
   top: 25px;
   border: 1px solid #DCDCDC;
   border-radius: 15px 0 15px 15px;
-  width: 160px;
+  width: 180px;
   z-index: 2;
 }
 .dashboard-settings .settings-block .block-line {
@@ -4435,7 +4435,7 @@ a.btn-dropdown{
 ul.content-dropdown{
   display: inline-block;
   vertical-align: top;
-  width: 70px;
+  width: 90px;
   height: auto;
   text-align: right;
   -webkit-box-sizing: border-box;
