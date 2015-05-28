@@ -900,17 +900,23 @@ i {
   right: 0;
 }
 .line-tr.big .circle {
-  right: -20px;
-  top: -20px;
-  width: 45px;
-  height: 45px;
+  right: -25px;
+  top: -24px;
+  width: 50px;
+  height: 50px;
   border: 3px solid #9C9C9C;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .line-tr.big .circle .circle_content {
-  width: 25px;
-  height: 25px;
-  margin: 7px;
-  line-height: 25px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
 }
 .line-tr.normal.empty .circle {
   right: -36px;
