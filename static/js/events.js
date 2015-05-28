@@ -770,4 +770,10 @@ $j(function() {
     });
 
     $j('.progres-h2-color').css('color', $j('.progresivline-dash div:first-child').css('background-color'));
+
+    // Click settings //
+    $j('.settings').on('click', function(){
+        $j(this).toggleClass('open');
+        $j('.settings-block').toggleClass('open');
+    });
 });

@@ -740,58 +740,58 @@ i {
   margin-left: 2px;
   display: block;
 }
-.dashboard-settings .settings .settings-block {
+.dashboard-settings .settings-block {
   display: none;
   background: #F7F7F7;
   position: absolute;
-  right: -1px;
+  right: 62px;
   top: 25px;
   border: 1px solid #DCDCDC;
   border-radius: 15px 0 15px 15px;
   width: 153px;
   z-index: 2;
 }
-.dashboard-settings .settings .settings-block .block-line {
+.dashboard-settings .settings-block .block-line {
   position: absolute;
   top: -1px;
   right: 0;
   height: 1px;
-  width: 22px;
+  width: 24px;
   background: #F7F7F7;
   display: block;
   z-index: 3;
 }
-.dashboard-settings .settings .settings-block .tr {
+.dashboard-settings .settings-block .tr {
   height: 32px;
   line-height: 32px;
   padding-left: 10px;
   border-bottom: 1px solid #DCDCDC;
 }
-.dashboard-settings .settings .settings-block .tr:last-child {
+.dashboard-settings .settings-block .tr:last-child {
   border-bottom: none;
 }
-.dashboard-settings .settings .settings-block .tr span {
+.dashboard-settings .settings-block .tr span {
   color: #4A4A4A;
   margin: 0 3px;
 }
-.dashboard-settings .settings .settings-block .tr .grey {
+.dashboard-settings .settings-block .tr .grey {
   color: #9B9B9B;
 }
-.dashboard-settings .settings .settings-block .tr .arrow {
+.dashboard-settings .settings-block .tr .arrow {
   margin-left: 0;
   position: relative;
 }
-.dashboard-settings .settings .settings-block .tr .arrow:after {
+.dashboard-settings .settings-block .tr .arrow:after {
   content: '\0025BE';
   position: absolute;
   right: -6px;
   top: -6px;
   font-size: 14px;
 }
-.dashboard-settings .settings:hover {
+.dashboard-settings .settings.open {
   border-radius: 20px 20px 0 0;
 }
-.dashboard-settings .settings:hover .settings-block {
+.dashboard-settings .settings-block.open {
   display: block;
 }
 .dashboard-settings .switch {
