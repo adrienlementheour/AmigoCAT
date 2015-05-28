@@ -748,7 +748,7 @@ i {
   top: 25px;
   border: 1px solid #DCDCDC;
   border-radius: 15px 0 15px 15px;
-  width: 153px;
+  width: 160px;
   z-index: 2;
 }
 .dashboard-settings .settings-block .block-line {
@@ -4435,7 +4435,7 @@ a.btn-dropdown{
 ul.content-dropdown{
   display: inline-block;
   vertical-align: top;
-  width: 62px;
+  width: 70px;
   height: auto;
   text-align: right;
   -webkit-box-sizing: border-box;
@@ -4447,12 +4447,36 @@ ul.content-dropdown{
   -moz-transition: max-height .3s ease;
   -o-transition: max-height .3s ease;
   transition: max-height .3s ease;
+  position: relative;
+  padding: 0 15px 0 0;
+}
+ul.content-dropdown:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #4A4A4A;
+  pointer-events: none;
+  -webkit-transition: .3s ease-out;
+  -moz-transition: .3s ease-out;
+  -o-transition: .3s ease-out;
+  transition: .3s ease-out;
 }
 ul.content-dropdown.open{
   height: auto;
   overflow: visible;
   max-height: 100px;
 }
+ul.content-dropdown.open:after{
+  border-top-color: transparent;
+  border-bottom: 4px solid #4A4A4A;
+  top: 4px;
+}
+
+
 ul.content-dropdown li{
   display: block;
   margin: 0;
@@ -4467,6 +4491,10 @@ ul.content-dropdown li a{
   -moz-transition: color .3s ease;
   -o-transition: color .3s ease;
   transition: color .3s ease;
+}
+
+ul.content-dropdown li a:active, ul.content-dropdown li a:focus{
+  text-decoration: none;
 }
 
 ul.content-dropdown li a:hover{
