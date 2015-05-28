@@ -653,6 +653,16 @@ $j(function() {
         $(this).html(oldLi);
     });
 
+    $('.content-dropdown').on('click', function(){
+        $(this).toggleClass('open');
+    }).find('li').on('click', function(){
+        var thisLi = $(this).html();
+        var parentAze = $(this).parent();
+        var oldLi = $('.active-content-dropdown',parentAze).html();
+        $('.active-content-dropdown',parentAze).html(thisLi);
+        $(this).html(oldLi);
+    });
+
     // Notifications sidebar
     $('.sidebar-notifs').on('click', '.sss-item > a', window.showLoader);
 
