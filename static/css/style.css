@@ -2120,21 +2120,28 @@ html[dir="rtl"] #zoom {
  * MESSAGES
  */
 /* Alerts from Bootstrap */
-#alerts {
+#alerts, .form.message{
     top:41px;
 /* navbar height + border */
     width:400px;
     left:50%;
     margin-left:-200px;
-    z-index:1001
+    z-index:1001;
+    position: absolute
 }
 
-.alert {
+.alert, div.form.message{
     padding:8px 35px 8px 14px;
-    margin:0 0 1em;
     color:#000;
     background:#ffbd4d;
     border-radius:4px
+}
+.form.message h2{
+    color: #000;
+}
+
+.alert{
+    margin:0 0 1em;
 }
 
 .alert h4 {
@@ -2482,50 +2489,10 @@ input[type="submit"]:hover,input[type="submit"]:focus,input[type="submit"]:activ
 }
 
 /* Form messages */
-.form.message {
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#e5f3f8",endColorstr="#cde7f1");
-    background:-webkit-gradient(linear,left top,left bottom,from(#ffd),to(#ffa));
-    background:-webkit-linear-gradient(top,#e5f3f8,#cde7f1);
-    background:-moz-linear-gradient(top,#e5f3f8,#cde7f1);
-    background:-ms-linear-gradient(top,#e5f3f8,#cde7f1);
-    background:-o-linear-gradient(top,#e5f3f8,#cde7f1);
-    background:linear-gradient(top,#e5f3f8,#cde7f1)
-}
 
-.form.success {
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeffdd",endColorstr="#ccff99");
-    background:-webkit-gradient(linear,left top,left bottom,from(#efd),to(#cf9));
-    background:-webkit-linear-gradient(top,#efd,#cf9);
-    background:-moz-linear-gradient(top,#efd,#cf9);
-    background:-ms-linear-gradient(top,#efd,#cf9);
-    background:-o-linear-gradient(top,#efd,#cf9);
-    background:linear-gradient(top,#efd,#cf9)
-}
-
-.form.error {
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffeeee",endColorstr="#ffcccc");
-    background:-webkit-gradient(linear,left top,left bottom,from(#fee),to(#fcc));
-    background:-webkit-linear-gradient(top,#fee,#fcc);
-    background:-moz-linear-gradient(top,#fee,#fcc);
-    background:-ms-linear-gradient(top,#fee,#fcc);
-    background:-o-linear-gradient(top,#fee,#fcc);
-    background:linear-gradient(top,#fee,#fcc)
-}
 
 .form p.info {
     margin:.3em 0
-}
-
-.form .success {
-    color:#390
-}
-
-.form.message.success {
-    margin-top:100px
-}
-
-.form .error {
-    color:#c33
 }
 
 p.help,span.help_text {
