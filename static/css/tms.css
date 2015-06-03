@@ -3991,6 +3991,11 @@ div.note {
   width: 26px;
 }
 
+.custom-select-wrapper:after, .overrided-select .controls:after{
+  height: 22px;
+  padding: 7px 0 0 13px;
+}
+
 .loupeBtn {
   top: 1px;
   right: 2px;

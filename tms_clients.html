@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="This is a demo installation of amigoCAT beta." />
-
+    
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
     <link rel="stylesheet" href="static/css/reset.css" type="text/css" />
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
     <link rel="stylesheet" href="static/css/tms.css" type="text/css" />
@@ -219,6 +220,90 @@
             </ul>
         </div>
     </div>
+</div>
+
+<div id="addClient" class="mfp-hide">
+  <h2>Create a client</h2>
+    <form method="post" action="">
+      <div class="inside-content form-project">
+
+          <h3>Company</h3>
+
+          <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='33nSfPP1V4DDoxFMWld5DP66GFIG5aOO' /> </div>
+          <div id="div_id_comp" class="control-group">
+            <label for="id_comp" class="control-label requiredField">Name<span class="asteriskField">*</span></label>
+            <div class="controls">
+              <input id="id_comp" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="overrided-select">
+              <div id="div_id_compCountry" class="control-group">
+                <label for="id_compCountry" class="control-label requiredField">Country<span class="asteriskField">*</span></label>
+                <div class="controls">
+                  <select id="id_compCountrye" class="select" name="source_language">
+                    <option value="">— Select</option>
+                    <option value="101">England</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>    
+
+          <div id="div_id_compUrl" class="control-group">
+            <label for="id_compUrl" class="control-label">Website</label>
+            <div class="controls">
+              <input id="id_compUrl" type="text" class="textinput textInput" name="fullname" maxlength="255" value="www."/> 
+            </div>
+          </div>
+
+          <h3>Contact</h3>        
+
+          <div id="div_id_contactName" class="control-group">
+            <label for="id_contactName" class="control-label requiredField">Name<span class="asteriskField">*</span></label>
+            <div class="controls">
+              <input id="id_contactName" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
+            </div>
+          </div>
+
+          <div id="div_id_contactFunction" class="control-group">
+            <label for="id_contactFunction" class="control-label">Function</label>
+            <div class="controls">
+              <input id="id_contactFunction" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
+            </div>
+          </div>
+
+          <div id="div_id_contactPhone" class="control-group">
+            <label for="id_contactPhone" class="control-label requiredField">Phone<span class="asteriskField">*</span></label>
+            <div class="controls">
+              <input id="id_contactPhone" type="text" class="textinput textInput" name="fullname" maxlength="20" /> 
+            </div>
+          </div>
+
+          <div id="div_id_contactEmail" class="control-group">
+            <label for="id_contactEmail" class="control-label requiredField">Email<span class="asteriskField">*</span></label>
+            <div class="controls">
+              <input id="id_contactEmail" type="email" class="textinput textInput" name="fullname" maxlength="255" /> 
+            </div>
+          </div>
+
+          <div id="div_id_contactSkype" class="control-group">
+            <label for="id_contactSkype" class="control-label">Skype</label>
+            <div class="controls">
+              <input id="id_contactSkype" type="text" class="textinput textInput" name="fullname" maxlength="255" /> 
+            </div>
+          </div>
+          
+          </div>
+
+          <div class="bottom-pop">
+            <input type="submit" name="send" value="Create client" />
+          </div>
+
+        </form>
+      </div>
+    </form>
 </div>
 
 <div id="postcontent"></div></div>
