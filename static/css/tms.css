@@ -1114,7 +1114,7 @@ i {
   top: 2px;
     height: 27px;
     width: 26px;
-  
+
   background: #f5f5f5;
   position: absolute;
   pointer-events: none;
@@ -2941,7 +2941,7 @@ ul.rating-ul li.half {
 }
 #project-progress .progress-item .head span.name {
   display: inline-block;
-  width: 15%;
+  width: 30%;
   font-size: 14px;
   font-weight: 600;
   color: #707070;
