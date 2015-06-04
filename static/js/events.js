@@ -94,29 +94,29 @@ $j(function() {
     }
     window.tuneSizes = tuneSizes;
 
-    function slideProjects(nextProjects){
+    function slideProjects(nextProjects, prev, next){
             actualTop = parseInt(projects.css('top'), 10);
             newTop = nextProjects ? actualTop - roundProjectsSidebarHeight : actualTop + roundProjectsSidebarHeight;
 
         projects.stop().animate({top: newTop}, {queue: false});
         
         if(nextProjects && actualTop == initialPosProjects){
-            $j('#prevProjects').fadeIn();
+            prev.fadeIn();
         }
 
         if(!nextProjects && newTop == initialPosProjects){
-            $j('#prevProjects').fadeOut();
+            prev.fadeOut();
         }
 
-        nextProjects && newTop + projectsHeight < $j('#nextProjects').offset().top - headerHeight ? $j('#nextProjects').fadeOut() : $j('#nextProjects').fadeIn();
+        nextProjects && newTop + projectsHeight < next.offset().top - headerHeight ? next.fadeOut() : next.fadeIn();
     }
 
-    function setMenuNavigation(){
+    function setMenuNavigation(next){
         projectsSidebarHeight = sidebar.innerHeight() - initialPosProjects - fixedLinks; 
         nbLiVisible = Math.floor(projectsSidebarHeight/heightLi);
         roundProjectsSidebarHeight = nbLiVisible * heightLi;
 
-        projectsHeight > (roundProjectsSidebarHeight+heightLi) ? $j('#nextProjects').fadeIn() : $j('#nextProjects').fadeOut();
+        projectsHeight > (roundProjectsSidebarHeight+heightLi) ? next.fadeIn() : next.fadeOut();
     }
 
     $j(window).load(function(){
@@ -130,15 +130,36 @@ $j(function() {
             headerHeight = $j('header').innerHeight();
             projectsHeight = projects.innerHeight();
             fixedLinks = 2*heightLi + sidebar.find('li.s-menu').innerHeight();
-            setMenuNavigation();
+            setMenuNavigation($j('#nextProjects'));
 
             $j('#nextProjects').on('click', function(){
-                slideProjects(true);
+                slideProjects(true, $j('#prevProjects'), $j('#nextProjects'));
                 return false;
             });
 
             $j('#prevProjects').on('click', function(){
-                slideProjects(false);
+                slideProjects(false, $j('#prevProjects'), $j('#nextProjects'));
+                return false;
+            });
+        }
+
+        if($j('body').hasClass('sidebar-open') && $j('.sub-projets').length){
+            projects = $j('.sub-projets');
+            initialPosProjects = parseInt(projects.css('top'), 10);
+            sidebar = $j('.is-submenu'); 
+            heightLi = projects.find('li').outerHeight(); 
+            headerHeight = $j('header').innerHeight();
+            projectsHeight = projects.innerHeight();
+            fixedLinks = heightLi + 20;
+            setMenuNavigation($j('#sub-nextProjects'));
+
+            $j('#sub-nextProjects').on('click', function(){
+                slideProjects(true, $j('#sub-prevProjects'), $j('#sub-nextProjects'));
+                return false;
+            });
+
+            $j('#sub-prevProjects').on('click', function(){
+                slideProjects(false, $j('#sub-prevProjects'), $j('#sub-nextProjects'));
                 return false;
             });
         }
@@ -611,7 +632,10 @@ $j(function() {
         tuneSizes();
         window.tunePositions();
         if($j('body').hasClass('sidebar-open') && $j('.projets').length){
-            setMenuNavigation();
+            setMenuNavigation($j('#nextProjects'));
+        }
+        if($j('body').hasClass('sidebar-open') && $j('.sub-projets').length){
+            setMenuNavigation($j('#sub-nextProjects'));
         }
     });
 
@@ -686,6 +710,7 @@ $j(function() {
     // Accordeon sub-sidebar
     $j('.sidebar.is-submenu').find('.s-item').on('click', function(){
         $j(this).toggleClass('is-open').parent().siblings().find('.s-item').removeClass('is-open');
+
         return false;
     });
 
@@ -785,5 +810,43 @@ $j(function() {
     $j('.settings').on('click', function(){
         $j(this).toggleClass('open');
         $j('.settings-block').toggleClass('open');
+    });
+
+    $('#translator-notation').find('.note').on('mousemove', function(e){
+        var oneStarWidth = $(this).width() / 5, starsOffset = $(this).offset(), posMouse = e.pageX - starsOffset.left, note;
+
+        if(posMouse <= oneStarWidth/2){
+            $(this).removeClass().addClass('note note0');
+            note = 0;
+        }
+
+        if(posMouse > oneStarWidth/2 && posMouse <= (oneStarWidth + oneStarWidth/2)){
+            $(this).removeClass().addClass('note note1');
+            note = 1;
+        }
+
+        if(posMouse > (oneStarWidth + oneStarWidth/2) && posMouse <= (2*oneStarWidth + oneStarWidth/2)){
+            $(this).removeClass().addClass('note note2');
+            note = 2;
+        }
+
+        if(posMouse > (2*oneStarWidth + oneStarWidth/2) && posMouse <= (3*oneStarWidth + oneStarWidth/2)){
+            $(this).removeClass().addClass('note note3');
+            note = 3;
+        }
+
+        if(posMouse > (3*oneStarWidth + oneStarWidth/2) && posMouse <= (4*oneStarWidth + oneStarWidth/2)){
+            $(this).removeClass().addClass('note note4');
+            note = 4;
+        }
+
+        if(posMouse > (4*oneStarWidth + oneStarWidth/2)){
+            $(this).removeClass().addClass('note note5');
+            note = 5;
+        }
+
+        $(this).on('click', function(){
+            $(this).off('mousemove').removeClass().addClass('note note-blue note'+note);
+        });
     });
 });

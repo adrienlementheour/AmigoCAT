@@ -670,10 +670,108 @@
                 <button>&#xe005;</button>
             </div>
             <div class="link-block">
-                <input type="button" name="remove_language" value="+ Add worker" class="btn white-btn" id="remove">
+                <!--<input type="button" name="remove_language" value="+ Add worker" class="btn white-btn" id="remove">-->
+                <a href="#addWorker" class='btn popup'>+ Add worker</a>
             </div>
         </div>
     </div>
+</div>
+
+<div id="addWorker" class="mfp-hide">
+  <h2>Invite team</h2>
+    <div class="search-block">
+      <form action="" method="post" class="cssc-form h-item h-form">
+        <label for="id_translate">From</label>
+        <div class="custom-select-wrapper">
+          <select class="source-language" name="translate" id="id_translate">
+            <option value="100">French</option>
+          </select>
+        </div>
+        <label for="id_translateTo">to</label>
+        <div class="custom-select-wrapper">
+          <select class="source-language" name="translateTo" id="id_translateTo">
+            <option value="100">English</option>
+          </select>
+        </div>
+        <div class="custom-select-wrapper bigSelect">
+          <select class="domain" name="domain" id="id_domain">
+            <option value="100">Choose a domain</option>
+          </select>
+        </div>
+        <input type="text" name="searchClient" placeholder="Search for a specific user">
+        <button type="submit">&#xe005;</button>
+      </form>
+    </div>
+      <div class="inside-content list-workers">
+        <div class="box-list">
+          <ul>
+            <li>
+              <a href="">
+                <span class="nom">Bertrand Verylongname</span>
+                <span>5 projects</span>
+                <span class="note note4">4/5</span>
+                <span class="country">Germany</span>
+                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+              </a>
+              <div class="progresivline-dash">
+                <div style="height:2px; width:89%; background: #409032;"></div>
+              </div>
+            </li>
+            <li>
+              <a href="">
+                <i class="top"><i class="icon-star"></i></i>
+                <span class="nom">Bertrand Verylongname</span>
+                <span>5 projects</span>
+                <span class="note note4">4/5</span>
+                <span class="country">Germany</span>
+                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+              </a>
+              <div class="progresivline-dash">
+                <div style="height:2px; width:52%; background: #FBA617;"></div>
+              </div>
+            </li>
+            <li>
+              <a href="">
+                <i class="top"><i class="icon-star"></i></i>
+                <span class="nom">Bertrand Verylongname</span>
+                <span>5 projects</span>
+                <span class="note note4">4/5</span>
+                <span class="country">Germany</span>
+                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+              </a>
+              <div class="progresivline-dash">
+                <div style="height:2px; width:20%; background: #C40821;"></div>
+              </div>
+            </li>
+            <li>
+              <a href="">
+                <i class="top"><i class="icon-star"></i></i>
+                <span class="nom">Bertrand Verylongname</span>
+                <span>5 projects</span>
+                <span class="note note4">4/5</span>
+                <span class="country">Germany</span>
+                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+              </a>
+              <div class="progresivline-dash">
+                <div style="height:2px; width:52%; background: #FBA617;"></div>
+              </div>
+            </li>
+            <li>
+              <a href="">
+                <i class="top"><i class="icon-star"></i></i>
+                <span class="nom">Bertrand Verylongname</span>
+                <span>5 projects</span>
+                <span class="note note4">4/5</span>
+                <span class="country">Germany</span>
+                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+              </a>
+              <div class="progresivline-dash">
+                <div style="height:2px; width:20%; background: #C40821;"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
 </div>
 
 <div id="translatingPopup" class="mfp-hide">
@@ -682,13 +780,13 @@
         <div class="table">
             <div class="tr text">
                 <div class="file">
-                    File 1
+                    File 1 (French)
                 </div>
                 <div class="percent">
-                    39%
+                    39% 
                 </div>
                 <div class="percent-two">
-                    39/100
+                    39/100 
                 </div>
                 <a href="#" class="btn-arrow"></a>
             </div>
@@ -704,7 +802,7 @@
 
             <div class="tr text">
                 <div class="file">
-                    File 2
+                    File 2 (Chinese)
                 </div>
                 <div class="percent">
                     69%
@@ -726,7 +824,7 @@
 
             <div class="tr text">
                 <div class="file">
-                    File 3
+                    File 3 (French)
                 </div>
                 <div class="percent">
                     52%
@@ -748,7 +846,7 @@
 
             <div class="tr text">
                 <div class="file">
-                    File 4
+                    File 4 (English)
                 </div>
                 <div class="percent">
                     89%

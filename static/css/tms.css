@@ -1389,6 +1389,10 @@ i {
 .reviewingPopup + .mfp-wrap .mfp-content .table .tr.text div.file {
   font-size: 15px;
   font-weight: bold;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .translatingPopup + .mfp-wrap .mfp-content .table .tr.text div.icon-arrow,
 .reviewingPopup + .mfp-wrap .mfp-content .table .tr.text div.icon-arrow {
@@ -1396,7 +1400,7 @@ i {
 }
 .translatingPopup + .mfp-wrap .mfp-content .table .tr.text div.percent,
 .reviewingPopup + .mfp-wrap .mfp-content .table .tr.text div.percent {
-  margin-left: 100px;
+  margin-left: 30px;
   font-size: 10px;
 }
 .translatingPopup + .mfp-wrap .mfp-content .table .tr.text div.percent-two,
@@ -2096,6 +2100,10 @@ ul.rating-ul li.half {
 }
 #addWorker .search-block {
   height: auto;
+}
+.mfp-content #addWorker .search-block {
+  overflow: hidden;
+  margin: 0;
 }
 #addWorker .search-block select,
 #addWorker .search-block input {
@@ -4504,4 +4512,48 @@ ul.content-dropdown li a:active, ul.content-dropdown li a:focus{
 
 ul.content-dropdown li a:hover{
   color: #707070;
+}
+
+#translator-notation .note{
+  cursor: pointer;
+}
+#translator-notation .note:hover{
+  background-image: url(../images/blue-stars.png);
+}
+
+.sub-projets {
+    position:absolute;
+    z-index:-1;
+    top:58px
+}
+
+#sub-nextProjects, #sub-prevProjects{
+  display:none;
+  padding: 0;
+  background: #fff;
+}
+
+#sub-nextProjects {
+    position:absolute;
+    bottom:0;
+}
+
+#sub-nextProjects i,#sub-prevProjects i {
+    font-size:4px;
+    vertical-align:middle;
+    padding:0 0 0 5px
+}
+
+.sidebar.is-submenu.has-projects{
+  padding-top: 0;
+}
+.sidebar.is-submenu.has-projects .s-item-disabled{
+  background: #f7f7f7;
+  padding-top: 20px;
+}
+
+.sidebar.is-submenu.has-projects .s-item-disabled + .ss-sub{
+  height: auto;
+  overflow: visible;
+  opacity: 1;
 }
