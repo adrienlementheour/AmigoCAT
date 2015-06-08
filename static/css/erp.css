@@ -295,6 +295,7 @@ a.cat-question-mark.hover span {
 }
 .icon-cog:before {
   content: '\e802';
+  font-size: inherit;
 }
 .s-menu .s-item,
 .sidebar.is-submenu .s-menu .s-item {

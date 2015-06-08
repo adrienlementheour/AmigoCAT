@@ -284,6 +284,16 @@
     padding:0 5px 0 0
 }
 
+.icon-cog:before {
+  display: inline-block;
+  width: 1em;
+  margin-right: .4em;
+  text-align: center;
+  line-height: 1em;
+  margin-left: .2em;
+  font-size: 12px;
+}
+
 /* ----------------------------------------------------------
   Images masquées (Pour push, etc)
 ---------------------------------------------------------- */
@@ -3631,7 +3641,7 @@ a.white-btn:hover {
     width:100%;
     position:absolute;
     left:0;
-    margin:54px 0 0
+    margin: 50px 0 0
 }
 
 #file-list td,.page-notifs td,.search-results td {
