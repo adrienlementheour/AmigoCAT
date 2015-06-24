@@ -3533,6 +3533,9 @@ _:-ms-input-placeholder,:root .overrided-select .controls .select,:root .custom-
 .bigMargin {
     margin:30px 0 0
 }
+.smallMargin {
+    margin:10px 0 0
+}
 
 a.white-btn {
   border: 1px solid #DCDCDC;
@@ -4361,7 +4364,7 @@ table .img .default,.project-entity .img .default {
     position:relative
 }
 
-.box-list a {
+.box-list li > a {
     margin:0 5px;
     border:1px solid #dcdcdc;
     background:#fff;
@@ -4393,12 +4396,12 @@ table .img .default,.project-entity .img .default {
     transition:.3s ease
 }
 
-.box-list a:hover,.box-list a:focus {
+.box-list li > a:hover,.box-list li > a:focus {
     background:#f7f7f7;
     border-color:#f7f7f7
 }
 
-.box-list li:nth-child(3n+1) a {
+.box-list li:nth-child(3n+1) > a {
     margin:0 5px 0 0
 }
 
@@ -4406,7 +4409,7 @@ table .img .default,.project-entity .img .default {
     margin-left:2px
 }
 
-.box-list li:nth-child(3n+0) a {
+.box-list li:nth-child(3n+0) > a {
     margin:0 0 0 5px
 }
 
@@ -4588,6 +4591,12 @@ table .img .default,.project-entity .img .default {
     margin: 2px 0 15px
 }
 
+#create-project #clientsNotes{
+    border: 0;
+    padding: 0;
+    min-width: 100%;
+}
+
 .blocContact {
     width:44%;
     min-width:200px;
@@ -4595,6 +4604,43 @@ table .img .default,.project-entity .img .default {
     display:inline-block;
     vertical-align:top;
     position:relative
+}
+
+.blocContact .zone-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+.blocContact .zone-btn a:hover, .blocContact .zone-btn:focus{
+    color: #9b9b9b;
+}
+.blocContact #textareaNotes{
+    display: none;
+    height: 100px;
+    width: 100%;
+    background: #F7F7F7;
+    border-radius: 4px;
+    padding: 15px 8px;
+    border: 1px solid #e0e4ea;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.blocContact #textareaNotes:focus{
+    background: #fff;
+    outline: none;
+}
+.blocContact .zone-btn a{
+    text-decoration: underline;
+}
+.blocContact .zone-btn i{
+    font-style: italic;
+    padding: 0 12px;
+}
+.blocContact input{
+    padding: 3px 15px;
+    font-size: 12px;
 }
 
 .blocContact .cat-pen,.blocContact .cat-close2 {

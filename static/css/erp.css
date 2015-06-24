@@ -604,6 +604,9 @@ form.erp-form .btn:hover {
   background-color: #fff;
   color: #008BA6;
 }
+form.erp-form#form-footer-invoice{
+  display: none;
+}
 form.erp-form#form-footer-invoice textarea {
   width: 100%;
   height: 100px;
@@ -1511,5 +1514,12 @@ ul#bill-payment li.bill-po-state .zone-bill-po-state .po-col.po-state-date a.cat
   padding: 0;
   margin: 3px 5px 0 3px;
   text-decoration: none;
+}
+
+#newDiscount{
+  display: none;
+}
+#addDiscount + .zone-btn{
+  display: none;
 }
 /* @end */

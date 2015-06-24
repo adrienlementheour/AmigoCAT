@@ -350,6 +350,14 @@ $j(function() {
         });
     }
 
+    if($('.popExistingClient').length) {
+        $('.popExistingClient').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            mainClass: 'existing-client'
+        });
+    }
+
     if($('.popConnect').length) {
         $('.popConnect').magnificPopup({
             type: 'inline',
@@ -848,5 +856,38 @@ $j(function() {
         $(this).on('click', function(){
             $(this).off('mousemove').removeClass().addClass('note note-blue note'+note);
         });
+    });
+
+    $('#editBillDesc').on('click', function(e){
+        $(this).parents('#editedBillDescZone').fadeOut().siblings('#form-footer-invoice').fadeIn().find('textarea').focus();
+        e.preventDefault();
+    });
+    $('#form-footer-invoice').find('a').on('click', function(e){
+        $(this).parents('#form-footer-invoice').fadeOut().siblings('#editedBillDescZone').fadeIn();
+        e.preventDefault();
+    });
+
+    $('#addDiscount').on('click', function(e){
+        $('#newDiscount').fadeIn().find('input').eq(0).focus();
+        $(this).fadeOut().siblings('.zone-btn').fadeIn();
+        e.preventDefault();
+    });
+    $('#addDiscount').siblings('.zone-btn').find('a').on('click', function(e){
+        $('#newDiscount').fadeOut();
+        $(this).parents('.zone-btn').siblings('#addDiscount').fadeIn().siblings('.zone-btn').fadeOut();
+        e.preventDefault();
+    });
+
+    $('#editNotes').on('click', function(e){
+        $(this).fadeOut().siblings('.zone-btn').fadeIn();
+        $(this).parents('.blocContact').find('p').fadeOut();
+        $(this).parents('.blocContact').find('#textareaNotes').fadeIn();
+        e.preventDefault();
+    });
+    $('#clientsNotes').find('.zone-btn').find('a').on('click', function(e){
+        $(this).parents('.zone-btn').fadeOut().siblings('#editNotes').fadeIn();
+        $(this).parents('.blocContact').find('p').fadeIn();
+        $(this).parents('.blocContact').find('#textareaNotes').fadeOut();
+        e.preventDefault();
     });
 });

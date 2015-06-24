@@ -207,6 +207,7 @@
               </ul>
             </div>
             <div class="po-bill-description">
+              <form id="form-add-line-invoice" class="erp-form" action="" method="post">
               <table class="table-description">
                 <tr class="border-bottom">
                   <th class="col-description">Description</th>
@@ -220,8 +221,17 @@
                   <td>0,15€</td>
                   <td>150€</td>
                 </tr>
+                <tr class="border-bottom" id='newDiscount'>
+                  <td><input type="text" value="Desc" onblur="if (this.value == '') {this.value = 'Desc';}" onfocus="if (this.value == 'Desc') {this.value = '';}"></td>
+                  <td><input type="text" value="Qty" onblur="if (this.value == '') {this.value = 'Qty';}" onfocus="if (this.value == 'Qty') {this.value = '';}"></td>
+                  <td><input type="text" value="Rate" onblur="if (this.value == '') {this.value = 'Rate';}" onfocus="if (this.value == 'Rate') {this.value = '';}"></td>
+                  <td>0€</td>
+                </tr>
                 <tr>
-                  <td><a class="btn-plus" href="#">+ <span>Add a discount or increase</span></a></td>
+                  <td>
+                    <a class="btn-plus" id='addDiscount' href="#">+ <span>Add a discount or increase</span></a>
+                    <div class="zone-btn"><a href="#" class="underline">Cancel</a> <i>or</i> <button class="btn" type="submit">Validate</button></div>
+                  </td>
                   <td colspan="2" class="border-bottom strong-title">Sub. total</td>
                   <td class="border-bottom">150€</td>
                 </tr>
@@ -236,7 +246,20 @@
                   <td class="border-bottom  strong-title">180€</td>
                 </tr>
               </table>
-              <div class="bloc-txt-po-bill-description">Thank you for your business! <a href="#" class="btn-edit cat-pen"><span>Edit</span></a></div>
+              </form>
+              <div class="bloc-txt-po-bill-description">
+                <div id='editedBillDescZone'>
+                  Thank you for your business! 
+                  <a href="#" class="btn-edit cat-pen" id='editBillDesc'><span>Edit</span></a>
+                </div>
+                <form id="form-footer-invoice" class="erp-form" action="" method="post">
+                  <textarea name="textarea">Thank you for your business!</textarea>
+                  <div class="zone-btn">
+                    <a href="#" class="underline">Cancel</a> 
+                    <i>or</i> <button class="btn" type="submit">Validate</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
