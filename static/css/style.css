@@ -1749,6 +1749,9 @@ ul.sidebar {
     -o-transition:left .9s ease-out,width .9s ease-out;
     transition:left .9s ease-out,width .9s ease-out
 }
+ul.sidebar.subMenuScroll{
+    overflow: auto
+}
 
 body.sidebar-open .sidebar {
     width:200px
