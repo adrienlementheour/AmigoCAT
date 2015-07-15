@@ -3267,8 +3267,8 @@ label.error {
     padding-top:10px
 }
 
-.controls input.error,.controls textarea.error {
-    border-color:#c4320e
+input.error, textarea.error {
+    border-color:#c4320e !important
 }
 
 .controls input:focus,.controls textarea:focus {
@@ -4426,7 +4426,8 @@ table .img .default,.project-entity .img .default {
     font-size:16px;
     text-overflow:ellipsis;
     overflow:hidden;
-    white-space:nowrap
+    white-space:nowrap;
+    font-weight: 800;
 }
 
 .box-list .country {
@@ -5495,6 +5496,51 @@ h3 .fleche-titre {
     font-size:30px;
     float:right
 }
+
+
+
+.mfp-auto-cursor.existing-client .mfp-content, .mfp-auto-cursor.claim-user .mfp-content{
+  min-height: 0;
+}
+
+.mfp-auto-cursor.claim-user .mfp-content{
+    width: 80%;
+    min-width: 600px;
+}
+
+.existing-client p, .claim-user p{
+  text-align: center;
+  margin: 50px 0;
+}
+
+.existing-client .some-button, .claim-user .some-button{
+  margin: 20px auto 0;
+  width: 175px;
+  display: block;
+  text-align: center;
+}
+
+.existing-client .bottom-pop, .claim-user .bottom-pop{
+  margin: 50px 0 0;
+  text-align: center;
+}
+.existing-client .bottom-pop a, .claim-user .bottom-pop a{
+  text-decoration: underline;
+}
+
+.claim-user .inside-content .box-list{
+    min-width: 0;
+}
+
+.claim-user .box-list ul{
+    text-align: center;
+}
+.claim-user .box-list li{
+    text-align: left;
+    width: 37.1%;
+    margin: 0 10px 12px;
+}
+
 
 /* TIPSY */
 .tipsy {

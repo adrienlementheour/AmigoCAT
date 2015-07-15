@@ -3944,9 +3944,6 @@ ul.rating-ul li.half {
   -o-transition: .3s ease;
   transition: .3s ease;
 }
-.box-list .nom {
-  font-weight: 800;
-}
 .page-notifs.warning-notifs tr {
   background: #F7F7F7;
 }
@@ -4560,27 +4557,4 @@ ul.content-dropdown li a:hover{
   height: auto;
   overflow: visible;
   opacity: 1;
-}
-
-.mfp-auto-cursor.existing-client .mfp-content{
-  min-height: 0;
-}
-
-.existing-client p{
-  text-align: center;
-  margin: 50px 0;
-}
-
-.existing-client .some-button{
-  margin: 20px auto 0;
-  width: 175px;
-  display: block;
-}
-
-.existing-client .bottom-pop{
-  margin: 50px 0 0;
-  text-align: center;
-}
-.existing-client .bottom-pop a{
-  text-decoration: underline;
 }

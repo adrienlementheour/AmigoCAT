@@ -357,6 +357,13 @@ $j(function() {
             mainClass: 'existing-client'
         });
     }
+    if($('.popClaimUser').length) {
+        $('.popClaimUser').magnificPopup({
+            type: 'inline',
+            midClick: true,
+            mainClass: 'claim-user'
+        });
+    }
 
     if($('.popConnect').length) {
         $('.popConnect').magnificPopup({
