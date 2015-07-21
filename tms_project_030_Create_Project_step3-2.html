@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+<!--[if IE 8 ]><html lang="en-us" class="is_ie8 lt_ie9 lt_ie10"><![endif]-->
+<!--[if IE 9 ]><html lang="en-us" class="is_ie9 lt_ie10"><![endif]-->
+<!--[if gt IE 9]><html lang="en-us" class="is_ie10"><![endif]-->
+<!--[if !IE]><!--> <html lang="en-us"><!--<![endif]-->
+
+<head>
+
+    <title>Invite workers | AmigoCAT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="This is a demo installation of amigoCAT beta." />
+    
+    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css" />
+    <link rel="stylesheet" href="static/css/reset.css" type="text/css" />   
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/tms.css" type="text/css" />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="static/favicon.png" />
+
+    <!--[if lt IE 9]><script src="static/js/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="static/js/selectivizr-min.js"></script><![endif]-->
+    
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/events.js"></script>
+    <script type="text/javascript" src="static/js/jquery.caret.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-core.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript" src="static/js/rangy-1.2.3/rangy-serializer.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.bidi.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.easing.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.serializeObject.js"></script>
+    <script type="text/javascript" src="static/js/vendor/jquery/jquery.select2.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="static/js/vendor/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="static/js/common.js"></script>
+    <script type="text/javascript" src="static/js/search.js"></script>
+    <script type="text/javascript" src="static/js/utils.js"></script>
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/vendor/sorttable.js"></script>
+    <script type="text/javascript" src="static/js/vendor/spin.js"></script>
+    <script type="text/javascript" src="static/js/vendor/shortcut.js"></script>
+    <script type="text/javascript">
+        function l(path) {
+            var basepath = "";
+            if (path[0] == '/') {
+                return basepath + path;
+            }
+            return path;
+        }
+        function s(path) {
+            return "static/" + path;
+        }
+        $(function() {
+            $("[title][bounce!='south'], [original-title][bounce!='south']").tipsy({
+                gravity: $.fn.tipsy.autoBounds(150, 'n'),
+                html: true, fade: true, delayIn: 750, live: true
+            });
+            $("[title][bounce='south'], [original-title][bounce='south']").tipsy({
+                gravity: $.fn.tipsy.autoBounds(150, 's'),
+                html: true, fade: true, delayIn: 750, live: true
+            });
+            $.ajaxSetup({ traditional: true });
+            $.ajaxPrefilter(function (options, originalOptions) {
+            if (options.type === 'post' || options.type === 'POST') {
+                options.data = $.param(
+                    $.extend(originalOptions.data,
+                    { csrfmiddlewaretoken: 'BOT0IIwZvFRMVB6QuwJhrmWhA9rv4HaG' }
+                ) );
+            }
+        });
+    });
+    </script>
+    <script type="text/javascript" src="static/js/mousetrap.min.js"></script>
+    <script src="static/js/popup.js"></script>
+</head>
+
+
+<body id="main-body" class="sidebar-open">
+
+    <header id="header" class="header">
+        <h1 class="h-logo h-item">
+            <a href="/"><i class="icon-amigocat-logo"></i>amigoCAT</a>
+        </h1>
+
+        <form action="" method="get" class="cssc-form h-item h-form">
+            <input type="text" name="search" placeholder="Search">
+            <button type="submit">&#xe005;</button>
+        </form>
+
+        <div class="h-avatar" id="open-usermenu">
+            <span class="ha-name ha-name-iconed">Boris</span>
+            <div class="ha-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="24" width="24"/></div>
+            <ul class="usermenu">
+                <li><a class="s-item" href=''>CAT</a></li>
+                <li><a class="s-item" href=''>TMS</a></li>
+                <li><a class="s-item" href=''>Jobcenter</a></li>
+                <li><a class="s-item" href=''>Community</a></li>
+                <li><a class="s-item" href=''>workIQ</a></li>
+                <li class="log"><a class="s-item cat-log" href='/accounts/logout/'>Log Out</a></li>
+            </ul>
+        </div>
+
+    </header>
+
+    <div class="out">
+        <div class="header-sub-disable cf">
+            <div class="hs-inner">
+                <a href="#" id="open-menu" class="block-rounded hsi-opensidebar h-item">&nbsp;</a>
+            </div>
+        </div>
+
+        <div class="js-both-sidebars">
+            <ul class="sidebar">
+                <li class="s-title">Myspace</li>
+                <li class=""><a class="s-item " href="dashboard">Home</a></li>
+                <li class=""><a class="s-item has-notif" href="notification">Notifications <span>19</span></a></li>
+                <li class=""><a class="s-item sub-active-dash" href="project">Projects</a></li>
+                <li class=""><a class="s-item " href="clients">Clients</a></li>
+                <li class=""><a class="s-item " href="translators">Translators</a></li>
+                <li class=""><a class="s-item " href="reviewers">Reviewers</a></li>
+                <li class=""><a class="s-item " href="managers">Project Managers</a></li>
+                <li class="s-menu">
+                    <ul>
+                        <li class="support"><a class="s-item" href="contact"><i class="icon-info-circled"></i>Support</a></li>
+                        <li class="community"><a class="s-item" href="community"><i class="icon-globe"></i>Community</a></li>
+                        <li class="settings"><a class="s-item" href="account"><i class="icon-cog"></i>Settings</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="sidebar is-submenu">
+                <li class="s-item no-carret">Create a project</li>
+                <li class="sss-item " style="padding-left: 0;"><a href="project/create">01. General information</a></li>
+                <li class="sss-item " style="padding-left: 0;"><a href="project/add_files">02. Choose file(s)</a></li>
+                <li class="sss-item active" style="padding-left: 0;"><a href="project/invite">03. Invite team</a></li>
+                <li class="sss-item " style="padding-left: 0;"><a href="project/tr_memory">04. Translation memory</a></li>
+            </ul>
+        </div>
+
+        <div id="main-container">
+            <div id="create-project">
+                <h3>03. Invite workers</h3>
+                <form enctype="multipart/form-data" method="POST" id="file-list-form">
+                    <table id="file-list" class='invite-team'>
+                        <tbody>
+                            <tr class="headers">
+                                <th class='left'>Queue</th>
+                                <th class='left'></th>
+                                <th class='left'>Name</th>
+                                <th>Rating</th>
+                                <th>Completed projects</th>
+                                <th>Availability</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td class='queue'>#1</td>
+                                <td class="img">
+                                    <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                                </td>
+                                <td class='name'><span>Giacomo Gullizzoni</span></td>
+                                <td><span class="note note4">4/5</span></td>
+                                <td>35</td>
+                                <td>85%</td>
+                                <td class='up'><button class='inactif'></button></td>
+                                <td class='down'><button></button></td>
+                                <td class="actions">
+                                    <input type="button" name="remove_language" value="×" class="btn white-btn">
+                                    <input type="file" name="add_file_0" class="hidden-element">
+                                </td>
+                                <td class="progresivline-dash">
+                                    <div style="height:2px; width:38%; background: #FF9800; position: relative;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='queue'>#2</td>
+                                <td class="img">
+                                    <div class="worker-img default"></div>
+                                </td>
+                                <td class='name'><span>Marco Botton</span></td>
+                                <td><span class="note note5">5/5</span></td>
+                                <td>35</td>
+                                <td>85%</td>
+                                <td class='up'><button></button></td>
+                                <td class='down'><button></button></td>
+                                <td class="actions">
+                                    <input type="button" name="remove_language" value="×" class="btn white-btn">
+                                    <input type="file" name="add_file_0" class="hidden-element">
+                                </td>
+                                <td class="progresivline-dash">
+                                    <div style="height:2px; width:5%; background: #CE5464; position: relative;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='queue'>#3</td>
+                                <td class="img">
+                                    <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                                </td>
+                                <td class='name'><span>Mariah Maclachlan</span></td>
+                                <td><span class="note note4">4/5</span></td>
+                                <td>35</td>
+                                <td>85%</td>
+                                <td class='up'><button></button></td>
+                                <td class='down'><button></button></td>
+                                <td class="actions">
+                                    <input type="button" name="remove_language" value="×" class="btn white-btn">
+                                    <input type="file" name="add_file_0" class="hidden-element">
+                                </td>
+                                <td class="progresivline-dash">
+                                    <div style="height:2px; width:38%; background: #FF9800; position: relative;"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                
+                <a href='#' class='see-next'>...See 5 next in queue</a>
+                <div class="action-button right">
+                    <a href="#addWorker" id="add-worker" class="addWorkerPopup-link">+ Add worker</a>
+                </div>
+                <div class='button-zone'>
+                    <input type="submit" name="validate" value="Validate and add translation memory&nbsp;&nbsp;&rarr;" />
+                </div>
+            </div>
+        </div>
+
+        <div id="addWorker" class="mfp-hide">
+            <h2>Invite team</h2>
+            <div class="search-block clearfix">
+                <form action="" method="post" class="cssc-form h-item popup-h-form">
+                    <div class="custom-select-wrapper">
+                        <select name="role" id="id_role">
+                            <option value="100">Translators/Reviewers</option>
+                            <option value="200">Translators</option>
+                            <option value="300">Reviewers</option>
+                        </select>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <select class="source-language" name="translate" id="id_translate">
+                            <option value="100">French</option>
+                        </select>
+                    </div>
+                    <label for="id_translateTo">to</label>
+                    <div class="custom-select-wrapper">
+                        <select class="source-language" name="translateTo" id="id_translateTo">
+                            <option value="100">English</option>
+                        </select>
+                    </div>
+                    <div class="custom-select-wrapper">
+                        <select class="domain" name="domain" id="id_domain">
+                            <option value="100">Choose a domain</option>
+                        </select>
+                    </div>
+                    <input type="text" name="searchClient" placeholder="Search for a specific user">
+                    <button type="submit">&#xe005;</button>
+                </form>
+            </div>
+            <div class="inside-content list-workers">
+                <div class="box-list">
+                    <ul>
+                        <li>
+                            <div class="worker-item">
+                                <i class="top worker-hide"><i class="icon-star"></i></i>
+                                <span class="nom">Bertrand Verylongname</span>
+                                <span>5 projects</span>
+                                <span class="note note4">4/5</span>
+                                <span class="country worker-hide">Germany</span>
+                                <span class='know'>You know him.</span>
+                                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                                <i class="top worker-item-hover"><i class="icon-amigocat-logo"></i></i>
+                                <div>
+                                    <a href="#warningPopup" class="warningPopup-link worker-button worker-item-hover">Invite</a>
+                                    <a href="#viewWorker" id="view-worker" class="viewWorkerPopup-link worker-button worker-item-hover">View profile</a>
+                                </div>
+                            </div>
+                            <div class="progresivline-dash">
+                                <div style="height:2px; width:89%; background: #409032;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="worker-item">
+                                <i class="top worker-hide"><i class="icon-star"></i></i>
+                                <span class="nom">Bertrand Verylongname</span>
+                                <span>5 projects</span>
+                                <span class="note note4">4/5</span>
+                                <span class="country worker-hide">Germany</span>
+                                <span class='know'>You know him.</span>
+                                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                                <i class="top worker-item-hover"><i class="icon-amigocat-logo"></i></i>
+                                <div>
+                                    <a href="#warningPopup" class="warningPopup-link worker-button worker-item-hover">Invite</a>
+                                    <a href="#viewWorker" id="view-worker" class="viewWorkerPopup-link worker-button worker-item-hover">View profile</a>
+                                </div>
+                            </div>
+                            <div class="progresivline-dash">
+                                <div style="height:2px; width:52%; background: #FBA617;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="worker-item">
+                                <i class="top worker-hide"><i class="icon-star"></i></i>
+                                <span class="nom">Bertrand Verylongname</span>
+                                <span>5 projects</span>
+                                <span class="note note4">4/5</span>
+                                <span class="country worker-hide">Germany</span>
+                                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                                <i class="top worker-item-hover"><i class="icon-amigocat-logo"></i></i>
+                                <div>
+                                    <a href="#warningPopup" class="warningPopup-link worker-button worker-item-hover">Invite</a>
+                                    <a href="#viewWorker" id="view-worker" class="viewWorkerPopup-link worker-button worker-item-hover">View profile</a>
+                                </div>
+                            </div>
+                            <div class="progresivline-dash">
+                                <div style="height:2px; width:20%; background: #C40821;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="worker-item">
+                                <i class="top worker-hide"><i class="icon-star"></i></i>
+                                <span class="nom">Bertrand Verylongname</span>
+                                <span>5 projects</span>
+                                <span class="note note4">4/5</span>
+                                <span class="country worker-hide">Germany</span>
+                                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                                <i class="top worker-item-hover"><i class="icon-amigocat-logo"></i></i>
+                                <div>
+                                    <a href="#warningPopup" class="warningPopup-link worker-button worker-item-hover">Invite</a>
+                                    <a href="#viewWorker" id="view-worker" class="viewWorkerPopup-link worker-button worker-item-hover">View profile</a>
+                                </div>
+                            </div>
+                            <div class="progresivline-dash">
+                                <div style="height:2px; width:52%; background: #FBA617;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="worker-item">
+                                <i class="top worker-hide"><i class="icon-star"></i></i>
+                                <span class="nom">Bertrand Verylongname</span>
+                                <span>5 projects</span>
+                                <span class="note note4">4/5</span>
+                                <span class="country worker-hide">Germany</span>
+                                <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                                <i class="top worker-item-hover"><i class="icon-amigocat-logo"></i></i>
+                                <div>
+                                    <a href="#warningPopup" class="warningPopup-link worker-button worker-item-hover">Invite</a>
+                                    <a href="#viewWorker" id="view-worker" class="viewWorkerPopup-link worker-button worker-item-hover">View profile</a>
+                                </div>
+                            </div>
+                            <div class="progresivline-dash">
+                                <div style="height:2px; width:2%; background: #C40821;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="viewWorker" class="mfp-hide">
+            <h2>Invite team</h2>
+            <div class="inside-content">
+                <div class="worker-info-left">
+                    <span class="img"><img src="static/img/fb.png" alt="" width="50" height="50"/></span>
+                    <span class="star-name">Quality</span>
+                    <span class="note note4">4/5</span>
+                    <span class="star-name">On time</span>
+                    <span class="note note4">4/5</span>
+                </div>
+                <div class="worker-info-right">
+                    <span class="name col-left">Ivan Ivanovich</span>
+                    <span class="availability col-right" style="color: #C40821">Availability 75%</span>
+                    <div class="progresivline-dash">
+                        <div style="height:3px; width:2%; background: #C40821;"></div>
+                        <div style="width:98%;"></div>
+                    </div>
+                    <div class="detailed-left col-left">
+                        <span class="role">Reviewer, Translator</span>
+                        <span class="category">IT, Financial</span>
+                        <span class="projects"><span class="number">3</span> open projects</span>
+                        <span class="projects"><span class="number">21</span> closed projects</span>
+                        <span class="words"><span class="number">2500</span> words per day</span>
+                    </div>
+                    <div class="detailed-right col-right">
+                        <span class="email"><a href=""></a>asd@asd.asd</span>
+                        <span class="phone">+111111111111</span>
+                        <span class="country">United States</span>
+                        <span class="time-zone">GMT+2(<span class="yours">+5 hours than you</span>)</span>
+                    </div>
+                    <h3>Notes <i class="icon-pencil"></i></h3>
+                    <hr/>
+                    <div class="notes">RP is a blend of many styles and genres of music, carefully selected and mixed by two real human beings. You'll hear modern and classic rock, world music, electronica, even a bit of classical and jazz.</div>
+                </div>
+            </div>
+            <div class="bottom-pop">
+                <a href="" class="submit-button">Invite to project</a>
+                <span>or</span>
+                <a href="#addWorker" id="go-back-workers" class="popup">go back to workers' list</a>
+            </div>
+        </div>
+
+        <div id="warningPopup" class="mfp-hide">
+            <h2>Warning</h2>
+            <div class="inside-content">
+                <div class="image">
+                    <img src="static/images/tms/worker.png">
+                </div>
+                <div class="content">
+                    <div class="text">
+                        It look like this <span class="bold">guy</span> won't finish on time. <br>
+                        At this speed, he'll be 500 words short.
+                    </div>
+                    <div class="buttons">
+                        <a class="blue-link white"> Invite anyway</a>
+                        <span>or</span>
+                        <a class="blue-link"> Find another worker</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="postcontent"></div></div>
+
+        <div id="footer" class="bottom">
+            <ul class="nav">
+                <li><a href='/contact/'>Contact Us</a></li>
+                <li><a href='/about/'>About</a></li>
+            </ul>
+        </div>
+
+
+        <script type="text/javascript" src="static/js/jsi18n.js"></script> <!-- GOT THIS FILE FROM THE ONLINE VERSION AND CHANGED ITS NAME -->
+    </body>
+
+    </html>
