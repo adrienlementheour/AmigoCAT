@@ -123,7 +123,8 @@
                 <li class="s-title">Myspace</li>
                 <li class=""><a class="s-item " href="dashboard">Home</a></li>
                 <li class=""><a class="s-item has-notif" href="notification">Notifications <span>19</span></a></li>
-                <li class=""><a class="s-item sub-active-dash" href="project">Projects</a></li>
+                <li class=""><a class="s-item" href="project">Projects</a></li>
+                <li class=""><a class="s-item sub-active-dash" href="project">Team</a></li>
                 <li class=""><a class="s-item " href="clients">Clients</a></li>
                 <li class=""><a class="s-item " href="translators">Translators</a></li>
                 <li class=""><a class="s-item " href="reviewers">Reviewers</a></li>
@@ -141,14 +142,15 @@
                 <li class="s-item no-carret">Create a project</li>
                 <li class="sss-item " style="padding-left: 0;"><a href="project/create">01. General information</a></li>
                 <li class="sss-item " style="padding-left: 0;"><a href="project/add_files">02. Choose file(s)</a></li>
-                <li class="sss-item active" style="padding-left: 0;"><a href="project/invite">03. Invite team</a></li>
-                <li class="sss-item " style="padding-left: 0;"><a href="project/tr_memory">04. Translation memory</a></li>
+                <li class="sss-item" style="padding-left: 0;"><a href="project/invite">03. Invite team</a></li>
+                <li class="sss-item active" style="padding-left: 0;"><a href="">04. Job center</a></li>
+                <li class="sss-item " style="padding-left: 0;"><a href="project/tr_memory">05. Translation memory</a></li>
             </ul>
         </div>
 
         <div id="main-container">
             <div id="create-project">
-                <h3>03. Invite workers</h3>
+                <h3>04. Job center</h3>
                 <form enctype="multipart/form-data" method="POST" id="file-list-form">
                     <table id="file-list" class='invite-team'>
                         <tbody>
@@ -159,6 +161,7 @@
                                 <th>Rating</th>
                                 <th>Completed projects</th>
                                 <th>Availability</th>
+                                <th>Language</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -172,6 +175,7 @@
                                 <td><span class="note note4">4/5</span></td>
                                 <td>35</td>
                                 <td>85%</td>
+                                <td>English</td>
                                 <td class='up'><button class='inactif'></button></td>
                                 <td class='down'><button></button></td>
                                 <td class="actions">
@@ -191,6 +195,7 @@
                                 <td><span class="note note5">5/5</span></td>
                                 <td>35</td>
                                 <td>85%</td>
+                                <td>English</td>
                                 <td class='up'><button></button></td>
                                 <td class='down'><button></button></td>
                                 <td class="actions">
@@ -210,6 +215,47 @@
                                 <td><span class="note note4">4/5</span></td>
                                 <td>35</td>
                                 <td>85%</td>
+                                <td>French</td>
+                                <td class='up'><button></button></td>
+                                <td class='down'><button></button></td>
+                                <td class="actions">
+                                    <input type="button" name="remove_language" value="×" class="btn white-btn">
+                                    <input type="file" name="add_file_0" class="hidden-element">
+                                </td>
+                                <td class="progresivline-dash">
+                                    <div style="height:2px; width:38%; background: #FF9800; position: relative;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='queue'>#4</td>
+                                <td class="img">
+                                    <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                                </td>
+                                <td class='name'><span>Mariah Maclachlan</span></td>
+                                <td><span class="note note4">4/5</span></td>
+                                <td>35</td>
+                                <td>85%</td>
+                                <td>Chinese</td>
+                                <td class='up'><button></button></td>
+                                <td class='down'><button></button></td>
+                                <td class="actions">
+                                    <input type="button" name="remove_language" value="×" class="btn white-btn">
+                                    <input type="file" name="add_file_0" class="hidden-element">
+                                </td>
+                                <td class="progresivline-dash">
+                                    <div style="height:2px; width:38%; background: #FF9800; position: relative;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='queue'>#5</td>
+                                <td class="img">
+                                    <div class="worker-img"><img src="https://secure.gravatar.com/avatar/7acb1a8b3da7f19e67cd6ebb7a5dcc81?s=24&amp;d=mm" alt="" height="30" width="30"/></div>
+                                </td>
+                                <td class='name'><span>Mariah Maclachlan</span></td>
+                                <td><span class="note note4">4/5</span></td>
+                                <td>35</td>
+                                <td>85%</td>
+                                <td>English</td>
                                 <td class='up'><button></button></td>
                                 <td class='down'><button></button></td>
                                 <td class="actions">
